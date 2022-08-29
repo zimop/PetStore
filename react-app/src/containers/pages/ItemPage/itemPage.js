@@ -1,5 +1,8 @@
+import "./itemPage.css";
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
+import useTheme from "../../../muiTheme";
+import { ThemeProvider } from "@emotion/react";
 
 import Rating from "@mui/material/Rating";
 import Select from "@mui/material/Select";
@@ -7,15 +10,21 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
-
-import useTheme from "../../../muiTheme";
-import { ThemeProvider } from "@emotion/react";
-
-import "./itemPage.css";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import PropTypes from "prop-types";
+import TabPanel from "@mui/lab/TabPanel";
+import TabContext from "@mui/lab/TabContext";
+import useState from "react";
 
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
   const theme = useTheme();
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -68,9 +77,45 @@ const ProductPage = (props) => {
             </div>
           </div>
         </div>
+
+        <div className="item-threeTabs">
+          <TabContext value={value}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab label="Product Details" value="1" />
+                <Tab label="Reviews (4 Reviews)" value="2" />
+                <Tab label="Recommendations" value="3" />
+              </Tabs>
+            </Box>
+
+            <TabPanel value="1">Item One</TabPanel>
+            <TabPanel value="2">Item Two</TabPanel>
+            <TabPanel value="3">Item Three</TabPanel>
+          </TabContext>
+        </div>
       </div>
     </ThemeProvider>
   );
 };
 
 export default ProductPage;
+
+// and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
+//               Precise nutrition for whole body health. It takes a precise
+//               combination of nutrients to keep your dog in top condition. Which
+//               is why the experts at Purina have developed SMARTBLEND (R) .
+//               Inspired by nature and blended with scientific precision,
+//               SMARTBLEND is specifically designed to promote your dogs whole
+//               body health. *Compared to previous SUPERCOAT Adult Large Breed
+//               Formula. Used and recommended by Dr Harry Copper. Veterinarian
+//               SMARTBLEND . Precise nutrition for whole body health. It takes a
+//               precise combination of nutrients to keep your dog in top
+//               condition. Which is why the experts at Purina have developed
+//               SMARTBLEND (R) . Inspired by nature and blended with scientific
+//               precision, SMARTBLEND is specifically designed to promote your
+//               dogs whole body health. *Compared to previous SUPERCOAT Adult
+//               Large Breed Formula.
