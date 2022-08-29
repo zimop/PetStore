@@ -4,20 +4,19 @@ import "./App.css";
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
-
-import PrimarySearchAppBar from "./containers/navBar/Navbar";
+import AppLayout from "./containers/layout/index";
+import ProductItem from "./containers/pages/ItemPage";
 
 function App() {
   return (
-    // <ThemeProvider>
     <BrowserRouter>
-      <main>
-        {/* // Navigation Bar */}
-        <PrimarySearchAppBar />
-      </main>
+      <AppLayout>
+        {/* One Item */}
+        <ProductItem />
+
+        {/* Three tabs in itemPage */}
+      </AppLayout>
     </BrowserRouter>
-    // </ThemeProvider>
   );
 }
 
