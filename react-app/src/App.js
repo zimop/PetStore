@@ -5,16 +5,13 @@ import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AppLayout from "./containers/layout/index";
-import ProductItem from "./containers/pages/ItemPage";
+import ProductPage from "./containers/pages/ItemPage/itemPage";
 
 function App() {
   return (
     <BrowserRouter>
       <AppLayout>
-        {/* One Item */}
-        <ProductItem />
-
-        {/* Three tabs in itemPage */}
+        <ProductPage />
       </AppLayout>
     </BrowserRouter>
   );
