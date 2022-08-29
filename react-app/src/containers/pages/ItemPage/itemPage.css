@@ -1,5 +1,5 @@
 .itemPage{
-    padding: 5%;
+    padding: 3%;
     align-items: center;
 }
 
@@ -16,7 +16,7 @@
     margin-right: 15%;
 
     /* testing */
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 
 }
 
@@ -25,7 +25,7 @@
     margin: 3%;
 
     /* testing */
-    background-color: aqua;
+    /* background-color: aqua; */
 
 }
 
@@ -37,13 +37,13 @@
     max-width: 60%;
 
     /* testing */
-    background-color: blue;
+    /* background-color: blue; */
 
 }
 
 .productDetails-middle{
     display: flex;
-    align-items: right;
+    align-items: center;
     justify-content: space-around;
     flex-direction: row;
 
@@ -54,7 +54,7 @@
     margin-top: 2%;
 
     /* testing */
-    background-color: red;
+    /* background-color: red; */
 
 }
 
@@ -63,14 +63,22 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 13%;
-    margin-right: 5%;
-    margin-top: 2%;
-    width: 80%;
     flex-wrap: nowrap;
     align-content: center;
 
-    /* testing */
-    background-color: green;
+    margin-left: 13%;
+    margin-right: 5%;
+    margin-top: 5%;
 
+    width: 80%;
+
+    /* testing */
+    /* background-color: green; */
+
+}
+
+
+.addToCart-group button{
+    margin-left: 10%;
+    margin-right: 3%;
 }
