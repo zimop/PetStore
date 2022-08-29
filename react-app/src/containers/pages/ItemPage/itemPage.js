@@ -97,21 +97,26 @@ const ProductPage = (props) => {
 
             {/* Product Desctiption Tab */}
             <TabPanel value="0">
-              Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
-              Precise nutrition for whole body health. It takes a precise
-              combination of nutrients to keep your dog in top condition. Which
-              is why the experts at Purina have developed SMARTBLEND (R) .
-              Inspired by nature and blended with scientific precision,
-              SMARTBLEND is specifically designed to promote your dogs whole
-              body health. *Compared to previous SUPERCOAT Adult Large Breed
-              Formula. Used and recommended by Dr Harry Copper. Veterinarian
-              SMARTBLEND . Precise nutrition for whole body health. It takes a
-              precise combination of nutrients to keep your dog in top
-              condition. Which is why the experts at Purina have developed
-              SMARTBLEND (R) . Inspired by nature and blended with scientific
-              precision, SMARTBLEND is specifically designed to promote your
-              dogs whole body health. *Compared to previous SUPERCOAT Adult
-              Large Breed Formula.
+              <p>
+                Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND
+                . Precise nutrition for whole body health. It takes a precise
+                combination of nutrients to keep your dog in top condition.
+                Which is why the experts at Purina have developed SMARTBLEND (R)
+                . Inspired by nature and blended with scientific precision,
+                SMARTBLEND is specifically designed to promote your dogs whole
+                body health. *Compared to previous SUPERCOAT Adult Large Breed
+                Formula.
+              </p>
+              <p>
+                Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND
+                . Precise nutrition for whole body health. It takes a precise
+                combination of nutrients to keep your dog in top condition.
+                Which is why the experts at Purina have developed SMARTBLEND (R)
+                . Inspired by nature and blended with scientific precision,
+                SMARTBLEND is specifically designed to promote your dogs whole
+                body health. *Compared to previous SUPERCOAT Adult Large Breed
+                Formula.
+              </p>
             </TabPanel>
             {/* Reviews Tab */}
             <TabPanel value="1">Item Two Reviews</TabPanel>
