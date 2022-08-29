@@ -21,7 +21,7 @@ import useState from "react";
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
   const theme = useTheme();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState("0");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -41,7 +41,7 @@ const ProductPage = (props) => {
 
             {/* Middle area: Ratings and Price */}
             <div className="productDetails-middle">
-              <Rating name="half-rating" defaultValue={4.5} precision={0.5} />
+              <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
               <h3>$49.99</h3>
             </div>
 
@@ -81,21 +81,22 @@ const ProductPage = (props) => {
         {/* ItemPage Product Tabs */}
         <div className="itemPage-threeTabs">
           <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Box sx={{ borderBottom: 2, borderColor: "divider" }}>
               <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="basic tabs example"
                 variant="fullWidth"
+                centered
               >
-                <Tab label="Product Details" value="1" />
-                <Tab label="Reviews (4 Reviews)" value="2" />
-                <Tab label="Recommendations" value="3" />
+                <Tab label="Product Details" value="0" />
+                <Tab label="Reviews (4 Reviews)" value="1" />
+                <Tab label="Recommendations" value="2" />
               </Tabs>
             </Box>
 
             {/* Product Desctiption Tab */}
-            <TabPanel value="1">
+            <TabPanel value="0">
               Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
               Precise nutrition for whole body health. It takes a precise
               combination of nutrients to keep your dog in top condition. Which
@@ -113,10 +114,10 @@ const ProductPage = (props) => {
               Large Breed Formula.
             </TabPanel>
             {/* Reviews Tab */}
-            <TabPanel value="2">Item Two</TabPanel>
+            <TabPanel value="1">Item Two Reviews</TabPanel>
 
             {/* Recommendations Tab */}
-            <TabPanel value="3">Item Three</TabPanel>
+            <TabPanel value="2">Item Three Recommendations</TabPanel>
           </TabContext>
         </div>
       </div>
