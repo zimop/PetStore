@@ -78,13 +78,15 @@ const ProductPage = (props) => {
           </div>
         </div>
 
-        <div className="item-threeTabs">
+        {/* ItemPage Product Tabs */}
+        <div className="itemPage-threeTabs">
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <Tabs
                 value={value}
                 onChange={handleChange}
                 aria-label="basic tabs example"
+                variant="fullWidth"
               >
                 <Tab label="Product Details" value="1" />
                 <Tab label="Reviews (4 Reviews)" value="2" />
@@ -92,8 +94,28 @@ const ProductPage = (props) => {
               </Tabs>
             </Box>
 
-            <TabPanel value="1">Item One</TabPanel>
+            {/* Product Desctiption Tab */}
+            <TabPanel value="1">
+              Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
+              Precise nutrition for whole body health. It takes a precise
+              combination of nutrients to keep your dog in top condition. Which
+              is why the experts at Purina have developed SMARTBLEND (R) .
+              Inspired by nature and blended with scientific precision,
+              SMARTBLEND is specifically designed to promote your dogs whole
+              body health. *Compared to previous SUPERCOAT Adult Large Breed
+              Formula. Used and recommended by Dr Harry Copper. Veterinarian
+              SMARTBLEND . Precise nutrition for whole body health. It takes a
+              precise combination of nutrients to keep your dog in top
+              condition. Which is why the experts at Purina have developed
+              SMARTBLEND (R) . Inspired by nature and blended with scientific
+              precision, SMARTBLEND is specifically designed to promote your
+              dogs whole body health. *Compared to previous SUPERCOAT Adult
+              Large Breed Formula.
+            </TabPanel>
+            {/* Reviews Tab */}
             <TabPanel value="2">Item Two</TabPanel>
+
+            {/* Recommendations Tab */}
             <TabPanel value="3">Item Three</TabPanel>
           </TabContext>
         </div>
@@ -103,19 +125,3 @@ const ProductPage = (props) => {
 };
 
 export default ProductPage;
-
-// and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
-//               Precise nutrition for whole body health. It takes a precise
-//               combination of nutrients to keep your dog in top condition. Which
-//               is why the experts at Purina have developed SMARTBLEND (R) .
-//               Inspired by nature and blended with scientific precision,
-//               SMARTBLEND is specifically designed to promote your dogs whole
-//               body health. *Compared to previous SUPERCOAT Adult Large Breed
-//               Formula. Used and recommended by Dr Harry Copper. Veterinarian
-//               SMARTBLEND . Precise nutrition for whole body health. It takes a
-//               precise combination of nutrients to keep your dog in top
-//               condition. Which is why the experts at Purina have developed
-//               SMARTBLEND (R) . Inspired by nature and blended with scientific
-//               precision, SMARTBLEND is specifically designed to promote your
-//               dogs whole body health. *Compared to previous SUPERCOAT Adult
-//               Large Breed Formula.
