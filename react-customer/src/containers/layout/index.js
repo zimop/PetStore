@@ -4,6 +4,7 @@ import React, { Fragment } from "react";
 // import { useHistory, useLocation } from "react-router-dom";
 
 import PrimarySearchAppBar from "../navBar";
+import ProductPageFooter from "../footer";
 
 import useTheme from "../../muiTheme/index";
 
@@ -23,6 +24,9 @@ const AppLayout = (props) => {
         <div className="content">
           <main className="main-content">{children}</main>
         </div>
+
+        {/* footer */}
+        {/* <ProductPageFooter /> */}
       </ThemeProvider>
     </Fragment>
   );
