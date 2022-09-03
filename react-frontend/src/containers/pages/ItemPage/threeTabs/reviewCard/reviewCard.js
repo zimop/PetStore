@@ -5,6 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import Rating from "@mui/material/Rating";
 
 import "./reviewCard.css";
 
@@ -38,6 +39,14 @@ const ReviewCard = (props) => {
           </Typography>
         </div>
 
+        <div className="review-rating">
+          <Rating
+            name="half-rating"
+            defaultValue={3.5}
+            precision={0.5}
+          />
+        </div>
+
         <Typography variant="body2">
           <br />
           {
@@ -53,6 +62,6 @@ const ReviewCard = (props) => {
       </CardActions>
     </Card>
   );
-}
- 
+};
+
 export default ReviewCard;
