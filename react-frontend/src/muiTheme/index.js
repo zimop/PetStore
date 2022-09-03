@@ -19,10 +19,11 @@ export const useTheme = () => {
       // custom colors for props in Material UI's components.
       // Then you will be able to use it like this: `<Button color="custom">`
       // (For TypeScript, you need to add module augmentation for the `custom` value)
-      custom: {
-        light: "#ffa726",
-        main: "#f57c00",
-        dark: "#ef6c00",
+      footerText: {
+        main: "#ffffff",
+        // light: "#ffa726",
+        // main: "#f57c00",
+        // dark: "#ef6c00",
         // contrastText: 'rgba(0, 0, 0, 0.87)',
       },
       // Used by `getContrastText()` to maximize the contrast between

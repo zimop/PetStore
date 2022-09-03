@@ -26,7 +26,7 @@ const AppLayout = (props) => {
         </div>
 
         {/* footer */}
-        {/* <ProductPageFooter /> */}
+        <ProductPageFooter />
       </ThemeProvider>
     </Fragment>
   );
