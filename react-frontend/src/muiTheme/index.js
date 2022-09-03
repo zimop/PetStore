@@ -26,13 +26,17 @@ export const useTheme = () => {
         // dark: "#ef6c00",
         // contrastText: 'rgba(0, 0, 0, 0.87)',
       },
+
+      avatarColor: {
+        deepOrange: "#ff5722",
+      },
       // Used by `getContrastText()` to maximize the contrast between
       // the background and the text.
-      contrastThreshold: 3,
+      // contrastThreshold: 3,
       // Used by the functions below to shift a color's luminance by approximately
       // two indexes within its tonal palette.
       // E.g., shift from Red 500 to Red 300 or Red 700.
-      tonalOffset: 0.2,
+      // tonalOffset: 0.2,
     },
   });
 

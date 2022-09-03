@@ -1,22 +1,25 @@
-import "./itemPage.css";
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
 import Rating from "@mui/material/Rating";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import PropTypes from "prop-types";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
-import useState from "react";
+// import useState from "react";
+// import { styled, alpha } from "@mui/material/styles";
+// import InputLabel from "mui/material/InputLabel";
+// import PropTypes from "@mui/material";
+
+import "./itemPage.css";
+import reviewCard from "./reviewCard/reviewCard";
 
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
@@ -118,8 +121,11 @@ const ProductPage = (props) => {
                 Formula.
               </p>
             </TabPanel>
+
             {/* Reviews Tab */}
-            <TabPanel value="1">Item Two Reviews</TabPanel>
+            <TabPanel value="1">
+              <reviewCard />
+            </TabPanel>
 
             {/* Recommendations Tab */}
             <TabPanel value="2">Item Three Recommendations</TabPanel>
