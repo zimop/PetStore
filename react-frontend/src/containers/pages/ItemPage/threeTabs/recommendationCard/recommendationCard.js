@@ -6,12 +6,12 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
-import "./reviewCard.css";
+import "./recommendationCard.css";
 
-export default function reviewCard() {
+export default function RecommendationCard() {
   return (
     <Card sx={{ minWidth: 275 }}>
-      <CardContent>
+      {/* <CardContent>
         <div className="review-header">
           <Avatar
             sx={{ bgcolor: "avatarColor.deepOrange" }}
@@ -21,7 +21,7 @@ export default function reviewCard() {
             O
           </Avatar>
 
-          {/* <Avatar src="/broken-image.jpg" /> */}
+          <Avatar src="/broken-image.jpg" />
 
           <Typography
             variant="h5"
@@ -44,7 +44,7 @@ export default function reviewCard() {
             "The point of using Lorem lpsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. The point of using Lorem lpsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. The point of using Lorem lpsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English."
           }
         </Typography>
-      </CardContent>
+      </CardContent> */}
 
       <CardActions>
         <Button size="small" right>

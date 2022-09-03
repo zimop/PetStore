@@ -19,7 +19,8 @@ import TabContext from "@mui/lab/TabContext";
 // import PropTypes from "@mui/material";
 
 import "./itemPage.css";
-import reviewCard from "./reviewCard/reviewCard";
+import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
+import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
@@ -124,11 +125,13 @@ const ProductPage = (props) => {
 
             {/* Reviews Tab */}
             <TabPanel value="1">
-              <reviewCard />
+              <ReviewCard />
             </TabPanel>
 
             {/* Recommendations Tab */}
-            <TabPanel value="2">Item Three Recommendations</TabPanel>
+            <TabPanel value="2">
+              <RecommendationCard />
+            </TabPanel>
           </TabContext>
         </div>
       </div>
