@@ -21,6 +21,7 @@ import TabContext from "@mui/lab/TabContext";
 import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
+import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
@@ -101,30 +102,14 @@ const ProductPage = (props) => {
 
             {/* Product Desctiption Tab */}
             <TabPanel value="0">
-              <p>
-                Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND
-                . Precise nutrition for whole body health. It takes a precise
-                combination of nutrients to keep your dog in top condition.
-                Which is why the experts at Purina have developed SMARTBLEND (R)
-                . Inspired by nature and blended with scientific precision,
-                SMARTBLEND is specifically designed to promote your dogs whole
-                body health. *Compared to previous SUPERCOAT Adult Large Breed
-                Formula.
-              </p>
-              <p>
-                Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND
-                . Precise nutrition for whole body health. It takes a precise
-                combination of nutrients to keep your dog in top condition.
-                Which is why the experts at Purina have developed SMARTBLEND (R)
-                . Inspired by nature and blended with scientific precision,
-                SMARTBLEND is specifically designed to promote your dogs whole
-                body health. *Compared to previous SUPERCOAT Adult Large Breed
-                Formula.
-              </p>
+              <ItemDescription />
             </TabPanel>
 
             {/* Reviews Tab */}
             <TabPanel value="1">
+              <ReviewCard />
+              <ReviewCard />
+              <ReviewCard />
               <ReviewCard />
             </TabPanel>
 
