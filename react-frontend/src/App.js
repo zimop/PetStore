@@ -11,7 +11,11 @@ function App() {
   return (
     <BrowserRouter>
       <AppLayout>
-        <ProductPage />
+        <Routes>
+          <Route path="/" element={<h1>Placeholder Home Page</h1>} />
+          <Route path="/catalogue" element={<h1>Placeholder Catalogues Page</h1>} />
+          <Route path="/product" element={<ProductPage />} />
+        </Routes>
       </AppLayout>
     </BrowserRouter>
   );
