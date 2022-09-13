@@ -14,20 +14,24 @@ class Catalogue extends React.Component {
         }
     }
 
+    componentDidMount() {
+        getCatalogueData().then((catalogueData) => this.setState({ catalogueData: catalogueData }))
+    }
+
     render() {
         let catalogueData = this.state.catalogueData;
-        let placeholderObject = {
-            productId: 0,
-            productImage: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=640",
-            productName: "Dog food",
-            price: 7.99
-        }
-        let catalogueItem = getCardFromItem(placeholderObject);
+        let catalogueItems = catalogueData.map((itemData) => {
+            return (
+                <Grid item xs={3}>
+                    {getCardFromItem(itemData)}
+                </Grid>
+            )
+        })
         return (
-            <div style={{padding: "20vh"}}>
+            <div style={{padding: "5%"}}>
                 <Typography variant="h1">Catalogue</Typography>
                 <Grid container spacing={2}>
-                    {catalogueItem}
+                    {catalogueItems}
                 </Grid>
             </div>    
         );
@@ -59,29 +63,6 @@ const getCardFromItem = (itemData) => {
             </CardContent>
         </Card>
     )
-    return (
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=640"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over 6,000
-              species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Share</Button>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-      );
 }
 
 const getCatalogueData = async () => {
