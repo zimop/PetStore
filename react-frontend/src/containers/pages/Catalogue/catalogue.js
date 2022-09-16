@@ -66,14 +66,9 @@ const getCardFromItem = (itemData) => {
 }
 
 const getCatalogueData = async () => {
-    let placeholderObject = {
-        productId: 0,
-        productImage: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=640",
-        productName: "Dog food",
-        price: 7.99
-    }
-    let placeholderData = Array(10).fill(placeholderObject);
-    return placeholderData
+    let response = await fetch("/api/get-all-products");
+    let data = await response.json();
+    return data;
 }
 
 export default Catalogue;
