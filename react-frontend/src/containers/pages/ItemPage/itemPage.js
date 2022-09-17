@@ -28,7 +28,7 @@ const ProductPage = (props) => {
   //   const { children = <></> } = props;
   const theme = useTheme();
   const [value, setValue] = React.useState("0");
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
