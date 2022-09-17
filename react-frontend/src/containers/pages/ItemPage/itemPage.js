@@ -13,6 +13,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
+import Typography from "@mui/material/Typography";
 // import useState from "react";
 // import { styled, alpha } from "@mui/material/styles";
 // import InputLabel from "mui/material/InputLabel";
@@ -42,12 +43,14 @@ const ProductPage = (props) => {
           </div>
 
           <div className="productDetails-header">
-            <h2>Supercoat Chicken Large Breed Adult Dog Food 18KG</h2>
+            <Typography variant="h3">
+              Supercoat Chicken Large Breed Adult Dog Food 18KG
+            </Typography>
 
             {/* Middle area: Ratings and Price */}
             <div className="productDetails-middle">
               <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
-              <h3>$49.99</h3>
+              <Typography variant="h4">$49.99</Typography>
             </div>
 
             {/* Bottom area: Quantity and AddtoCart */}
@@ -61,7 +64,7 @@ const ProductPage = (props) => {
                   defaultValue={1}
                   //   // value={quantity}
                   //   label="quantity"
-                  //   onChange={this.handleChange}
+                  // onChange={this.handleChange}
                 >
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>

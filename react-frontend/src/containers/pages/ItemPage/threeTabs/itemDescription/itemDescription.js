@@ -1,12 +1,10 @@
-import { Card } from "@mui/material";
 import * as React from "react";
-// import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 const ItemDescription = (props) => {
   return (
     <div>
-      <p>
+      <Typography variant="body2" color="text.secondary">
         Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
         Precise nutrition for whole body health. It takes a precise combination
         of nutrients to keep your dog in top condition. Which is why the experts
@@ -14,8 +12,9 @@ const ItemDescription = (props) => {
         with scientific precision, SMARTBLEND is specifically designed to
         promote your dogs whole body health. *Compared to previous SUPERCOAT
         Adult Large Breed Formula.
-      </p>
-      <p>
+      </Typography>
+
+      <Typography variant="body2" color="text.secondary">
         Used and recommended by Dr Harry Copper. Veterinarian SMARTBLEND .
         Precise nutrition for whole body health. It takes a precise combination
         of nutrients to keep your dog in top condition. Which is why the experts
@@ -23,7 +22,7 @@ const ItemDescription = (props) => {
         with scientific precision, SMARTBLEND is specifically designed to
         promote your dogs whole body health. *Compared to previous SUPERCOAT
         Adult Large Breed Formula.
-      </p>
+      </Typography>
     </div>
   );
 };
