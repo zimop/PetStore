@@ -30,7 +30,7 @@ class Catalogue extends React.Component {
         return (
             <div style={{padding: "5%"}}>
                 <Typography variant="h1">Catalogue</Typography>
-                <Grid container spacing={2}>
+                <Grid container spacing={4}>
                     {catalogueItems}
                 </Grid>
             </div>    
@@ -44,15 +44,15 @@ const getCardFromItem = (itemData) => {
             <CardMedia
                 component="img"
                 height="350"
-                image={itemData.productImage}
-                alt={itemData.productName}
+                image={itemData.ProductImage}
+                alt={itemData.ProductName}
             />
             <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
-                    {itemData.productName}
+                    {itemData.ProductName}
                 </Typography>
                 <Typography variant="h5">
-                    ${itemData.price.toFixed(2)}
+                    ${itemData.Price.toFixed(2)}
                 </Typography>
                 <CardActions>
                     <div className="buttonContainer">
