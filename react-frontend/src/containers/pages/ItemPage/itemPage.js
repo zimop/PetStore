@@ -23,6 +23,7 @@ import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
+import ProductImagesSwiper from "./imageSwipeBox";
 
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
@@ -39,7 +40,7 @@ const ProductPage = (props) => {
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">
-            <img src="https://picsum.photos/200/300" alt="product" />
+            <ProductImagesSwiper />
           </div>
 
           <div className="productDetails-header">
