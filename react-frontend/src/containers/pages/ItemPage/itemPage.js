@@ -24,6 +24,7 @@ import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "./imageSwipeBox";
+import { object } from "prop-types";
 
 const ProductPage = (props) => {
   //   const { children = <></> } = props;
@@ -59,24 +60,22 @@ const ProductPage = (props) => {
               {/* quantity select button */}
               <FormControl sx={{ size: "small" }}>
                 {/* <InputLabel id="demo-simple-select-label"></InputLabel> */}
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  defaultValue={1}
-                  //   // value={quantity}
-                  //   label="quantity"
-                  // onChange={this.handleChange}
-                >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
-                  <MenuItem value={5}>5</MenuItem>
-                  <MenuItem value={6}>6</MenuItem>
-                  <MenuItem value={7}>7</MenuItem>
-                  <MenuItem value={8}>8</MenuItem>
-                  <MenuItem value={9}>9</MenuItem>
-                </Select>
+                <tbody>
+                  <Select
+                    defaultValue={1}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    //   // value={quantity}
+                    //   label="quantity"
+                    // onChange={this.handleChange}
+                  >
+                    {/*  ES6 syntax for loop in React JSX  */}
+                    {[...Array(9)].map((x, i) => (
+                      // i+1 means the quantity starts from 1
+                      <MenuItem value={i + 1}>{i + 1}</MenuItem>
+                    ))}
+                  </Select>
+                </tbody>
               </FormControl>
 
               {/* AddtoCart Button */}
