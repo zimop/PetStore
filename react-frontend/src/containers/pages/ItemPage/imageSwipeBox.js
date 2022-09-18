@@ -23,6 +23,12 @@ const images = [
   {
     imgPath: "https://picsum.photos/200/303",
   },
+  {
+    imgPath: "https://picsum.photos/200/304",
+  },
+  {
+    imgPath: "https://picsum.photos/200/305",
+  },
 ];
 
 function SwipeableTextMobileStepper() {
@@ -44,12 +50,12 @@ function SwipeableTextMobileStepper() {
 
   return (
     <Box sx={{ maxHeight: 500, maxWidth: 300, m: 2 }}>
-      {/* Image block */}
       <AutoPlaySwipeableViews
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
+        {/* Image block */}
         {images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
@@ -73,6 +79,7 @@ function SwipeableTextMobileStepper() {
       {/* Buttons and Stepper block */}
       <MobileStepper
         steps={maxSteps}
+        variant="dots" // options: "dots, progress, text"
         position="static"
         activeStep={activeStep}
         nextButton={
