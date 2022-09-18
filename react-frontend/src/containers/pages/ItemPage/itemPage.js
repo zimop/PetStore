@@ -14,10 +14,6 @@ import Tab from "@mui/material/Tab";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Typography from "@mui/material/Typography";
-// import useState from "react";
-// import { styled, alpha } from "@mui/material/styles";
-// import InputLabel from "mui/material/InputLabel";
-// import PropTypes from "@mui/material";
 
 import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
@@ -27,7 +23,6 @@ import ProductImagesSwiper from "./imageSwipeBox";
 import { object } from "prop-types";
 
 const ProductPage = (props) => {
-  //   const { children = <></> } = props;
   const theme = useTheme();
   const [value, setValue] = React.useState("0");
   const handleChange = (event, newValue) => {
@@ -58,25 +53,19 @@ const ProductPage = (props) => {
             {/* Bottom area: Quantity and AddtoCart */}
             <div className="addToCart-group">
               {/* quantity select button */}
-              <FormControl sx={{ size: "small" }}>
-                {/* <InputLabel id="demo-simple-select-label"></InputLabel> */}
-                <tbody>
-                  <Select
-                    defaultValue={1}
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    //   // value={quantity}
-                    //   label="quantity"
-                    // onChange={this.handleChange}
-                  >
-                    {/*  ES6 syntax for loop in React JSX  */}
-                    {[...Array(9)].map((x, i) => (
-                      // i+1 means the quantity starts from 1
-                      <MenuItem value={i + 1}>{i + 1}</MenuItem>
-                    ))}
-                  </Select>
-                </tbody>
-              </FormControl>
+              <tbody>
+                <Select
+                  defaultValue={1}
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                >
+                  {/*  ES6 syntax for loop in React JSX  */}
+                  {[...Array(9)].map((x, i) => (
+                    // i+1 means the quantity starts from 1
+                    <MenuItem value={i + 1}>{i + 1}</MenuItem>
+                  ))}
+                </Select>
+              </tbody>
 
               {/* AddtoCart Button */}
               <Button variant="contained" sx={{ size: "small" }}>
