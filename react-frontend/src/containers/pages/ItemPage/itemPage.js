@@ -21,7 +21,7 @@ import RecommendationCard from "./threeTabs/recommendationCard/recommendationCar
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "./imageSwipeBox";
 
-const ProductPage = ({ ProductId }) => {
+const ItemPage = ({ ProductId }) => {
   const theme = useTheme();
   const [productData, setProductData] = React.useState({ images: Array(0) });
   const [value, setValue] = React.useState("0");
@@ -35,8 +35,6 @@ const ProductPage = ({ ProductId }) => {
       setProductData(productData)
     );
   }, []);
-
-  // console.log(productData);
 
   return (
     <ThemeProvider theme={theme}>
@@ -134,4 +132,4 @@ const getProductData = async (ProductId) => {
   return data;
 };
 
-export default ProductPage;
+export default ItemPage;
