@@ -10,31 +10,10 @@ import { autoPlay } from "react-swipeable-views-utils";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const images = [
-  {
-    imgPath: "https://picsum.photos/200/300",
-  },
-  {
-    imgPath: "https://picsum.photos/200/301",
-  },
-  {
-    imgPath: "https://picsum.photos/200/302",
-  },
-  {
-    imgPath: "https://picsum.photos/200/303",
-  },
-  {
-    imgPath: "https://picsum.photos/200/304",
-  },
-  {
-    imgPath: "https://picsum.photos/200/305",
-  },
-];
-
-function SwipeableTextMobileStepper() {
+function SwipeableTextMobileStepper(props) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
+  const maxSteps = props.images.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -49,21 +28,21 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <Box sx={{ maxHeight: 500, maxWidth: 300, m: 2 }}>
+    <Box sx={{ maxHeight: props.maxWidth, maxWidth: props.maxHeight, m: 2 }}>
       <AutoPlaySwipeableViews
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
         {/* Image block */}
-        {images.map((step, index) => (
+        {props.images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
                 sx={{
-                  maxHeight: 500,
-                  maxWidth: 300,
+                  maxHeight: props.maxWidth,
+                  maxWidth: props.maxHeight,
                   display: "block",
                   overflow: "hidden",
                   width: "100%",

@@ -23,7 +23,7 @@ import ProductImagesSwiper from "./imageSwipeBox";
 
 const ProductPage = ({ ProductId }) => {
   const theme = useTheme();
-  const [productData, setProductData] = React.useState({});
+  const [productData, setProductData] = React.useState({images: Array(0)});
   const [value, setValue] = React.useState("0");
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -31,8 +31,10 @@ const ProductPage = ({ ProductId }) => {
 
   // Hook to get product data
   React.useEffect(() => {
-    getProductData().then((productData) => setProductData(productData));
+    getProductData(1).then((productData) => setProductData(productData));
   }, []);
+
+  console.log(productData);
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,7 +43,7 @@ const ProductPage = ({ ProductId }) => {
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">
-            <ProductImagesSwiper />
+            <ProductImagesSwiper maxWidth={500} maxHeight={300} images={productData.images} />
           </div>
 
           <div className="productDetails-header">
@@ -123,8 +125,30 @@ const ProductPage = ({ ProductId }) => {
 };
 
 const getProductData = async (ProductId) => {
-  let response = await fetch(`/api/product/get-product/${ProductId}`);
+  let response = await fetch(`/api/get-product/${ProductId}`);
   let data = await response.json();
+  const images = [
+    {
+      imgPath: "https://picsum.photos/200/300",
+    },
+    {
+      imgPath: "https://picsum.photos/200/301",
+    },
+    {
+      imgPath: "https://picsum.photos/200/302",
+    },
+    {
+      imgPath: "https://picsum.photos/200/303",
+    },
+    {
+      imgPath: "https://picsum.photos/200/304",
+    },
+    {
+      imgPath: "https://picsum.photos/200/305",
+    },
+  ];
+  data.images = images;
+  console.log(images);
   return data;
 };
 
