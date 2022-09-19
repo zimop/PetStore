@@ -1,4 +1,5 @@
 productModel = require("../models/productModel.js");
+imageModel = require("../models/imageModel.js")
 
 const getAllProducts = async (req, res) => {
   let data = await productModel.getProductList();
@@ -8,11 +9,11 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     // GET A PRODUCT OBJECT FROM DB
-    let data = await productModel.getProductById(req.params.id);
-    console.log(data);
+    let data = (await productModel.getProductById(req.params.id))[0];
+    data.images = await imageModel.getImagesByProductID(req.params.id);
     res.status(200).json(data);
   } catch (error) {
-    console.log(error);
+    console.log(error);g
     res.status(500).json({ error: "Internal server error" });
   }
 };

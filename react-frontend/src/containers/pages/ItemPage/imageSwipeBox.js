@@ -28,7 +28,7 @@ function SwipeableTextMobileStepper(props) {
   };
 
   return (
-    <Box sx={{ maxHeight: props.maxWidth, maxWidth: props.maxHeight, m: 2 }}>
+    <Box sx={{ height: props.height, width: props.width, m: 2 }}>
       <AutoPlaySwipeableViews
         index={activeStep}
         onChangeIndex={handleStepChange}
@@ -41,13 +41,13 @@ function SwipeableTextMobileStepper(props) {
               <Box
                 component="img"
                 sx={{
-                  maxHeight: props.maxWidth,
-                  maxWidth: props.maxHeight,
+                  height: props.height,
+                  width: props.width,
                   display: "block",
                   overflow: "hidden",
                   width: "100%",
                 }}
-                src={step.imgPath}
+                src={step.ImageURL}
                 alt={step.label}
               />
             ) : null}

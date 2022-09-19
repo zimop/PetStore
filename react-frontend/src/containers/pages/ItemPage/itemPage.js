@@ -43,7 +43,7 @@ const ProductPage = ({ ProductId }) => {
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">
-            <ProductImagesSwiper maxWidth={500} maxHeight={300} images={productData.images} />
+            <ProductImagesSwiper width={400} height={400} images={productData.images} />
           </div>
 
           <div className="productDetails-header">
@@ -127,28 +127,7 @@ const ProductPage = ({ ProductId }) => {
 const getProductData = async (ProductId) => {
   let response = await fetch(`/api/get-product/${ProductId}`);
   let data = await response.json();
-  const images = [
-    {
-      imgPath: "https://picsum.photos/200/300",
-    },
-    {
-      imgPath: "https://picsum.photos/200/301",
-    },
-    {
-      imgPath: "https://picsum.photos/200/302",
-    },
-    {
-      imgPath: "https://picsum.photos/200/303",
-    },
-    {
-      imgPath: "https://picsum.photos/200/304",
-    },
-    {
-      imgPath: "https://picsum.photos/200/305",
-    },
-  ];
-  data.images = images;
-  console.log(images);
+  console.log(data);
   return data;
 };
 
