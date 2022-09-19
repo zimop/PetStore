@@ -6,7 +6,7 @@ const getProductList = async () => {
 };
 
 const getProductById = async (id) => {
-  return await mysqlHandle.query(`SELECT * FROM Product WHERE ProductID=${mysql.escape(id)};`);
+  return (await mysqlHandle.query(`SELECT * FROM Product WHERE ProductID=${mysql.escape(id)};`))[0];
 };
 
 module.exports = {
