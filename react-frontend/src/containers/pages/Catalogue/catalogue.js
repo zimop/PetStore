@@ -1,10 +1,9 @@
 import React from "react"
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid"
-import { Card, CardActions, CardContent, CardMedia } from "@mui/material"
-import Button from "@mui/material/Button"
 
 import "./catalogue.css"
+import ItemCard from "../../components/ItemCard"
 
 class Catalogue extends React.Component {
     constructor(props) {
@@ -23,7 +22,7 @@ class Catalogue extends React.Component {
         let catalogueItems = catalogueData.map((itemData) => {
             return (
                 <Grid item xs={3}>
-                    {getCardFromItem(itemData)}
+                    <ItemCard height="350" itemData={itemData} />
                 </Grid>
             )
         })
@@ -36,33 +35,6 @@ class Catalogue extends React.Component {
             </div>    
         );
     }
-}
-
-const getCardFromItem = (itemData) => {
-    return (
-        <Card>
-            <CardMedia
-                component="img"
-                height="350"
-                image={itemData.ProductImage}
-                alt={itemData.ProductName}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                    {itemData.ProductName}
-                </Typography>
-                <Typography variant="h5">
-                    ${itemData.Price.toFixed(2)}
-                </Typography>
-                <CardActions>
-                    <div className="buttonContainer">
-                        <Button className="fullWidthButton" variant="outlined" size="large">Add to Cart</Button>
-                        <Button className="fullWidthButton" variant="contained" size="large">Buy Now</Button>
-                    </div>
-                </CardActions>
-            </CardContent>
-        </Card>
-    )
 }
 
 const getCatalogueData = async () => {
