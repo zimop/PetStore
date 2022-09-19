@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<h1>Placeholder Home Page</h1>} />
           <Route path="/catalogue" element={<Catalogue />} />
-          <Route path="/product" element={<ItemPage />} />
+          <Route path="/product/:productId" element={<ItemPage />} />
         </Routes>
       </AppLayout>
     </BrowserRouter>

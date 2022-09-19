@@ -20,18 +20,22 @@ import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "./imageSwipeBox";
+import { useParams } from "react-router-dom";
 
-const ItemPage = ({ ProductId }) => {
+const ItemPage = ({ props }) => {
   const theme = useTheme();
+
   const [productData, setProductData] = React.useState({ images: Array(0) });
   const [value, setValue] = React.useState("0");
+  const params = useParams();
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   // Hook to get product data
   React.useEffect(() => {
-    getProductData(ProductId).then((productData) =>
+    getProductData(params.productId).then((productData) =>
       setProductData(productData)
     );
   }, []);
