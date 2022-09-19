@@ -2,7 +2,6 @@ import React from "react"
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid"
 
-import "./catalogue.css"
 import ItemCard from "../../components/ItemCard"
 
 class Catalogue extends React.Component {

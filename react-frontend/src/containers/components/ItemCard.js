@@ -2,6 +2,8 @@ import Typography from "@mui/material/Typography";
 import { Card, CardActions, CardContent, CardMedia } from "@mui/material"
 import Button from "@mui/material/Button"
 
+import "./ItemCard.css"
+
 const ItemCard = (props) => {
     return (
         <Card>
@@ -10,6 +12,8 @@ const ItemCard = (props) => {
                 height={props.height}
                 image={props.itemData.ProductImage}
                 alt={props.itemData.ProductName}
+                sx={{ objectFit: "contain" }}
+                className="productImage"
             />
             <CardContent>
                 <Typography gutterBottom variant="h6" component="div">
