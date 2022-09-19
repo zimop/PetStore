@@ -1,0 +1,11 @@
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.fullWidthButton {
+    width: 100%;
+}
