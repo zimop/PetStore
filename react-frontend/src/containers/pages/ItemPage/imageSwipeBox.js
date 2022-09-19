@@ -46,6 +46,7 @@ function SwipeableTextMobileStepper(props) {
                   display: "block",
                   overflow: "hidden",
                   width: "100%",
+                  objectFit: "contain"
                 }}
                 src={step.ImageURL}
                 alt={step.label}
