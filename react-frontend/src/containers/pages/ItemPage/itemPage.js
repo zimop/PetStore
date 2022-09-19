@@ -23,7 +23,7 @@ import ProductImagesSwiper from "./imageSwipeBox";
 
 const ProductPage = ({ ProductId }) => {
   const theme = useTheme();
-  const [productData, setProductData] = React.useState({images: Array(0)});
+  const [productData, setProductData] = React.useState({ images: Array(0) });
   const [value, setValue] = React.useState("0");
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -31,10 +31,12 @@ const ProductPage = ({ ProductId }) => {
 
   // Hook to get product data
   React.useEffect(() => {
-    getProductData(ProductId).then((productData) => setProductData(productData));
+    getProductData(ProductId).then((productData) =>
+      setProductData(productData)
+    );
   }, []);
 
-  console.log(productData);
+  // console.log(productData);
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,19 +45,20 @@ const ProductPage = ({ ProductId }) => {
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">
-            <ProductImagesSwiper width={400} height={400} images={productData.images} />
+            <ProductImagesSwiper
+              width={400}
+              height={400}
+              images={productData.images}
+            />
           </div>
 
           <div className="productDetails-header">
-            <Typography variant="h3">
-              {/* {productData.ProductName} */}
-              Supercoat Chicken Large Breed Adult Dog Food 18KG
-            </Typography>
+            <Typography variant="h3">{productData.ProductName}</Typography>
 
             {/* Middle area: Ratings and Price */}
             <div className="productDetails-middle">
               <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
-              <Typography variant="h4">$49.99</Typography>
+              <Typography variant="h4">${productData.Price}</Typography>
             </div>
 
             {/* Bottom area: Quantity and AddtoCart */}

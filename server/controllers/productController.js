@@ -1,14 +1,16 @@
 productModel = require("../models/productModel.js");
-imageModel = require("../models/imageModel.js")
+imageModel = require("../models/imageModel.js");
 
 const getAllProducts = async (req, res) => {
   let data = await productModel.getProductList();
-  data = await Promise.all(data.map(async (row) => {
-    console.log(row);
-    row.ProductImage = await imageModel.getFirstImageByProductID(row.ProductId);
-    return row;
-  }));
-  console.log(data);
+  data = await Promise.all(
+    data.map(async (row) => {
+      row.ProductImage = await imageModel.getFirstImageByProductID(
+        row.ProductId
+      );
+      return row;
+    })
+  );
   res.json(data);
 };
 
