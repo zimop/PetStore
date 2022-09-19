@@ -1,9 +1,14 @@
-mysqlHandle = require("../mysqlHandle.js")
+mysqlHandle = require("../mysqlHandle.js");
 
 const getProductList = async () => {
-    return await mysqlHandle.query("SELECT * FROM Product;");
-}
+  return await mysqlHandle.query("SELECT * FROM Product;");
+};
+
+const getProductById = async (id) => {
+  return await mysqlHandle.query(`SELECT * FROM Product WHERE id = ${id};`);
+};
 
 module.exports = {
-    getProductList,
-}
+  getProductList,
+  getProductById,
+};

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 
 import Rating from "@mui/material/Rating";
 import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
+// import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -20,14 +20,19 @@ import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "./imageSwipeBox";
-import { object } from "prop-types";
 
-const ProductPage = (props) => {
+const ProductPage = ({ ProductId }) => {
   const theme = useTheme();
+  const [productData, setProductData] = React.useState({});
   const [value, setValue] = React.useState("0");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  // Hook to get product data
+  React.useEffect(() => {
+    getProductData().then((productData) => setProductData(productData));
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,6 +46,7 @@ const ProductPage = (props) => {
 
           <div className="productDetails-header">
             <Typography variant="h3">
+              {/* {productData.ProductName} */}
               Supercoat Chicken Large Breed Adult Dog Food 18KG
             </Typography>
 
@@ -114,6 +120,12 @@ const ProductPage = (props) => {
       </div>
     </ThemeProvider>
   );
+};
+
+const getProductData = async (ProductId) => {
+  let response = await fetch(`/api/product/get-product/${ProductId}`);
+  let data = await response.json();
+  return data;
 };
 
 export default ProductPage;

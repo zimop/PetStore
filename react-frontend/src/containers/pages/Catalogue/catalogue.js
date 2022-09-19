@@ -66,7 +66,7 @@ const getCardFromItem = (itemData) => {
 }
 
 const getCatalogueData = async () => {
-    let response = await fetch("/api/get-all-products");
+    let response = await fetch("/api/product/get-all-products");
     let data = await response.json();
     return data;
 }
