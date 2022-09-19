@@ -31,7 +31,7 @@ const ProductPage = ({ ProductId }) => {
 
   // Hook to get product data
   React.useEffect(() => {
-    getProductData(1).then((productData) => setProductData(productData));
+    getProductData(ProductId).then((productData) => setProductData(productData));
   }, []);
 
   console.log(productData);

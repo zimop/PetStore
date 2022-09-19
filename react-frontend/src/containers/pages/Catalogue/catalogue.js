@@ -14,6 +14,7 @@ class Catalogue extends React.Component {
 
     componentDidMount() {
         getCatalogueData().then((catalogueData) => this.setState({ catalogueData: catalogueData }))
+        console.log(this.state.catalogueData);
     }
 
     render() {
@@ -37,7 +38,7 @@ class Catalogue extends React.Component {
 }
 
 const getCatalogueData = async () => {
-    let response = await fetch("/api/product/get-all-products");
+    let response = await fetch("/api/get-all-products");
     let data = await response.json();
     return data;
 }
