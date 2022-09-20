@@ -66,21 +66,19 @@ const ItemPage = ({ props }) => {
             {/* Bottom area: Quantity and AddtoCart */}
             <div className="addToCart-group">
               {/* quantity select button */}
-              <tbody>
-                <Select
-                  defaultValue={1}
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                >
-                  {/*  ES6 syntax for loop in React JSX  */}
-                  {[...Array(9)].map((x, i) => (
-                    // i+1 means the quantity starts from 1
-                    <MenuItem key={i + 1} value={i + 1}>
-                      {i + 1}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </tbody>
+              <Select
+                defaultValue={1}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                {/*  ES6 syntax for loop in React JSX  */}
+                {[...Array(9)].map((x, i) => (
+                  // i+1 means the quantity starts from 1
+                  <MenuItem key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </MenuItem>
+                ))}
+              </Select>
 
               {/* AddtoCart Button */}
               <Button variant="contained" sx={{ size: "small" }}>
