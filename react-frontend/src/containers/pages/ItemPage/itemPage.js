@@ -5,7 +5,7 @@ import { ThemeProvider } from "@emotion/react";
 
 import Rating from "@mui/material/Rating";
 import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
+// import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -13,23 +13,32 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
-// import useState from "react";
-// import { styled, alpha } from "@mui/material/styles";
-// import InputLabel from "mui/material/InputLabel";
-// import PropTypes from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
+import ProductImagesSwiper from "./imageSwipeBox";
+import { useParams } from "react-router-dom";
 
-const ProductPage = (props) => {
-  //   const { children = <></> } = props;
+const ItemPage = ({ props }) => {
   const theme = useTheme();
+
+  const [productData, setProductData] = React.useState({ images: Array(0) });
   const [value, setValue] = React.useState("0");
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const params = useParams();
+
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  // Hook to get product data
+  React.useEffect(() => {
+    getProductData(params.productId).then((productData) =>
+      setProductData(productData)
+    );
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -38,42 +47,38 @@ const ProductPage = (props) => {
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">
-            <img src="https://picsum.photos/200/300" alt="product" />
+            <ProductImagesSwiper
+              width={400}
+              height={400}
+              images={productData.images}
+            />
           </div>
 
           <div className="productDetails-header">
-            <h2>Supercoat Chicken Large Breed Adult Dog Food 18KG</h2>
+            <Typography variant="h3">{productData.ProductName}</Typography>
 
             {/* Middle area: Ratings and Price */}
             <div className="productDetails-middle">
               <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
-              <h3>$49.99</h3>
+              <Typography variant="h4">${productData.Price}</Typography>
             </div>
 
             {/* Bottom area: Quantity and AddtoCart */}
             <div className="addToCart-group">
               {/* quantity select button */}
-              <FormControl sx={{ size: "small" }}>
-                {/* <InputLabel id="demo-simple-select-label"></InputLabel> */}
+              <tbody>
                 <Select
+                  defaultValue={1}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  defaultValue={1}
-                  //   // value={quantity}
-                  //   label="quantity"
-                  //   onChange={this.handleChange}
                 >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
-                  <MenuItem value={5}>5</MenuItem>
-                  <MenuItem value={6}>6</MenuItem>
-                  <MenuItem value={7}>7</MenuItem>
-                  <MenuItem value={8}>8</MenuItem>
-                  <MenuItem value={9}>9</MenuItem>
+                  {/*  ES6 syntax for loop in React JSX  */}
+                  {[...Array(9)].map((x, i) => (
+                    // i+1 means the quantity starts from 1
+                    <MenuItem value={i + 1}>{i + 1}</MenuItem>
+                  ))}
                 </Select>
-              </FormControl>
+              </tbody>
 
               {/* AddtoCart Button */}
               <Button variant="contained" sx={{ size: "small" }}>
@@ -102,7 +107,7 @@ const ProductPage = (props) => {
 
             {/* Product Desctiption Tab */}
             <TabPanel value="0">
-              <ItemDescription />
+              <ItemDescription text={productData.Description}/>
             </TabPanel>
 
             {/* Reviews Tab */}
@@ -124,4 +129,11 @@ const ProductPage = (props) => {
   );
 };
 
-export default ProductPage;
+const getProductData = async (ProductId) => {
+  let response = await fetch(`/api/get-product/${ProductId}`);
+  let data = await response.json();
+  console.log(data);
+  return data;
+};
+
+export default ItemPage;

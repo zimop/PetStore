@@ -21,8 +21,9 @@
 }
 
 .product-image{
-    max-width: 30%;
-    margin: 3%;
+    /* Disable below two lines because CSS has adjusted in image-Swipeable-Box.js */
+    /* max-width: 30%;
+    margin: 3%; */
 
     /* testing */
     /* background-color: aqua; */

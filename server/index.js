@@ -11,8 +11,10 @@ app.use(express.urlencoded({ extended: false }))
 const productRouter = require("./routers/productRouter");
 
 const apiRouter = express.Router();
-
 apiRouter.use(productRouter);
+
+app.use("/api", apiRouter);
+
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../react-frontend/build')));
