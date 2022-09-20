@@ -75,7 +75,9 @@ const ItemPage = ({ props }) => {
                   {/*  ES6 syntax for loop in React JSX  */}
                   {[...Array(9)].map((x, i) => (
                     // i+1 means the quantity starts from 1
-                    <MenuItem value={i + 1}>{i + 1}</MenuItem>
+                    <MenuItem key={i + 1} value={i + 1}>
+                      {i + 1}
+                    </MenuItem>
                   ))}
                 </Select>
               </tbody>

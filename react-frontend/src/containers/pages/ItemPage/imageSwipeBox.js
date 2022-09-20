@@ -36,7 +36,7 @@ function SwipeableTextMobileStepper(props) {
       >
         {/* Image block */}
         {props.images.map((step, index) => (
-          <div key={step.label}>
+          <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
@@ -46,7 +46,7 @@ function SwipeableTextMobileStepper(props) {
                   display: "block",
                   overflow: "hidden",
                   width: "100%",
-                  objectFit: "contain"
+                  objectFit: "contain",
                 }}
                 src={step.ImageURL}
                 alt={step.label}

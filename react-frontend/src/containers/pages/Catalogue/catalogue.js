@@ -23,9 +23,8 @@ class Catalogue extends React.Component {
     let catalogueData = this.state.catalogueData;
     let catalogueItems = catalogueData.map((itemData) => {
       return (
-        <Grid item xs={3}>
-            <ItemCard key={`productId-${itemData.ProductId}`}
-            id={itemData.ProductId}height="350" itemData={itemData} />
+        <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
+          <ItemCard id={itemData.ProductId} height="350" itemData={itemData} />
         </Grid>
       );
     });
