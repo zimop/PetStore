@@ -31,7 +31,7 @@ The `./react-frontend/src/containers` folder houses several subfolders. The `com
 
 The entry point of the React app is in `./react-frontend/src/App.js`.
 
-## Back-End
+### Back-End
 
 The app back-end is in the `server` folder. The server uses a Model-View-Controller architecture, with view responsibility being handled in the React front-end.
 
