@@ -107,7 +107,7 @@ const ItemPage = ({ props }) => {
 
             {/* Product Desctiption Tab */}
             <TabPanel value="0">
-              <ItemDescription />
+              <ItemDescription text={productData.Description}/>
             </TabPanel>
 
             {/* Reviews Tab */}
