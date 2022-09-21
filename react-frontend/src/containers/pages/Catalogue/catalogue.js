@@ -3,11 +3,6 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
 import ItemCard from "../../components/ItemCard";
-import ItemPage from "../ItemPage/itemPage";
-import CardActionArea from "@mui/material/CardActionArea";
-// import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { style } from "@mui/system";
 
 class Catalogue extends React.Component {
   constructor(props) {
@@ -28,18 +23,8 @@ class Catalogue extends React.Component {
     let catalogueData = this.state.catalogueData;
     let catalogueItems = catalogueData.map((itemData) => {
       return (
-        <Grid item xs={3}>
-          <CardActionArea
-            key={`productId-${itemData.ProductId}`}
-            id={itemData.ProductId}
-          >
-            <Link
-              to={`/product/${itemData.ProductId}`}
-              style={{ textDecoration: "none" }}
-            >
-              <ItemCard height="350" itemData={itemData} />
-            </Link>
-          </CardActionArea>
+        <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
+          <ItemCard id={itemData.ProductId} height="350" itemData={itemData} />
         </Grid>
       );
     });

@@ -19,7 +19,7 @@ import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
-import ProductImagesSwiper from "./imageSwipeBox";
+import ProductImagesSwiper from "../../components/imageSwipeBox";
 import { useParams } from "react-router-dom";
 
 const ItemPage = ({ props }) => {
@@ -66,19 +66,19 @@ const ItemPage = ({ props }) => {
             {/* Bottom area: Quantity and AddtoCart */}
             <div className="addToCart-group">
               {/* quantity select button */}
-              <tbody>
-                <Select
-                  defaultValue={1}
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                >
-                  {/*  ES6 syntax for loop in React JSX  */}
-                  {[...Array(9)].map((x, i) => (
-                    // i+1 means the quantity starts from 1
-                    <MenuItem value={i + 1}>{i + 1}</MenuItem>
-                  ))}
-                </Select>
-              </tbody>
+              <Select
+                defaultValue={1}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                {/*  ES6 syntax for loop in React JSX  */}
+                {[...Array(9)].map((x, i) => (
+                  // i+1 means the quantity starts from 1
+                  <MenuItem key={i + 1} value={i + 1}>
+                    {i + 1}
+                  </MenuItem>
+                ))}
+              </Select>
 
               {/* AddtoCart Button */}
               <Button variant="contained" sx={{ size: "small" }}>
