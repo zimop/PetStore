@@ -19,7 +19,7 @@ import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
-import ProductImagesSwiper from "./imageSwipeBox";
+import ProductImagesSwiper from "../../components/imageSwipeBox";
 import { useParams } from "react-router-dom";
 
 const ItemPage = ({ props }) => {
@@ -107,7 +107,7 @@ const ItemPage = ({ props }) => {
 
             {/* Product Desctiption Tab */}
             <TabPanel value="0">
-              <ItemDescription text={productData.Description}/>
+              <ItemDescription text={productData.Description} />
             </TabPanel>
 
             {/* Reviews Tab */}
