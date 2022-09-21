@@ -1,5 +1,13 @@
 # 200_OK
 
+## Project setup
+
+Inside the 200_OK folder (this folder), run `npm install`.
+
+Inside the react-frontend folder, run `npm install --force`. The `--force` argument is currently due to a dependency issue as noted on GitHub.
+
+Inside the server foldre, run `npm install`.
+
 ## Running the Project
 
 There are two ways to run the project: one for development and one for production.
