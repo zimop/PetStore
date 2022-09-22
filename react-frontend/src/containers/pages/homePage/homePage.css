@@ -3,7 +3,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 5%;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: space-around;
 }
+
 .catalogue-icons {
   display: flex;
   align-items: center;
@@ -11,4 +16,8 @@
   text-align: center;
   width: 80%;
   margin: auto 10%;
+}
+
+.adv-swipe-box {
+  margin: 5%;
 }

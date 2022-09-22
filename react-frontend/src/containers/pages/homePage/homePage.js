@@ -3,31 +3,27 @@ import * as React from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Avatar from '@mui/material/Avatar';
-
-import ProductImagesSwiper from "../../components/imageSwipeBox";
+import Avatar from "@mui/material/Avatar";
 import { useParams } from "react-router-dom";
 import { Grid } from "@mui/material";
 
 import "./homePage.css";
-// import catalogueIconCat from "../../../../public/catalogueIcons/cat_face.png";
-// import catalogueIconDog from "../../../../public/catalogueIcons/dog_face.png";
-// import catalogueIconFox from "../../../../public/catalogueIcons/fox_face.png";
-// import catalogueIconHorse from "../../../../public/catalogueIcons/horse_face.png";
-// import catalogueIconMouse from "../../../../public/catalogueIcons/mouse_face.png";
-// import catalogueIconRabbit from "../../../../public/catalogueIcons/rabbit_face.png";
-// import catalogueIconFrog from "../../../../public/catalogueIcons/frog_face.png";
-// import catalogueIconDragon from "../../../../public/catalogueIcons/dragon_face.png";
+import AdvSwiperBox from "../../components/imageSwipeBox.js"
 
-
-
-
-
+const advImages = [
+    {
+        imgPath: "https://picsum.photos/200/300",
+    },
+    {
+        imgPath: "https://picsum.photos/200/301",
+    },
+    {
+        imgPath: "https://picsum.photos/200/302",
+    },
+    {
+        imgPath: "https://picsum.photos/200/303",
+    },
+];
 
 const HomePage = ({ props }) => {
     const theme = useTheme();
@@ -51,67 +47,71 @@ const HomePage = ({ props }) => {
         <ThemeProvider theme={theme}>
             {/* Background */}
             <div className="home-background">
-
                 {/* catalogue-icons header*/}
                 <div className="catalogue-icons">
                     <Grid container spacing={2}>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/cat_face.png"
-                                sx={{ width: 80, height: 80, align: "center" }}
+                                sx={{ width: 80, height: 80, align: "center", justify: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/dog_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/fox_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/horse_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/mouse_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/rabbit_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/frog_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-                        <Grid item xs={1.5}>
+                        <Grid item xs={1.5} style={{ alignContent: "center" }}>
                             <Avatar
                                 src="/catalogueIcons/dragon_face.png"
                                 sx={{ width: 80, height: 80, align: "center" }}
                             />
                         </Grid>
-
-
                     </Grid>
                 </div>
-            </div>
 
+                {/* advSwipeBox header*/}
+                <div className="adv-swipe-box">
+                    <AdvSwiperBox
+                        width={600}
+                        height={400}
+                        images={advImages} />
+                </div>
+
+            </div>
         </ThemeProvider>
     );
 };
 
 export default HomePage;
-
