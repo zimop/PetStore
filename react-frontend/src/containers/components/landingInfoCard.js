@@ -8,34 +8,49 @@ import useTheme from "../../muiTheme";
 import "./landingInfoCard.css";
 
 const LandingInfoCard = (props) => {
-    const theme = useTheme();
-    return (
-        <ThemeProvider theme={theme}>
-            <Card sx={{ bgcolor: "homepageInfoCard.background" }}>
-                <CardActionArea href={"/"}>
-                    <CardContent sx={{ objectFit: "contain", alignContent: "center", flexDirection: "column" }}>
-                        <Typography gutterBottom variant="h5" component="div" sx={{ color: "homepageInfoCard.text" }}>
-                            {props.title}
-                        </Typography>
-                        <Typography gutterBottom variant="h6" component="div" sx={{ color: "homepageInfoCard.text" }}>
-                            {props.paragraph}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
+  const theme = useTheme();
+  return (
+    <ThemeProvider theme={theme}>
+      <Card sx={{ bgcolor: "homepageInfoCard.background" }}>
+        <CardActionArea href={"/"}>
+          <CardContent
+            sx={{
+              objectFit: "contain",
+              alignContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ color: "homepageInfoCard.text" }}
+            >
+              {props.title}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="div"
+              sx={{ color: "homepageInfoCard.text" }}
+            >
+              {props.paragraph}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
 
-                <CardActionArea href={"/"}>
-                    <Button
-                        variant="outlined"
-                        size="small"
-                        sx={{ color: "homepageInfoCard.text", marginBottom: "5%" }}
-                    >
-                        LEARN MORE
-                    </Button>
-                </CardActionArea>
-            </Card >
-
-        </ThemeProvider >
-    );
+        <CardActionArea href={"/"}>
+          <Button
+            variant="outlined"
+            size="small"
+            sx={{ color: "homepageInfoCard.text", marginBottom: "5%" }}
+          >
+            LEARN MORE
+          </Button>
+        </CardActionArea>
+      </Card>
+    </ThemeProvider>
+  );
 };
 
 export default LandingInfoCard;
