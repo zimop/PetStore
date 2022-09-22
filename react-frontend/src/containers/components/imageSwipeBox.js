@@ -10,10 +10,10 @@ import { autoPlay } from "react-swipeable-views-utils";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-function SwipeableTextMobileStepper(props) {
+function SwipeableTextMobileStepper({ height, width, images }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = props.images.length;
+  const maxSteps = images.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -28,21 +28,21 @@ function SwipeableTextMobileStepper(props) {
   };
 
   return (
-    <Box sx={{ height: props.height, width: props.width, m: 2 }}>
+    <Box sx={{ height: height, width: width, m: 2 }}>
       <AutoPlaySwipeableViews
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
         {/* Image block */}
-        {props.images.map((step, index) => (
+        {images.map((step, index) => (
           <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
                 sx={{
-                  height: props.height,
-                  width: props.width,
+                  height: height,
+                  width: width,
                   display: "block",
                   overflow: "hidden",
                   width: "100%",
