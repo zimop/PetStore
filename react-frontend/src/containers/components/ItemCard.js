@@ -24,23 +24,23 @@ const ItemCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-          <div className="buttonContainer">
-            <Button
-              className="fullWidthButton"
-              variant="outlined"
-              size="large"
-            >
-              Add to Cart
-            </Button>
-            <Button
-              className="fullWidthButton"
-              variant="contained"
-              size="large"
-            >
-              Buy Now
-            </Button>
-          </div>
-        </CardActions>
+        <div className="buttonContainer">
+          <Button
+            className="fullWidthButton"
+            variant="outlined"
+            size="large"
+          >
+            Add to Cart
+          </Button>
+          <Button
+            className="fullWidthButton"
+            variant="contained"
+            size="large"
+          >
+            Buy Now
+          </Button>
+        </div>
+      </CardActions>
     </Card>
   );
 };

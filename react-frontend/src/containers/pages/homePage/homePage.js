@@ -5,43 +5,21 @@ import { ThemeProvider } from "@emotion/react";
 
 import Avatar from "@mui/material/Avatar";
 import { useParams } from "react-router-dom";
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 
 import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js"
+import LandingInfoCard from "../../components/landingInfoCard.js"
 
-const advImages = [
-    {
-        imgPath: "https://picsum.photos/200/300",
-    },
-    {
-        imgPath: "https://picsum.photos/200/301",
-    },
-    {
-        imgPath: "https://picsum.photos/200/302",
-    },
-    {
-        imgPath: "https://picsum.photos/200/303",
-    },
-];
+import advImages from "./advImages"
+import infoTabs from "./infoTabs.js"
+
 
 const HomePage = ({ props }) => {
     const theme = useTheme();
-
-    // const [productData, setProductData] = React.useState({ images: Array(0) });
-    // const [value, setValue] = React.useState("0");
-    const params = useParams();
-
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue);
-    // };
-
-    // // Hook to get product data
-    // React.useEffect(() => {
-    //     getProductData(params.productId).then((productData) =>
-    //         setProductData(productData)
-    //     );
-    // }, []);
+    // const advImages = AdvImages();
+    // const infoTabs = InfoTabs();
 
     return (
         <ThemeProvider theme={theme}>
@@ -109,6 +87,21 @@ const HomePage = ({ props }) => {
                         images={advImages} />
                 </div>
 
+
+                {/* Three clickable info tabs */}
+                <div className="info-tabs">
+                    <Grid container spacing={6}>
+                        <Grid item xs={4}>
+                            <LandingInfoCard title={infoTabs[0].title} paragraph={infoTabs[0].paragraph} />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <LandingInfoCard title={infoTabs[1].title} paragraph={infoTabs[1].paragraph} />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <LandingInfoCard title={infoTabs[2].title} paragraph={infoTabs[2].paragraph} />
+                        </Grid>
+                    </Grid>
+                </div>
             </div>
         </ThemeProvider>
     );
