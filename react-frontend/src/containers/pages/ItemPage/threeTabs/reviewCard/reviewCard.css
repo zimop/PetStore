@@ -1,17 +1,15 @@
-.review-header{
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    align-content: center;
+.review-header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-content: center;
 
-    /* testing */
-    /* background-color: green; */
-
+  /* testing */
+  /* background-color: green; */
 }
 
-
-.review-rating{
-    margin-left: 6%;
+.review-rating {
+  margin-left: 6%;
 }

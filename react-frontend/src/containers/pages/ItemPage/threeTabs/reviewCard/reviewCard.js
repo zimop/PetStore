@@ -40,11 +40,7 @@ const ReviewCard = (props) => {
         </div>
 
         <div className="review-rating">
-          <Rating
-            name="half-rating"
-            defaultValue={3.5}
-            precision={0.5}
-          />
+          <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
         </div>
 
         <Typography variant="body2">

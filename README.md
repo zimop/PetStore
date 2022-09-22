@@ -1,5 +1,13 @@
 # 200_OK
 
+## Project setup
+
+Inside the 200_OK folder (this folder), run `npm install`.
+
+Inside the react-frontend folder, run `npm install --force`. The `--force` argument is currently due to a dependency issue as noted on GitHub.
+
+Inside the server foldre, run `npm install`.
+
 ## Running the Project
 
 There are two ways to run the project: one for development and one for production.
@@ -15,7 +23,6 @@ Then, navigate to `server` and run `npm start`. This will start the backend. The
 To run the project for development, first navigate to `server` and start it by running `npm start`. Then, open a new terminal, and navigate to `react-frontend` and run `npm start`. The website will then be accessible through port 3000, which is the default port for the React app.
 
 This configuration runs the back-end and the front-end separately. The reason for this is that the production configuration can only serve the built `react-frontend` app, so any changes to the front-end will only be reflected upon a rebuild. However, running the front-end separately will result in a development build being used, which is updated whenever a change to the project code is made.
-
 
 ## Project Structure
 
@@ -35,7 +42,7 @@ The entry point of the React app is in `./react-frontend/src/App.js`.
 
 The app back-end is in the `server` folder. The server uses a Model-View-Controller architecture, with view responsibility being handled in the React front-end.
 
-The entry point of the back-end is in `./server/index.js`. This entry point then uses several components. Firstly, Routers in `./server/routers` are directly responsible for the routes (e.g. `localhost:8000/api/get-all-products`). Each route has associated with it a function in a corresponding controller. 
+The entry point of the back-end is in `./server/index.js`. This entry point then uses several components. Firstly, Routers in `./server/routers` are directly responsible for the routes (e.g. `localhost:8000/api/get-all-products`). Each route has associated with it a function in a corresponding controller.
 
 Controllers, in the folder `./server/controllers`, are responsible for the application logic. Each controller gets the necessary data to perform each action from models. Then, the controller methods compile the data together to send back a JSON response.
 
@@ -46,11 +53,12 @@ Finally, models in `./server/models` get relevant data by querying the SQL datab
 200_OK is a website developed for the IT Project subject at the University of Melbourne.
 
 Authors:
-* Wenzheng Du
-* Daniel Zhang
-* Zimo Peng
-* Ghazal Ronagh
-* Andrew Pritchard
+
+- Wenzheng Du
+- Daniel Zhang
+- Zimo Peng
+- Ghazal Ronagh
+- Andrew Pritchard
 
 ## Quick Links
 
@@ -61,5 +69,3 @@ Authors:
 [Figma](https://www.figma.com/file/M6yUcPFcaSs6sVjpjJn91x/Pet-Store-Prototype)
 
 [Coding Standards](https://200ok-comp30022.atlassian.net/wiki/spaces/IP2/pages/5472508/Coding+Standards+and+Git+Workflow)
-
-
