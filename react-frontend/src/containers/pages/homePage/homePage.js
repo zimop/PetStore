@@ -18,8 +18,6 @@ import infoTabs from "./infoTabs.js"
 
 const HomePage = ({ props }) => {
     const theme = useTheme();
-    // const advImages = AdvImages();
-    // const infoTabs = InfoTabs();
 
     return (
         <ThemeProvider theme={theme}>
@@ -90,7 +88,7 @@ const HomePage = ({ props }) => {
 
                 {/* Three clickable info tabs */}
                 <div className="info-tabs">
-                    <Grid container spacing={6}>
+                    <Grid container spacing={6} sx={{ my: 4 }}>
                         <Grid item xs={4}>
                             <LandingInfoCard title={infoTabs[0].title} paragraph={infoTabs[0].paragraph} />
                         </Grid>
@@ -102,8 +100,16 @@ const HomePage = ({ props }) => {
                         </Grid>
                     </Grid>
                 </div>
+
+
+                {/* Big block of advs in lower page */}
+
+                <Card variant="ImgMediaCard" sx={{ my: 6 }}>
+                    <img src="https://picsum.photos/900/500"></img>
+                </Card>
+
             </div>
-        </ThemeProvider>
+        </ThemeProvider >
     );
 };
 
