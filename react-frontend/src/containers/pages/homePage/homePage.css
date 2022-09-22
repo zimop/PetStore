@@ -1,0 +1,14 @@
+.home-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.catalogue-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 80%;
+  margin: auto 10%;
+}
