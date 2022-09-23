@@ -18,6 +18,7 @@ const LandingInfoCard = (props) => {
               objectFit: "contain",
               alignContent: "center",
               flexDirection: "column",
+              minHeight: 115,
             }}
           >
             <Typography
