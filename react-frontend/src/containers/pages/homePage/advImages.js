@@ -1,15 +1,15 @@
 const advImages = [
   {
-    imgPath: "https://picsum.photos/200/300",
+    ImageURL: "https://picsum.photos/700/500",
   },
   {
-    imgPath: "https://picsum.photos/200/301",
+    ImageURL: "https://picsum.photos/700/501",
   },
   {
-    imgPath: "https://picsum.photos/200/302",
+    ImageURL: "https://picsum.photos/700/502",
   },
   {
-    imgPath: "https://picsum.photos/200/303",
+    ImageURL: "https://picsum.photos/700/503",
   },
 ];
 
