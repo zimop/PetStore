@@ -55,7 +55,7 @@ Finally, models in `./server/models` get relevant data by querying the SQL datab
 Authors:
 
 - Wenzheng Du
-- Daniel Zhang
+- Daniel Zheng
 - Zimo Peng
 - Ghazal Ronagh
 - Andrew Pritchard
