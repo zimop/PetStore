@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import { useParams } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
 
 import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js";
@@ -26,52 +27,68 @@ const HomePage = ({ props }) => {
         <div className="catalogue-icons">
           <Grid container spacing={6}>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/cat_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/cat_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/dog_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/dog_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/mouse_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/mouse_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/rabbit_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/rabbit_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/bird_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/bird_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/fish_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/fish_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/horse_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/horse_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <Avatar
-                src="/catalogueIcons/dragon_face.png"
-                sx={{ width: 80, height: 80, borderRadius: 0 }}
-              />
+              <CardActionArea href={"/"}>
+                <Avatar
+                  src="/catalogueIcons/dragon_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                />
+              </CardActionArea>
             </Grid>
           </Grid>
         </div>
