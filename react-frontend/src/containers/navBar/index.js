@@ -16,6 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from 'react-router-dom';
 
 import useTheme from "../../muiTheme/index";
 import { ThemeProvider } from "@emotion/react";
@@ -68,10 +69,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [cartIsOpen, setCartStatus] = React.useState(null);
   const theme = useTheme();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const isCartOpen = Boolean(cartIsOpen);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -89,6 +93,39 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleCartCheckoutOpen = (event) => {
+    setCartStatus(event.currentTarget);
+  };
+
+  const handleCartCheckoutClose = () => {
+    setCartStatus(null);
+  };
+
+
+//Dont understand primary-search-account-menu
+  const checkoutID = "primary-search-account-menu";
+  const renderCheckout = (
+    <Menu
+      anchorEl = {cartIsOpen}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={checkoutID}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isCartOpen}
+      onClose={handleCartCheckoutClose}
+    >
+      <Link to = '/checkout' style={{ color: 'inherit', textDecoration: 'none' }}>
+        <MenuItem onClick={handleCartCheckoutClose}>View Cart</MenuItem>
+      </Link>
+    </Menu>
+  );
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -194,9 +231,12 @@ export default function PrimarySearchAppBar() {
             <IconButton
               size="large"
               aria-label="show 2 added products"
+              aria-controls = {checkoutID}
+              aria-haspopup = "true"
+              onClick = {handleCartCheckoutOpen}
               color="inherit"
             >
-              <Badge badgeContent={99} color="error">
+              <Badge badgeContent={2} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -227,6 +267,7 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
+      {renderCheckout}
       {renderMobileMenu}
       {renderMenu}
     </Box>
