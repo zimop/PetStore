@@ -8,6 +8,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
+import CheckoutPage from "./containers/pages/checkout/checkoutPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalogue" element={<Catalogue />} />
           <Route path="/product/:productId" element={<ItemPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </AppLayout>
     </BrowserRouter>
