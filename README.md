@@ -48,6 +48,20 @@ Controllers, in the folder `./server/controllers`, are responsible for the appli
 
 Finally, models in `./server/models` get relevant data by querying the SQL database. To accomplish this, they use the `server/mysqlHandle.js` file which defines some convenience functions that make it easier to send SQL queries using the mysql npm package.
 
+## Testing
+
+### Running the Tests
+
+To run the front-end tests, navigate to `react-frontend` and run `npm run test -- --watchAll=false`.
+
+To run the back-end tests, navigate to `server` and run `npm run test`.
+
+### Writing the Tests
+
+We use Jest to run the tests. To find out more about testing, please read the existing tests or read the Jest documentation.
+
+The tests for the front-end are stored in `react-frontend/src/__tests__`. The tests for the back-end are stored in `server/__tests__`. Any JS file in these folders will be detected as a test and run automatically.
+
 ## About
 
 200_OK is a website developed for the IT Project subject at the University of Melbourne.
