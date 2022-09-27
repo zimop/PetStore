@@ -124,10 +124,7 @@ const HomePage = ({ props }) => {
         {/* Big block of advs in lower page */}
 
         <Card variant="ImgMediaCard" sx={{ my: 6 }}>
-          <img
-            src="https://picsum.photos/id/237/1200/600"
-            alt="Image media ad"
-          ></img>
+          <img src="https://picsum.photos/id/237/1200/600" alt="Ad media"></img>
         </Card>
       </div>
     </ThemeProvider>
