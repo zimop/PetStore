@@ -13,20 +13,8 @@
       }
     ],
     "memory": "512",
-    "compatibilities": [
-      "EXTERNAL",
-      "EC2"
-    ],
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:370898316809:task-definition/petstore-task:1",
     "family": "petstore-task",
-    "requiresAttributes": [
-      {
-        "name": "com.amazonaws.ecs.capability.ecr-auth"
-      }
-    ],
     "requiresCompatibilities": [
       "EC2"
-    ],
-    "status": "ACTIVE",
-    "volumes": []
+    ]
   }
