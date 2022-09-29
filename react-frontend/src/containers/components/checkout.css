@@ -1,0 +1,18 @@
+.productDetails-middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  
+    width: 20em;
+    margin-left: 0%;
+    margin-right: 0%;
+  
+    margin-top: 2%;
+  
+    /* testing */
+    /* background-color: red; */
+  }
+
+
+  
