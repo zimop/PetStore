@@ -21,18 +21,22 @@ const CheckoutItem = (props) => {
     return (
     <Grid item xs = {3}>
         <Card variant = "undefined">
+            <div className = "picture">
             <CardMedia
                 component="img"
                 height= {300}
                 image= 'https://picsum.photos/200/300'
                 alt= 'This photo'
-                sx = {{ objectFit: "contain" , width: 350}}
+                sx = {{ objectFit: "contain" , width: 450}}
                 className="productImage"
-            />    
+
+            /> 
+            </div>   
             <CardContent>
+            
                 <div>
                     <Typography gutterBottom variant="h6">
-                        'This Photo'
+                        This Photo
                     </Typography>
                 </div>
                 <div className = "productDetails-middle">
