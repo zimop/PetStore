@@ -37,6 +37,11 @@ export const useTheme = () => {
       // two indexes within its tonal palette.
       // E.g., shift from Red 500 to Red 300 or Red 700.
       // tonalOffset: 0.2,
+
+      homepageInfoCard: {
+        text: "#ffffff",
+        background: "#104F4F",
+      },
     },
   });
 
