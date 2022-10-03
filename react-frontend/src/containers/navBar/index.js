@@ -17,7 +17,6 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
 import useTheme from "../../muiTheme/index";
-import { ThemeProvider } from "@emotion/react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -67,7 +66,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const theme = useTheme();
+  useTheme();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);

@@ -4,7 +4,6 @@ import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
 import Avatar from "@mui/material/Avatar";
-import { useParams } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -125,7 +124,7 @@ const HomePage = ({ props }) => {
         {/* Big block of advs in lower page */}
 
         <Card variant="ImgMediaCard" sx={{ my: 6 }}>
-          <img src="https://picsum.photos/id/237/1200/600"></img>
+          <img src="https://picsum.photos/id/237/1200/600" alt="Ad media"></img>
         </Card>
       </div>
     </ThemeProvider>
