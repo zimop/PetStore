@@ -21,7 +21,7 @@ import "./checkout.css";
 
 const CheckoutItem = (props) => { 
     const [quantity , setQuantity] = useState(props.quantity);
-   
+    console.log(quantity);
     return (
     <Grid item xs = {3}>
         <Card variant = "undefined">
@@ -54,15 +54,13 @@ const CheckoutItem = (props) => {
                         <ToggleButtonGroup
                             orientation="horizontal"
                             >
-                            <ToggleButton value="less" aria-label="less" >
+                            <ToggleButton value="less" aria-label="less" onClick = {quantity < 2 ? null : () => setQuantity(quantity-1)}>
                                 <RemoveIcon />
                             </ToggleButton>
-                            <ToggleButton value="more" aria-label="more" onClick = {() => setQuantity(quantity+1)}>
+                            <ToggleButton value="more" aria-label="more" onClick = {quantity > 9 ? null : () => setQuantity(quantity+1)}>
                                 <AddIcon />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        
-                        
                     </div>
                 </div>
                 
