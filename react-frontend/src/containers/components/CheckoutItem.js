@@ -15,23 +15,13 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import {useState} from 'react';
 
 import "./checkout.css";
 
 const CheckoutItem = (props) => { 
-    let quantity = props.quantity
-    const [buttonClicked, setButtonState] = React.useState(null);
-    const handleButton = () => {
-        setButtonState(true);
-        quantity = quantity + 1;
-    
-    };
-    const closeButton = () => {
-        setButtonState(false);
-    }
-
+    const [quantity , setQuantity] = useState(props.quantity);
    
-    console.log(quantity);
     return (
     <Grid item xs = {3}>
         <Card variant = "undefined">
@@ -60,19 +50,19 @@ const CheckoutItem = (props) => {
                         </Typography>
                     </div>
                     <div className = "toggleQuantity">
-                        
-                        <TextField id="outlined-basic" value = {props.quantity} variant="outlined" sx={{width : 55}}/>
-                        {buttonClicked ? closeButton() : null}
+                        <TextField id="outlined-basic" value = {quantity} variant="outlined" sx={{width : 55}}/>
                         <ToggleButtonGroup
-                        orientation="horizontal"
+                            orientation="horizontal"
                             >
                             <ToggleButton value="less" aria-label="less" >
                                 <RemoveIcon />
                             </ToggleButton>
-                            <ToggleButton value="more" aria-label="more" onClick = {() => handleButton()}>
+                            <ToggleButton value="more" aria-label="more" onClick = {() => setQuantity(quantity+1)}>
                                 <AddIcon />
                             </ToggleButton>
                         </ToggleButtonGroup>
+                        
+                        
                     </div>
                 </div>
                 
