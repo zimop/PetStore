@@ -1,17 +1,22 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import { React } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AppLayout from "./containers/layout/index";
-import ProductPage from "./containers/pages/ItemPage/itemPage";
+import ItemPage from "./containers/pages/ItemPage/itemPage";
+import Catalogue from "./containers/pages/Catalogue/catalogue";
+import HomePage from "./containers/pages/homePage/homePage";
 
 function App() {
   return (
     <BrowserRouter>
       <AppLayout>
-        <ProductPage />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalogue" element={<Catalogue />} />
+          <Route path="/product/:productId" element={<ItemPage />} />
+        </Routes>
       </AppLayout>
     </BrowserRouter>
   );
