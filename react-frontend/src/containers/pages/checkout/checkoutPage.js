@@ -21,7 +21,7 @@ const CheckoutPage = (props) => {
             <h1>Shopping Cart</h1>
             <div className = "moveBox">
                 <div className = "shopping-cart">
-                    <CheckoutItem />
+                    <CheckoutItem quantity = {1}/>
                     <CheckoutItem />
                     <CheckoutItem />
                 </div>
@@ -34,7 +34,7 @@ const CheckoutPage = (props) => {
                 <OrderSummary />
             </div>
             <div className = "button">
-                <Button variant="contained" size = "large">Checkout</Button>
+                <Button variant="contained" size = "large" sx = {{width: 500 , height: 50}}>Checkout</Button>
             </div>
         </div>
     </div>

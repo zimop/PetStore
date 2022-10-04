@@ -19,3 +19,10 @@
     align-items: center;
   }
 
+  .toggleQuantity{
+    display: flex;
+    height: 55px;
+    justify-content: space-between;
+    width: 175px
+  }
+
