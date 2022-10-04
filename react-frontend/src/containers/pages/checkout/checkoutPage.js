@@ -22,8 +22,8 @@ const CheckoutPage = (props) => {
             <div className = "moveBox">
                 <div className = "shopping-cart">
                     <CheckoutItem quantity = {1}/>
-                    <CheckoutItem />
-                    <CheckoutItem />
+                    <CheckoutItem quantity = {1}/>
+                    <CheckoutItem quantity = {1}/>
                 </div>
             </div>
             

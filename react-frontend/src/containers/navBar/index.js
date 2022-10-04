@@ -18,6 +18,18 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
+
+
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+
+
 import useTheme from "../../muiTheme/index";
 import { ThemeProvider } from "@emotion/react";
 
@@ -66,6 +78,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+//let Anchor = 'top' | 'left' | 'bottom' | 'right';
+
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -101,6 +115,51 @@ export default function PrimarySearchAppBar() {
   const handleCartCheckoutClose = () => {
     setCartStatus(null);
   };
+  //dmnkenkdwnownowmnomwoowm
+  const [state, setState] = React.useState();
+
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState(open);
+  };
+
+  const list = () => (
+    <Box
+      sx={{'width' : 300 ,'auto' : 300 }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 
 
 //Dont understand primary-search-account-menu
@@ -176,15 +235,24 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+        <React.Fragment>
+          <IconButton 
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={toggleDrawer(true)} 
           >
             <MenuIcon />
           </IconButton>
+          <Drawer
+            open={state}
+            onClose={toggleDrawer(false)}
+          >
+            {list()}
+          </Drawer>
+        </React.Fragment>
           <Typography
             variant="h6"
             noWrap
@@ -273,3 +341,5 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 }
+
+

@@ -18,19 +18,20 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import "./checkout.css";
 
-let quantity = 1;
-
-const CheckoutItem = (props) => {
+const CheckoutItem = (props) => { 
+    let quantity = props.quantity
     const [buttonClicked, setButtonState] = React.useState(null);
-    const handleButton = (quant) => {
+    const handleButton = () => {
         setButtonState(true);
-        quantity = quant + 1;
-        console.log(quantity);
+        quantity = quantity + 1;
+    
     };
     const closeButton = () => {
         setButtonState(false);
     }
-    
+
+   
+    console.log(quantity);
     return (
     <Grid item xs = {3}>
         <Card variant = "undefined">
@@ -60,7 +61,7 @@ const CheckoutItem = (props) => {
                     </div>
                     <div className = "toggleQuantity">
                         
-                        <TextField id="outlined-basic" value = {quantity} variant="outlined" sx={{width : 55}}/>
+                        <TextField id="outlined-basic" value = {props.quantity} variant="outlined" sx={{width : 55}}/>
                         {buttonClicked ? closeButton() : null}
                         <ToggleButtonGroup
                         orientation="horizontal"
@@ -68,7 +69,7 @@ const CheckoutItem = (props) => {
                             <ToggleButton value="less" aria-label="less" >
                                 <RemoveIcon />
                             </ToggleButton>
-                            <ToggleButton value="more" aria-label="more" onClick = {() => handleButton(quantity)}>
+                            <ToggleButton value="more" aria-label="more" onClick = {() => handleButton()}>
                                 <AddIcon />
                             </ToggleButton>
                         </ToggleButtonGroup>
