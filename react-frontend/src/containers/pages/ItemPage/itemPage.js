@@ -36,7 +36,7 @@ const ItemPage = ({ props }) => {
     getProductData(params.productId).then((productData) =>
       setProductData(productData)
     );
-  }, []);
+  }, [params.productId]);
 
   return (
     <ThemeProvider theme={theme}>
