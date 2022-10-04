@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import { useState, useEffect } from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 

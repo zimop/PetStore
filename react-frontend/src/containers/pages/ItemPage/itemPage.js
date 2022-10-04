@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import { useState, useEffect } from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
@@ -24,9 +23,8 @@ import { useParams } from "react-router-dom";
 
 const ItemPage = ({ props }) => {
   const theme = useTheme();
-
-  const [productData, setProductData] = React.useState({ images: Array(0) });
-  const [value, setValue] = React.useState("0");
+  const [productData, setProductData] = useState({ images: Array(0) });
+  const [value, setValue] = useState("0");
   const params = useParams();
 
   const handleChange = (event, newValue) => {
@@ -34,7 +32,7 @@ const ItemPage = ({ props }) => {
   };
 
   // Hook to get product data
-  React.useEffect(() => {
+  useEffect(() => {
     getProductData(params.productId).then((productData) =>
       setProductData(productData)
     );
