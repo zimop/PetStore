@@ -10,13 +10,15 @@ import {
   Link,
 } from "@mui/material";
 
+import "./loginPage.css";
+
 const LoginPage = (props) => {
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js
     // Licenced under MIT licence
-    <div>
-      <Typography variant="h5">Login to Petstore</Typography>
-      <FormControl>
+    <div className="loginContainer">
+      <Typography variant="h5">Login to Petshop</Typography>
+      <FormControl className="loginForm">
         <TextField
           margin="normal"
           required
