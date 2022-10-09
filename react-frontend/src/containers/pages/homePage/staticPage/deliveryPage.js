@@ -4,10 +4,17 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import CardMedia from "@mui/material/CardMedia";
 
 const DeliveryPage = (props) => {
   return (
     <Card sx={{ maxWidth: 700, my: 20, mx: "auto" }}>
+      <CardMedia
+        component="iframe"
+        // height="140"
+        src="https://embed.lottiefiles.com/animation/90158"
+        sx={{ width: "100%", height: "100%", border: 0 }}
+      />
       <CardContent>
         <Typography gutterBottom variant="h4" component="div">
           Same Day Delivery (2hr delivery)
