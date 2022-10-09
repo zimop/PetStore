@@ -43,7 +43,7 @@ const LoginPage = (props) => {
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
-        <Link href="#" variant="body2">
+        <Link href="signup" variant="body2">
           {"Don't have an account? Sign Up"}
         </Link>
         <Button

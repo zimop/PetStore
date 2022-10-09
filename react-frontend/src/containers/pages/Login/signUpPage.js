@@ -65,11 +65,7 @@ const SignUpPage = (props) => {
           type="confirm-password"
           id="confirm-password"
         />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
-        />
-        <Link href="#" variant="body2">
+        <Link href="login" variant="body2">
           {"Already have an account? Login here"}
         </Link>
         <Button
