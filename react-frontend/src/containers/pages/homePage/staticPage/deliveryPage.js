@@ -6,15 +6,23 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 
+// import deliveryGif from "/public/animations/90158-cat-book.gif";
+
 const DeliveryPage = (props) => {
   return (
     <Card sx={{ maxWidth: 700, my: 20, mx: "auto" }}>
-      <CardMedia
-        component="iframe"
-        // height="140"
-        src="https://embed.lottiefiles.com/animation/90158"
-        sx={{ width: "100%", height: "100%", border: 0 }}
-      />
+      <CardMedia>
+        <img
+          src={require("./animations/90158-cat-book.gif")}
+          style={{
+            width: "25%",
+            height: "100%",
+            border: 0,
+            display: "flex",
+            margin: "auto",
+          }}
+        />
+      </CardMedia>
       <CardContent>
         <Typography gutterBottom variant="h4" component="div">
           Same Day Delivery (2hr delivery)
