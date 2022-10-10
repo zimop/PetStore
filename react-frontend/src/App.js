@@ -10,20 +10,47 @@ import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollec
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
 import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 
+import React, { useState, useEffect } from "react";
+
 function App() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
+
   return (
     <BrowserRouter>
       <AppLayout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/catalogue" element={<Catalogue />} />
-          <Route path="/product/:productId" element={<ItemPage />} />
+        <div className="App">
+          {loading ? (
+            <img
+              src={require("./containers/pages/homePage/staticPage/animations/30206-loading.gif")}
+              style={{
+                width: "30%",
+                height: "100%",
+                border: 0,
+                display: "flex",
+                margin: "auto",
+                marginTop: "10%",
+                marginBottom: "10%",
+              }}
+            />
+          ) : (
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/catalogue" element={<Catalogue />} />
+              <Route path="/product/:productId" element={<ItemPage />} />
 
-          {/* Static Pages */}
-          <Route path="info/click-collect" element={<ClickCollectPage />} />
-          <Route path="/info/delivery" element={<DeliveryPage />} />
-          <Route path="/info/about-us" element={<AboutUsPage />} />
-        </Routes>
+              {/* Static Pages */}
+              <Route path="info/click-collect" element={<ClickCollectPage />} />
+              <Route path="/info/delivery" element={<DeliveryPage />} />
+              <Route path="/info/about-us" element={<AboutUsPage />} />
+            </Routes>
+          )}
+        </div>
       </AppLayout>
     </BrowserRouter>
   );
