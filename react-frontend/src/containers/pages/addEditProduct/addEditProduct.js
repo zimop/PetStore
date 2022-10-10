@@ -3,6 +3,7 @@ import { Card } from '@mui/material';
 
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
+import { flexbox } from '@mui/system';
 import "./itemPage.css";
 
 
@@ -35,7 +36,7 @@ import "./itemPage.css";
             <Item>Users</Item>
 
         </Stack>
-        
+
         <Card sx={{ minWidth: 275 }}>
         <CardContent>
         <div className="productName">
