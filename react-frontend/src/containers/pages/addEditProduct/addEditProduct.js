@@ -6,14 +6,6 @@ import { ThemeProvider } from "@emotion/react";
 import "./itemPage.css";
 
 
-/* <CardElementsCardContent
-  formsSettingsBasicProps={{
-    buttonTextProps: {
-      children: "Add/edit Product",
-    }, */
-  
-
-
 
     const addEditProductPage = (props) => {
         //   const { children = <></> } = props;
@@ -24,6 +16,26 @@ import "./itemPage.css";
         return (
         <ThemeProvider theme={theme}>
 
+        
+        <Stack spacing={2}> 
+            <Item>Dashboard</Item>
+            <Item>Posts</Item>
+            <Item>Pages</Item>
+            <Item>Comments</Item>
+            <Item>Products</Item>
+            <Item>Add/Edit Products</Item>
+            <Item>Categories</Item>
+            <Item>Tags</Item>
+            <Item>Attributes</Item>
+            <Item>Analytics</Item>
+            <Item>Marketing</Item>
+            <Item>Appearance</Item>
+            <Item>Plugins</Item>
+            <Item>Snippets</Item>
+            <Item>Users</Item>
+
+        </Stack>
+        
         <Card sx={{ minWidth: 275 }}>
         <CardContent>
         <div className="productName">
