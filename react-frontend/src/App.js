@@ -18,13 +18,14 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 3000);
   }, []);
 
   return (
     <BrowserRouter>
       <AppLayout>
         <div className="App">
+          {/* Loading Animation */}
           {loading ? (
             <img
               src={require("./containers/pages/homePage/staticPage/animations/30206-loading.gif")}
@@ -39,8 +40,10 @@ function App() {
               }}
             />
           ) : (
+            // All the Routes
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />
               <Route path="/catalogue" element={<Catalogue />} />
               <Route path="/product/:productId" element={<ItemPage />} />
 
