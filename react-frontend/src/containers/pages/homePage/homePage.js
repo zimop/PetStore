@@ -11,7 +11,7 @@ import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js";
 import LandingInfoCard from "./staticPage/landingInfoCard.js";
 
-import advImages from "./advImages";
+import advImages from "./staticPage/advImages";
 import tabsInfo from "./staticPage/tabsInGlance.js";
 
 const HomePage = ({ props }) => {

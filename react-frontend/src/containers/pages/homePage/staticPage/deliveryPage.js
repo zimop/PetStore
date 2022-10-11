@@ -22,8 +22,6 @@ const DeliveryPage = (props) => {
             width: "25%",
             height: "100%",
             border: 0,
-            display: "flex",
-            margin: "auto",
           }}
         />
       </CardMedia>
@@ -46,7 +44,6 @@ const DeliveryPage = (props) => {
           (2320), Port Macquarie (2444), Charmhaven (2263), and Orange stores
           (2800). You’ll be notified by email when your delivery is on its way.
         </Typography>
-        <p></p>
         <Typography variant="body1" color="text.secondary" textAlign={"center"}>
           * We are working to expand to all national metro areas at a later
           date.

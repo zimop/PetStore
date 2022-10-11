@@ -9,13 +9,25 @@ import { CardActionArea } from "@mui/material";
 
 const ClickCollectPage = (props) => {
   return (
-    <Card sx={{ maxWidth: 800, my: 20, mx: "auto" }}>
-      <CardContent>
-        {/* Flex box */}
-        {/* https://www.petbarn.com.au/click-and-collect */}
-        {/* https://lottiefiles.com/978-walking-deer ???*/}
-      </CardContent>
-    </Card>
+    <div classname="clickCollectBackground">
+      <Card sx={{ maxWidth: 800, my: 20, mx: "auto" }}>
+        <CardContent>
+          <p>First card</p>
+          {/* Flex box */}
+          {/* https://www.petbarn.com.au/click-and-collect */}
+          {/* https://lottiefiles.com/978-walking-deer ???*/}
+        </CardContent>
+      </Card>
+
+      <Card sx={{ maxWidth: 800, my: 20, mx: "auto" }}>
+        <CardContent>
+          <p>Second card</p>
+          {/* Flex box */}
+          {/* https://www.petbarn.com.au/click-and-collect */}
+          {/* https://lottiefiles.com/978-walking-deer ???*/}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
