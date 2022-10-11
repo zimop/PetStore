@@ -24,6 +24,12 @@ function App() {
   return (
     <BrowserRouter>
       <AppLayout>
+        <Routes>
+          {/* Static Pages */}
+          <Route path="info/click-collect" element={<ClickCollectPage />} />
+          <Route path="/info/delivery" element={<DeliveryPage />} />
+          <Route path="/info/about-us" element={<AboutUsPage />} />
+        </Routes>
         <div className="App">
           {/* Loading Animation */}
           {loading ? (
@@ -46,11 +52,6 @@ function App() {
               <Route path="/home" element={<HomePage />} />
               <Route path="/catalogue" element={<Catalogue />} />
               <Route path="/product/:productId" element={<ItemPage />} />
-
-              {/* Static Pages */}
-              <Route path="info/click-collect" element={<ClickCollectPage />} />
-              <Route path="/info/delivery" element={<DeliveryPage />} />
-              <Route path="/info/about-us" element={<AboutUsPage />} />
             </Routes>
           )}
         </div>
