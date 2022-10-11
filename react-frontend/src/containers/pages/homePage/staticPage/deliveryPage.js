@@ -10,8 +10,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-// import deliveryGif from "/public/animations/90158-cat-book.gif";
-
 const DeliveryPage = (props) => {
   return (
     <Card sx={{ maxWidth: 800, my: 20, mx: "auto" }}>

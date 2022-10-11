@@ -14,7 +14,7 @@ const AboutUsPage = (props) => {
         <img
           src={require("./animations/90158-cat-book.gif")}
           style={{
-            width: "25%",
+            width: "30%",
             height: "100%",
             border: 0,
             display: "flex",
