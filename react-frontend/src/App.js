@@ -10,7 +10,7 @@ import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollec
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
 import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
   const [loading, setLoading] = useState(false);
