@@ -37,8 +37,8 @@ function App() {
                 margin: "auto",
                 marginTop: "10%",
                 marginBottom: "10%",
-                alt: "LoadingGif",
               }}
+              alt="Walking Elephant, loading Gif"
             />
           ) : (
             // All the Routes

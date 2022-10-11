@@ -18,8 +18,8 @@ const AboutUsPage = (props) => {
             border: 0,
             display: "flex",
             margin: "auto",
-            alt: "CatReadingGif",
           }}
+          alt="Reading cat"
         />
       </CardMedia>
       <CardContent>
