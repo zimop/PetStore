@@ -1,20 +1,26 @@
 import * as React from "react";
-import { Card, Typography, CardContent } from "@mui/material";
+import {
+  Card,
+  Typography,
+  CardContent,
+  FormControl,
+  Input,
+  FormHelperText,
+} from "@mui/material";
+
+import "./addEditProduct.css";
 
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 import { flexbox } from "@mui/system";
-
+/*
 const AddEditProductPage = (props) => {
   //   const { children = <></> } = props;
-  const theme = useTheme();
-
   return (
-    <ThemeProvider theme={theme}>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <div className="productName">
-            {/* productName header and box*/}
+            //{ productName header and box}
             <div className="productName-header">
               <Typography
                 variant="body2"
@@ -32,7 +38,7 @@ const AddEditProductPage = (props) => {
               </Typography>
             </div>
 
-            {/*  productPrice and the price in box */}
+            //{  productPrice and the price in box }
             <div className="productPrice">
               <div className="productPrice-header">
                 <h1>product price </h1>
@@ -51,7 +57,7 @@ const AddEditProductPage = (props) => {
                 </Typography>
               </div>
 
-              {/* productCategory */}
+              //{ productCategory }
               <div className="productCategory-header">
                 <Typography
                   variant="body2"
@@ -62,7 +68,7 @@ const AddEditProductPage = (props) => {
               </div>
 
               <div className="productDescription">
-                {/* product Descprition*/}
+                //{ product Descprition}
                 <div className="productDescription-header">
                   <h3>product Description </h3>
                   <div>
@@ -80,9 +86,93 @@ const AddEditProductPage = (props) => {
           </div>
         </CardContent>
       </Card>
-    </ThemeProvider>
   );
 };
+*/
+
+class AddEditProductPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="add-edit-product-page">
+        <Typography variant="h3">Add Product</Typography>
+        <Card sx={{ minWidth: 275 }} className="container-card">
+          <CardContent>
+            <FormControl>
+              <Typography variant="h6">Add/Edit Product</Typography>
+              <Input id="product-name" label="Product Name" />
+            </FormControl>
+            <div className="productName">
+              <div className="productName-header">
+                <Typography
+                  variant="body2"
+                  sx={{ fontWeight: "bold" }}
+                ></Typography>
+                <h1>product name </h1>
+
+                <Typography
+                  variant="body2"
+                  component="div"
+                  marginLeft={1}
+                  marginRight={1}
+                >
+                  all-day luna Rectangle dog mattress
+                </Typography>
+              </div>
+
+              <div className="productPrice">
+                <div className="productPrice-header">
+                  <h1>product price </h1>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: "bold" }}
+                  ></Typography>
+
+                  <Typography
+                    variant="body2"
+                    component="div"
+                    marginLeft={1}
+                    marginRight={1}
+                  >
+                    $28.99
+                  </Typography>
+                </div>
+
+                <div className="productCategory-header">
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: "bold" }}
+                  ></Typography>
+                  <h2>productCategory</h2>
+                  <div> Dog </div>
+                </div>
+
+                <div className="productDescription">
+                  <div className="productDescription-header">
+                    <h3>product Description </h3>
+                    <div>
+                      <p>
+                        The All-Day Luna Rectangle Dog Mattress is a comfortable
+                        and stylish bed for your doggy Features and benefits •
+                        Plush velvet lining for extra softness • Fully machine
+                        washable • Removable cover • Exclusive to Petbarn Size
+                        Guide Large 91x68x10cm
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+}
+
 export default AddEditProductPage;
 
 //JSX

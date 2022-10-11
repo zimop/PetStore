@@ -8,7 +8,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
-import AddEditProductPage from "./containers/pages/AddEditProduct/AddEditProduct";
+import AddEditProductPage from "./containers/pages/AddEditProduct/addEditProduct";
 
 function App() {
   return (
