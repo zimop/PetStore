@@ -9,6 +9,8 @@ import { CardActionArea } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 
+import "./clickCollectPage";
+
 const ClickCollectPage = (props) => {
   return (
     <div classname="clickCollectBackground">
