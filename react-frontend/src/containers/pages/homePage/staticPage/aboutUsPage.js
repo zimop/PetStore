@@ -5,7 +5,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
 
 const AboutUsPage = (props) => {
   return (
@@ -19,6 +18,7 @@ const AboutUsPage = (props) => {
             border: 0,
             display: "flex",
             margin: "auto",
+            alt: "CatReadingGif",
           }}
         />
       </CardMedia>

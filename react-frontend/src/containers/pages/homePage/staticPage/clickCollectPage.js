@@ -112,6 +112,7 @@ const ClickCollectPage = (props) => {
             width: "35%",
             height: "100%",
             border: 0,
+            alt: "catWalkingGif",
           }}
         />
       </div>

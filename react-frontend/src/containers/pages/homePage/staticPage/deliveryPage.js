@@ -20,6 +20,7 @@ const DeliveryPage = (props) => {
             width: "25%",
             height: "100%",
             border: 0,
+            alt: "catInBoxGif",
           }}
         />
       </CardMedia>
