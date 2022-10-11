@@ -2,7 +2,7 @@ let mysqlHandle = require("../mysqlHandle.js");
 let mysql = require("mysql");
 let bcrypt = require("bcryptjs");
 
-const createUser = (
+const createUser = async (
   email,
   firstName,
   lastName,
@@ -18,6 +18,13 @@ const createUser = (
         ${mysql.escape(bcrypt.hashSync(password))},
         ${mysql.escape(isManager)},
     );`;
+  await mysqlHandle.query(query);
+  let uid = (
+    await mysqlHandle.query(
+      `SELECT UserID FROM Users WHERE Email=${mysql.escape(email)};`
+    )
+  )[0].UserID;
+  return uid;
 };
 
 module.exports = {
