@@ -8,7 +8,7 @@ import "./itemPage.css";
 
 
 
-    const addEditProductPage = (props) => {
+    const AddEditProductPage = (props) => {
         //   const { children = <></> } = props;
         const theme = useTheme();
     
@@ -18,24 +18,6 @@ import "./itemPage.css";
         <ThemeProvider theme={theme}>
 
         
-        <Stack spacing={2}> 
-            <Item>Dashboard</Item>
-            <Item>Posts</Item>
-            <Item>Pages</Item>
-            <Item>Comments</Item>
-            <Item>Products</Item>
-            <Item>Add/Edit Products</Item>
-            <Item>Categories</Item>
-            <Item>Tags</Item>
-            <Item>Attributes</Item>
-            <Item>Analytics</Item>
-            <Item>Marketing</Item>
-            <Item>Appearance</Item>
-            <Item>Plugins</Item>
-            <Item>Snippets</Item>
-            <Item>Users</Item>
-
-        </Stack>
 
         <Card sx={{ minWidth: 275 }}>
         <CardContent>
@@ -114,7 +96,7 @@ import "./itemPage.css";
     );
 };
                   
-export default addEditProductPage;             
+export default AddEditProductPage;             
  
 
 

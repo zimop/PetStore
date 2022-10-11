@@ -8,7 +8,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
-import addProduct from "./containers/pages/AddEditProduct/AddEditProduct";
+import AddEditProductPage from "./containers/pages/AddEditProduct/AddEditProduct";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalogue" element={<Catalogue />} />
           <Route path="/product/:productId" element={<ItemPage />} />
-          <Route path = "/addProduct" element= {<addProduct />} />
+          <Route path = "/addProduct" element= {<AddEditProductPage />} />
         </Routes>
       </AppLayout>
     </BrowserRouter>
