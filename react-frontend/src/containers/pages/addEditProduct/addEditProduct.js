@@ -4,7 +4,7 @@ import {
   Typography,
   CardContent,
   FormControl,
-  Input,
+  TextField,
   FormHelperText,
 } from "@mui/material";
 
@@ -99,11 +99,35 @@ class AddEditProductPage extends React.Component {
     return (
       <div className="add-edit-product-page">
         <Typography variant="h3">Add Product</Typography>
-        <Card sx={{ minWidth: 275 }} className="container-card">
+        <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <FormControl>
-              <Typography variant="h6">Add/Edit Product</Typography>
-              <Input id="product-name" label="Product Name" />
+            <FormControl className="add-product-form">
+              <Typography variant="h">Add/Edit Product</Typography>
+              <div className="inline-flexbox">
+                <TextField
+                  className="inline-flexbox-item"
+                  id="product-name"
+                  label="Product Name"
+                  margin="normal"
+                  required
+                />
+                <TextField
+                  className="inline-flexbox-item"
+                  id="product-price"
+                  label="Price"
+                  margin="normal"
+                  required
+                />
+              </div>
+              <TextField
+                id="product-description"
+                label="Product Description"
+                margin="normal"
+                required
+                fullWidth
+                multiline
+                rows={4}
+              />
             </FormControl>
             <div className="productName">
               <div className="productName-header">
