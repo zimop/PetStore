@@ -1,0 +1,16 @@
+.productRow {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 20px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+.productText {
+  line-height: 40px;
+  margin-left: 2%;
+}
+
+.stockText {
+  line-height: 40px;
+}
