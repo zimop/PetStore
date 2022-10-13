@@ -17,7 +17,7 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     // GET A PRODUCT OBJECT FROM DB
-    let data = await productModel.getProductById(req.params.id);
+    let data = await productModel(req.params.id);
     data.images = await imageModel.getImagesByProductID(req.params.id);
     res.status(200).json(data);
   } catch (error) {

@@ -15,23 +15,19 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
 
-
-
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 import useTheme from "../../muiTheme/index";
-import { ThemeProvider } from "@emotion/react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -84,7 +80,7 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [cartIsOpen, setCartStatus] = React.useState(null);
-  const theme = useTheme();
+  useTheme();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -119,7 +115,10 @@ export default function PrimarySearchAppBar() {
   const [state, setState] = React.useState();
 
   const toggleDrawer = (open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
@@ -128,13 +127,13 @@ export default function PrimarySearchAppBar() {
 
   const list = () => (
     <Box
-      sx={{'width' : 300 ,'auto' : 300 }}
+      sx={{ width: 300, auto: 300 }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -147,7 +146,7 @@ export default function PrimarySearchAppBar() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -161,12 +160,11 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 
-
-//Dont understand primary-search-account-menu
+  //Dont understand primary-search-account-menu
   const checkoutID = "primary-search-account-menu";
   const renderCheckout = (
     <Menu
-      anchorEl = {cartIsOpen}
+      anchorEl={cartIsOpen}
       anchorOrigin={{
         vertical: "top",
         horizontal: "right",
@@ -180,7 +178,7 @@ export default function PrimarySearchAppBar() {
       open={isCartOpen}
       onClose={handleCartCheckoutClose}
     >
-      <Link to = '/checkout' style={{ color: 'inherit', textDecoration: 'none' }}>
+      <Link to="/checkout" style={{ color: "inherit", textDecoration: "none" }}>
         <MenuItem onClick={handleCartCheckoutClose}>View Cart</MenuItem>
       </Link>
     </Menu>
@@ -235,24 +233,21 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-        <React.Fragment>
-          <IconButton 
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-            onClick={toggleDrawer(true)} 
-          >
-            <MenuIcon />
-          </IconButton>
-          <Drawer
-            open={state}
-            onClose={toggleDrawer(false)}
-          >
-            {list()}
-          </Drawer>
-        </React.Fragment>
+          <React.Fragment>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer open={state} onClose={toggleDrawer(false)}>
+              {list()}
+            </Drawer>
+          </React.Fragment>
           <Typography
             variant="h6"
             noWrap
@@ -295,20 +290,20 @@ export default function PrimarySearchAppBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            
+
             <IconButton
               size="large"
               aria-label="show 2 added products"
-              aria-controls = {checkoutID}
-              aria-haspopup = "true"
-              onClick = {handleCartCheckoutOpen}
+              aria-controls={checkoutID}
+              aria-haspopup="true"
+              onClick={handleCartCheckoutOpen}
               color="inherit"
             >
               <Badge badgeContent={2} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            
+
             <IconButton
               size="large"
               edge="end"
@@ -341,5 +336,3 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 }
-
-
