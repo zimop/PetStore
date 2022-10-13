@@ -31,7 +31,6 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 
 
 import useTheme from "../../muiTheme/index";
-import { ThemeProvider } from "@emotion/react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -83,8 +82,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
   const [cartIsOpen, setCartStatus] = React.useState(null);
-  const theme = useTheme();
+  useTheme();
+
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
