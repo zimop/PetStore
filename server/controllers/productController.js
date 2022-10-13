@@ -17,6 +17,7 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     // GET A PRODUCT OBJECT FROM DB
+
     let data = await productModel.getProductById(req.params.id);
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
