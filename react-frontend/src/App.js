@@ -20,13 +20,20 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1500);
   }, []);
 
   return (
     <BrowserRouter>
       <AppLayout>
         <div className="App">
+          {/* Static Pages */}
+          <Routes>
+            <Route path="info/click-collect" element={<ClickCollectPage />} />
+            <Route path="/info/delivery" element={<DeliveryPage />} />
+            <Route path="/info/about-us" element={<AboutUsPage />} />
+          </Routes>
+
           {/* Loading Animation */}
           {loading ? (
             <img
@@ -50,11 +57,6 @@ function App() {
               <Route path="/catalogue" element={<Catalogue />} />
               <Route path="/product/:productId" element={<ItemPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
-
-              {/* Static Pages */}
-              <Route path="info/click-collect" element={<ClickCollectPage />} />
-              <Route path="/info/delivery" element={<DeliveryPage />} />
-              <Route path="/info/about-us" element={<AboutUsPage />} />
             </Routes>
           )}
         </div>
