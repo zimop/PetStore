@@ -20,18 +20,21 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1200);
   }, []);
 
   return (
     <BrowserRouter>
       <AppLayout>
         <div className="App">
-          {/* Static Pages */}
           <Routes>
+            {/* Static Pages */}
             <Route path="info/click-collect" element={<ClickCollectPage />} />
             <Route path="/info/delivery" element={<DeliveryPage />} />
             <Route path="/info/about-us" element={<AboutUsPage />} />
+
+            <Route path="/product/:productId" element={<ItemPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
 
           {/* Loading Animation */}
@@ -50,13 +53,11 @@ function App() {
               alt="Walking Elephant, loading Gif"
             />
           ) : (
-            // All the Routes
+            // Rest of the Routes
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/catalogue" element={<Catalogue />} />
-              <Route path="/product/:productId" element={<ItemPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
             </Routes>
           )}
         </div>
