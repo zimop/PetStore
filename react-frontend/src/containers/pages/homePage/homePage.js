@@ -1,5 +1,4 @@
-import * as React from "react";
-
+// import { useState, useEffect } from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
@@ -10,10 +9,10 @@ import CardActionArea from "@mui/material/CardActionArea";
 
 import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js";
-import LandingInfoCard from "../../components/landingInfoCard.js";
+import LandingInfoCard from "./staticPage/landingInfoCard.js";
 
 import advImages from "./advImages";
-import infoTabs from "./infoTabs.js";
+import tabsInfo from "./staticPage/tabsInGlance.js";
 
 const HomePage = ({ props }) => {
   const theme = useTheme();
@@ -28,7 +27,8 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/cat_face.png"
+                  // src="./catalogueIcons/cat_face.png"
+                  src="./catalogueIcons/cat_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -36,7 +36,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/dog_face.png"
+                  src="./catalogueIcons/dog_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -44,7 +44,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/mouse_face.png"
+                  src="./catalogueIcons/mouse_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -52,7 +52,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/rabbit_face.png"
+                  src="./catalogueIcons/rabbit_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -60,7 +60,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/bird_face.png"
+                  src="./catalogueIcons/bird_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -68,7 +68,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/fish_face.png"
+                  src="./catalogueIcons/fish_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -76,7 +76,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/horse_face.png"
+                  src="./catalogueIcons/horse_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -84,7 +84,7 @@ const HomePage = ({ props }) => {
             <Grid item xs={1.5} style={{ alignContent: "center" }}>
               <CardActionArea href={"/"}>
                 <Avatar
-                  src="/catalogueIcons/dragon_face.png"
+                  src="./catalogueIcons/dragon_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
@@ -102,20 +102,23 @@ const HomePage = ({ props }) => {
           <Grid container spacing={6} sx={{ my: 4 }}>
             <Grid item xs={4}>
               <LandingInfoCard
-                title={infoTabs[0].title}
-                paragraph={infoTabs[0].paragraph}
+                link={"/info/click-collect"}
+                title={tabsInfo[0].title}
+                paragraph={tabsInfo[0].paragraph}
               />
             </Grid>
             <Grid item xs={4}>
               <LandingInfoCard
-                title={infoTabs[1].title}
-                paragraph={infoTabs[1].paragraph}
+                link={"/info/delivery"}
+                title={tabsInfo[1].title}
+                paragraph={tabsInfo[1].paragraph}
               />
             </Grid>
             <Grid item xs={4}>
               <LandingInfoCard
-                title={infoTabs[2].title}
-                paragraph={infoTabs[2].paragraph}
+                link={"/info/about-us"}
+                title={tabsInfo[2].title}
+                paragraph={tabsInfo[2].paragraph}
               />
             </Grid>
           </Grid>
