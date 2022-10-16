@@ -27,10 +27,10 @@ function App() {
 
   const handleAddToCart = (clickedItem) => {
     setCartItems((prev) => {
-      const isItemInCart = cartItems.find((item) => item.id === clickedItem.id);
+      const isItemInCart = cartItems.find((item) => item.ProductId === clickedItem.ProductId);
       if (isItemInCart) {
         return prev.map((item) =>
-          item.id === clickedItem.id
+          item.ProductId === clickedItem.ProductId
             ? { ...item, qty: item.qty + 1 }
             : { ...item }
         );
@@ -42,7 +42,7 @@ function App() {
   const handleRemoveFromCart = (clickedItem) => {
     setCartItems((prev) =>
       prev.reduce((acc, item) => {
-        if (item.id === clickedItem.id) {
+        if (item.ProductId === clickedItem.ProductId) {
           if (item.qty === 1) return acc;
           return [...acc, { ...item, qty: item.qty - 1 }];
         } else {

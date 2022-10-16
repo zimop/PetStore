@@ -12,25 +12,23 @@ import { useState, useEffect } from "react";
 
 import "./ItemCard.css";
 
-const ItemCard = (props) => {
+const ItemCard = ({ itemData, handleAddToCart, height }) => {
   return (
     <Card>
-      <CardActionArea href={`/product/${props.itemData.ProductId}`}>
+      <CardActionArea href={`/product/${itemData.ProductId}`}>
         <CardMedia
           component="img"
-          height={props.height}
-          image={props.itemData.ProductImage}
-          alt={props.itemData.ProductName}
+          height={height}
+          image={itemData.ProductImage}
+          alt={itemData.ProductName}
           sx={{ objectFit: "contain" }}
           className="productImage"
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            {props.itemData.ProductName}
+            {itemData.ProductName}
           </Typography>
-          <Typography variant="h5">
-            ${props.itemData.Price.toFixed(2)}
-          </Typography>
+          <Typography variant="h5">${itemData.Price.toFixed(2)}</Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
@@ -39,7 +37,7 @@ const ItemCard = (props) => {
             className="fullWidthButton"
             variant="outlined"
             size="large"
-            onClick={props.handleAddToCart}
+            onClick={() => handleAddToCart(itemData)}
           >
             Add to Cart
           </Button>
@@ -47,7 +45,7 @@ const ItemCard = (props) => {
             className="fullWidthButton"
             variant="contained"
             size="large"
-            // onClick={props.handleCheckout}
+            // onClick={handleCheckout}
           >
             Buy Now
           </Button>

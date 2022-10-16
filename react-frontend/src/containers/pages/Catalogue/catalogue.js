@@ -28,7 +28,7 @@ class Catalogue extends React.Component {
             id={itemData.ProductId}
             height="350"
             itemData={itemData}
-            handleAddToCart={() => this.props.handleAddToCart(itemData)}
+            handleAddToCart={this.props.handleAddToCart}
             // handleRemoveFromCart={() => props.handleRemoveFromCart(itemData)}
             // handleCheckout={this.handleCheckout}
           />
