@@ -6,8 +6,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
-import CheckoutPage from "./containers/pages/checkout/ShoppingCart";
-// import ShoppingCart from "./containers/components/ShoppingCart/ShoppingCart";
+import ShoppingCartPage from "./containers/pages/shoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
@@ -23,7 +22,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 1500);
   }, []);
 
   const handleAddToCart = (clickedItem) => {
@@ -69,23 +68,13 @@ function App() {
             <Route
               path="/checkout"
               element={
-                <CheckoutPage
+                <ShoppingCartPage
                   cartItems={cartItems}
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}
                 />
               }
             />
-            {/* <Route
-              path="/shoppingCart"
-              element={
-                <ShoppingCart
-                  cartItems={cartItems}
-                  addToCart={handleAddToCart}
-                  removeFromCart={handleRemoveFromCart}
-                />
-              }
-            /> */}
           </Routes>
 
           {/* Loading Animation */}
