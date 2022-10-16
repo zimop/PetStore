@@ -3,8 +3,8 @@ import * as React from "react";
 import "./checkoutPage.css";
 import Button from "@mui/material/Button";
 
-import CheckoutItem from "../../components/CheckoutItem";
-import OrderSummary from "../../components/orderSummary";
+import CheckoutItem from "../../components/Checkout/CheckoutItem";
+import OrderSummary from "../../components/Checkout/orderSummary";
 //import ToggleButton from "../../components/ToggleButton";
 
 const CheckoutPage = (props) => {

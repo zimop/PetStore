@@ -7,6 +7,7 @@ import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
 import CheckoutPage from "./containers/pages/checkout/checkoutPage";
+import ShoppingCart from "./containers/components/ShoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
@@ -35,6 +36,7 @@ function App() {
 
             <Route path="/product/:productId" element={<ItemPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/shoppingCart" element={<ShoppingCart />} />
           </Routes>
 
           {/* Loading Animation */}

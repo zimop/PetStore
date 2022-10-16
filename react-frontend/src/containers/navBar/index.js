@@ -178,7 +178,10 @@ export default function PrimarySearchAppBar() {
       open={isCartOpen}
       onClose={handleCartCheckoutClose}
     >
-      <Link to="/checkout" style={{ color: "inherit", textDecoration: "none" }}>
+      <Link
+        to="/shoppingCart"
+        style={{ color: "inherit", textDecoration: "none" }}
+      >
         <MenuItem onClick={handleCartCheckoutClose}>View Cart</MenuItem>
       </Link>
     </Menu>
@@ -272,7 +275,7 @@ export default function PrimarySearchAppBar() {
               display: { xs: "none", md: "flex" },
             }}
           >
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -280,7 +283,7 @@ export default function PrimarySearchAppBar() {
               <Badge badgeContent={5} color="error">
                 <MailIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -301,6 +304,7 @@ export default function PrimarySearchAppBar() {
             >
               <Badge badgeContent={2} color="error">
                 <ShoppingCartIcon />
+                {/* <ShoppingCart /> */}
               </Badge>
             </IconButton>
 

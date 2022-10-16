@@ -7,6 +7,8 @@ import {
   CardMedia,
 } from "@mui/material";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import "./ItemCard.css";
 
@@ -33,16 +35,30 @@ const ItemCard = (props) => {
       </CardActionArea>
       <CardActions>
         <div className="buttonContainer">
-          <Button className="fullWidthButton" variant="outlined" size="large">
+          <Button
+            className="fullWidthButton"
+            variant="outlined"
+            size="large"
+            // onClick={handleAddToCart}
+          >
             Add to Cart
           </Button>
-          <Button className="fullWidthButton" variant="contained" size="large">
+          <Button
+            className="fullWidthButton"
+            variant="contained"
+            size="large"
+            // onClick={handleCheckout}
+          >
             Buy Now
           </Button>
         </div>
       </CardActions>
     </Card>
   );
+
+  const handleAddToCart = () => {
+    props.addToCart(props.itemData);
+  };
 };
 
 export default ItemCard;
