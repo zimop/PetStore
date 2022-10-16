@@ -8,13 +8,13 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { useState } from "react";
+// import { useState } from "react";
 
 import "./checkout.css";
 
-const CheckoutItem = (props) => {
-  const [quantity, setQuantity] = useState(props.quantity);
-  console.log(quantity);
+const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
+  // const [quantity, setQuantity] = useState(item.qty);
+
   return (
     <Grid item xs={3}>
       <Card variant="undefined">
@@ -27,21 +27,31 @@ const CheckoutItem = (props) => {
             sx={{ objectFit: "contain", width: 450 }}
             className="productImage"
           />
+          {/* <div className="product-image">
+            <ProductImagesSwiper
+              width={400}
+              height={400}
+              images={item.images}
+            />
+          </div> */}
         </div>
         <CardContent>
           <div>
             <Typography gutterBottom variant="h6">
-              Food
+              {/* Food */}
+              {item.ProductName}
             </Typography>
           </div>
           <div className="productDetails-middle">
             <div>
-              <Typography variant="h4">$99.99</Typography>
+              {/* <Typography variant="h4">$99.99</Typography> */}
+              <Typography variant="h4">${item.ProductPrice}</Typography>
             </div>
             <div className="toggleQuantity">
               <TextField
                 id="outlined-basic"
-                value={quantity}
+                // value={quantity}
+                value={item.qty}
                 variant="outlined"
                 sx={{ width: 55 }}
               />
@@ -50,7 +60,8 @@ const CheckoutItem = (props) => {
                   value="less"
                   aria-label="less"
                   onClick={
-                    quantity < 2 ? null : () => setQuantity(quantity - 1)
+                    // quantity < 2 ? null : () => setQuantity(quantity - 1)
+                    () => removeFromCart(item)
                   }
                 >
                   <RemoveIcon />
@@ -59,7 +70,8 @@ const CheckoutItem = (props) => {
                   value="more"
                   aria-label="more"
                   onClick={
-                    quantity > 9 ? null : () => setQuantity(quantity + 1)
+                    // quantity > 9 ? null : () => setQuantity(quantity + 1)
+                    () => addToCart(item)
                   }
                 >
                   <AddIcon />

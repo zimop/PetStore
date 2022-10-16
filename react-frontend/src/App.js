@@ -67,8 +67,17 @@ function App() {
             <Route path="/info/about-us" element={<AboutUsPage />} />
 
             <Route path="/product/:productId" element={<ItemPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
             <Route
+              path="/checkout"
+              element={
+                <CheckoutPage
+                  cartItems={cartItems}
+                  addToCart={handleAddToCart}
+                  removeFromCart={handleRemoveFromCart}
+                />
+              }
+            />
+            {/* <Route
               path="/shoppingCart"
               element={
                 <ShoppingCart
@@ -77,7 +86,7 @@ function App() {
                   removeFromCart={handleRemoveFromCart}
                 />
               }
-            />
+            /> */}
           </Routes>
 
           {/* Loading Animation */}
