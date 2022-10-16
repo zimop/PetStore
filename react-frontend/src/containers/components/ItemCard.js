@@ -39,7 +39,7 @@ const ItemCard = (props) => {
             className="fullWidthButton"
             variant="outlined"
             size="large"
-            // onClick={handleAddToCart}
+            onClick={props.handleAddToCart}
           >
             Add to Cart
           </Button>
@@ -47,7 +47,7 @@ const ItemCard = (props) => {
             className="fullWidthButton"
             variant="contained"
             size="large"
-            // onClick={handleCheckout}
+            onClick={props.handleCheckout}
           >
             Buy Now
           </Button>
@@ -55,10 +55,6 @@ const ItemCard = (props) => {
       </CardActions>
     </Card>
   );
-
-  const handleAddToCart = () => {
-    props.addToCart(props.itemData);
-  };
 };
 
 export default ItemCard;
