@@ -6,18 +6,19 @@ import Button from "@mui/material/Button";
 
 import CheckoutItem from "../../components/ShoppingCart/CartItem";
 import OrderSummary from "../../components/ShoppingCart/orderSummary";
+import { Typography } from "@mui/material";
 
 const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
   return (
     <div className="all-items">
       {/* checkout page items display */}
       <div className="shopping-heading">
-        <h1>Shopping Cart</h1>
+        <Typography variant="h3">Shopping Cart</Typography>
         <div className="moveBox">
           <div className="shopping-cart">
             {cartItems.length === 0 ? (
               <div className="empty-cart">
-                <h2>Your cart is empty</h2>
+                <Typography variant="h4">Your cart is empty</Typography>
               </div>
             ) : (
               cartItems.map((item) => (
@@ -35,7 +36,7 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
 
       {/* checkout page summary */}
       <div className="shopping-heading">
-        <h1>Order Summary</h1>
+        <Typography variant="h3">Order Summary</Typography>
         <div className="order-summary">
           <OrderSummary cartItems={cartItems} />
         </div>

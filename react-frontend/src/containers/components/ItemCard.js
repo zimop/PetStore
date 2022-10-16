@@ -7,9 +7,10 @@ import {
   CardMedia,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import "./ItemCard.css";
+// import CheckoutPage from "../pages/shoppingCart/ShoppingCart";
 
 const ItemCard = ({ itemData, handleAddToCart, height }) => {
   return (
@@ -40,10 +41,13 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
           >
             Add to Cart
           </Button>
-          <Link
+
+          <a href="/checkout" style={{ textDecoration: "none" }}>
+            {/* Using Link will lead to test failure */}
+            {/* <Link
             to="/checkout"
             style={{ color: "inherit", textDecoration: "none" }}
-          >
+          > */}
             <Button
               className="fullWidthButton"
               variant="contained"
@@ -52,7 +56,7 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
             >
               Buy Now
             </Button>
-          </Link>
+          </a>
         </div>
       </CardActions>
     </Card>

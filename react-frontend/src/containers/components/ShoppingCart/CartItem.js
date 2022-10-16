@@ -33,7 +33,7 @@ const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
           </div>
           <div className="productDetails-middle">
             <div>
-              <Typography variant="h4">${item.ProductPrice}</Typography>
+              <Typography variant="h4">${item.Price.toFixed(2)}</Typography>
             </div>
             <div className="toggleQuantity">
               <TextField
