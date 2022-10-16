@@ -15,7 +15,7 @@ const OrderSummary = ({ cartItems }) => {
   // const shippingPrice = itemsPrice > 100 ? 0 : 90;
 
   useEffect(() => {
-    let itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+    let itemsPrice = cartItems.reduce((a, c) => a + c.Price * c.qty, 0);
     setTotal(itemsPrice);
     setShippingPrice(itemsPrice > 100 || itemsPrice === 0 ? 0 : 5.9);
   }, [cartItems]);
@@ -29,7 +29,7 @@ const OrderSummary = ({ cartItems }) => {
               Subtotal:
             </Typography>
             <Typography variant="h4" component="div">
-              ${total}
+              ${total.toFixed(2)}
             </Typography>
           </div>
           <div className="text-align">
@@ -37,12 +37,14 @@ const OrderSummary = ({ cartItems }) => {
               Standard Shipping:
             </Typography>
             <Typography variant="h4" component="div">
-              ${shippingPrice}
+              ${shippingPrice.toFixed(2)}
             </Typography>
           </div>
           <div className="total">
             <Typography variant="h4">Total:</Typography>
-            <Typography variant="h4">${total + shippingPrice}</Typography>
+            <Typography variant="h4">
+              ${(total + shippingPrice).toFixed(2)}
+            </Typography>
           </div>
         </div>
       </CardContent>

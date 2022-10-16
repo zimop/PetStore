@@ -22,18 +22,11 @@ const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
           <CardMedia
             component="img"
             height={300}
-            image=""
+            image={item.ProductImage}
             alt="Food"
             sx={{ objectFit: "contain", width: 450 }}
             className="productImage"
           />
-          {/* <div className="product-image">
-            <ProductImagesSwiper
-              width={400}
-              height={400}
-              images={item.images}
-            />
-          </div> */}
         </div>
         <CardContent>
           <div>

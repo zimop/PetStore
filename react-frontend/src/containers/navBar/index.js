@@ -76,7 +76,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 //let Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ cartItems }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -303,7 +303,14 @@ export default function PrimarySearchAppBar() {
               onClick={handleCartCheckoutOpen}
               color="inherit"
             >
-              <Badge badgeContent={2} color="error">
+              <Badge
+                badgeContent={
+                  cartItems.length
+                    ? cartItems.reduce((a, c) => a + c.qty, 0)
+                    : "0"
+                }
+                color="error"
+              >
                 <ShoppingCartIcon />
                 {/* <ShoppingCart /> */}
               </Badge>
