@@ -20,8 +20,8 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
             <CartItem
               key={item.id}
               item={item}
-              addToCart={addToCart}
-              removeFromCart={removeFromCart}
+              addToCart={() => addToCart(item)}
+              removeFromCart={() => removeFromCart(item)}
             />
           ))
         )}

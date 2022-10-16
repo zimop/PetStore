@@ -47,7 +47,7 @@ const ItemCard = (props) => {
             className="fullWidthButton"
             variant="contained"
             size="large"
-            onClick={props.handleCheckout}
+            // onClick={props.handleCheckout}
           >
             Buy Now
           </Button>

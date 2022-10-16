@@ -9,39 +9,8 @@ class Catalogue extends React.Component {
     super(props);
     this.state = {
       catalogueData: Array(0),
-      cartItems: Array(0),
     };
   }
-
-  handleAddToCart = (clickedItem) => {
-    const isItemInCart = props.cartItems.find(
-      (item) => item.id === clickedItem.id
-    );
-    if (isItemInCart) {
-      props.cartItems.map((item) =>
-        item.id === clickedItem.id
-          ? { ...item, qty: item.qty + 1 }
-          : { ...item }
-      );
-    } else {
-      props.cartItems.push({ ...clickedItem, qty: 1 });
-    }
-  };
-
-  handleRemoveFromCart = (clickedItem) => {
-    const isItemInCart = props.cartItems.find(
-      (item) => item.id === clickedItem.id
-    );
-    if (isItemInCart.qty === 1) {
-      props.cartItems.filter((item) => item.id !== clickedItem.id);
-    } else {
-      props.cartItems.map((item) =>
-        item.id === clickedItem.id
-          ? { ...item, qty: item.qty - 1 }
-          : { ...item }
-      );
-    }
-  };
 
   componentDidMount() {
     getCatalogueData().then((catalogueData) =>
@@ -59,8 +28,8 @@ class Catalogue extends React.Component {
             id={itemData.ProductId}
             height="350"
             itemData={itemData}
-            handleAddToCart={() => this.handleAddToCart(itemData)}
-            handleRemoveFromCart={() => this.handleRemoveFromCart(itemData)}
+            handleAddToCart={() => this.props.handleAddToCart(itemData)}
+            // handleRemoveFromCart={() => props.handleRemoveFromCart(itemData)}
             // handleCheckout={this.handleCheckout}
           />
         </Grid>
@@ -82,9 +51,5 @@ const getCatalogueData = async () => {
   let data = await response.json();
   return data;
 };
-
-// const getTotalItems = (cartItems) => {
-//   return cartItems.reduce((a, c) => a + c.qty, 0);
-// };
 
 export default Catalogue;

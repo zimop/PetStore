@@ -17,6 +17,7 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [loading, setLoading] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -24,9 +25,40 @@ function App() {
     }, 1200);
   }, []);
 
+  const handleAddToCart = (clickedItem) => {
+    setCartItems((prev) => {
+      const isItemInCart = cartItems.find((item) => item.id === clickedItem.id);
+      if (isItemInCart) {
+        return prev.map((item) =>
+          item.id === clickedItem.id
+            ? { ...item, qty: item.qty + 1 }
+            : { ...item }
+        );
+      }
+      return [...prev, { ...clickedItem, qty: 1 }];
+    });
+  };
+
+  const handleRemoveFromCart = (clickedItem) => {
+    setCartItems((prev) =>
+      prev.reduce((acc, item) => {
+        if (item.id === clickedItem.id) {
+          if (item.qty === 1) return acc;
+          return [...acc, { ...item, qty: item.qty - 1 }];
+        } else {
+          return [...acc, item];
+        }
+      }, [])
+    );
+  };
+
+  //const  getTotalItems = (cartItems) => {
+  //   return cartItems.reduce((a, c) => a + c.qty, 0);
+  // };
+
   return (
     <BrowserRouter>
-      <AppLayout>
+      <AppLayout cartItems={cartItems}>
         <div className="App">
           <Routes>
             {/* Static Pages */}
@@ -36,7 +68,16 @@ function App() {
 
             <Route path="/product/:productId" element={<ItemPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/shoppingCart" element={<ShoppingCart />} />
+            <Route
+              path="/shoppingCart"
+              element={
+                <ShoppingCart
+                  cartItems={cartItems}
+                  addToCart={handleAddToCart}
+                  removeFromCart={handleRemoveFromCart}
+                />
+              }
+            />
           </Routes>
 
           {/* Loading Animation */}
@@ -59,7 +100,15 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/home" element={<HomePage />} />
-              <Route path="/catalogue" element={<Catalogue />} />
+              <Route
+                path="/catalogue"
+                element={
+                  <Catalogue
+                    handleAddToCart={handleAddToCart}
+                    handleRemoveFromCart={handleRemoveFromCart}
+                  />
+                }
+              />
             </Routes>
           )}
         </div>
