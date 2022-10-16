@@ -8,13 +8,16 @@ const bcrypt = require("bcryptjs");
 const login = async (req, res) => {
   let user = await userModel.getUserByEmail(req.body.email);
   if (!user) {
-    return res.status(401).send("Error: Incorrect email or password.");
+    return res
+      .status(401)
+      .send({ error: "Error: Incorrect email or password." });
   }
   let validPassword = bcrypt.compareSync(req.body.password, user.Password);
   if (!validPassword) {
-    return res.status(401).send("Error: Incorrect email or password.");
+    return res
+      .status(401)
+      .send({ error: "Error: Incorrect email or password." });
   } else {
-    console.log(getTokenResponse(user.UserID));
     return res.status(200).send(getTokenResponse(user.UserID));
   }
 };
@@ -30,7 +33,7 @@ const signup = async (req, res) => {
     return res.status(200).send(getTokenResponse(userId));
   } catch (error) {
     if (error.code == "ER_DUP_ENTRY") {
-      return res.status(400).send("Error: email is already in use.");
+      return res.status(400).send({ error: "Error: Email is already in use." });
     }
     return res.status(500);
   }
