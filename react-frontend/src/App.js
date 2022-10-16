@@ -6,7 +6,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
-import CheckoutPage from "./containers/pages/checkout/checkoutPage";
+import CheckoutPage from "./containers/pages/checkout/ShoppingCart";
 // import ShoppingCart from "./containers/components/ShoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";

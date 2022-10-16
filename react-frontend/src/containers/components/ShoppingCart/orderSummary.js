@@ -10,9 +10,7 @@ import "./orderSummary.css";
 const OrderSummary = ({ cartItems }) => {
   const [total, setTotal] = useState(0);
   const [shippingPrice, setShippingPrice] = useState(0);
-  const [tax, setTax] = useState(0);
-
-  // const shippingPrice = itemsPrice > 100 ? 0 : 90;
+  // const [tax, setTax] = useState(0);
 
   useEffect(() => {
     let itemsPrice = cartItems.reduce((a, c) => a + c.Price * c.qty, 0);

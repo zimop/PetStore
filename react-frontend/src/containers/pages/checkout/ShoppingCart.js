@@ -1,12 +1,11 @@
 import * as React from "react";
 // import { Link } from "react-router-dom";
 
-import "./checkoutPage.css";
+import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
-import CheckoutItem from "../../components/Checkout/CheckoutItem";
-import OrderSummary from "../../components/Checkout/orderSummary";
-//import ToggleButton from "../../components/ToggleButton";
+import CheckoutItem from "../../components/ShoppingCart/CartItem";
+import OrderSummary from "../../components/ShoppingCart/orderSummary";
 
 const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
   return (

@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 import "./ItemCard.css";
 
