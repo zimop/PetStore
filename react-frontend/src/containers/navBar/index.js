@@ -179,7 +179,6 @@ export default function PrimarySearchAppBar({ cartItems }) {
       onClose={handleCartCheckoutClose}
     >
       <Link
-        // to="/shoppingCart"
         to="/checkout"
         style={{ color: "inherit", textDecoration: "none" }}
       >

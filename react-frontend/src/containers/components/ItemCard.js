@@ -41,14 +41,19 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
           >
             Add to Cart
           </Button>
-          <Button
-            className="fullWidthButton"
-            variant="contained"
-            size="large"
-            // onClick={handleCheckout}
+          <Link
+            to="/checkout"
+            style={{ color: "inherit", textDecoration: "none" }}
           >
-            Buy Now
-          </Button>
+            <Button
+              className="fullWidthButton"
+              variant="contained"
+              size="large"
+              onClick={() => handleAddToCart(itemData)}
+            >
+              Buy Now
+            </Button>
+          </Link>
         </div>
       </CardActions>
     </Card>

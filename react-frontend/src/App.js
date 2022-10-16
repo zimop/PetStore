@@ -7,17 +7,18 @@ import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
 import CheckoutPage from "./containers/pages/checkout/checkoutPage";
-import ShoppingCart from "./containers/components/ShoppingCart/ShoppingCart";
+// import ShoppingCart from "./containers/components/ShoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
 import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 
 import React, { useState, useEffect } from "react";
+import useLocalStorage from "./useLocalStorage";
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -27,7 +28,9 @@ function App() {
 
   const handleAddToCart = (clickedItem) => {
     setCartItems((prev) => {
-      const isItemInCart = cartItems.find((item) => item.ProductId === clickedItem.ProductId);
+      const isItemInCart = cartItems.find(
+        (item) => item.ProductId === clickedItem.ProductId
+      );
       if (isItemInCart) {
         return prev.map((item) =>
           item.ProductId === clickedItem.ProductId
@@ -51,10 +54,6 @@ function App() {
       }, [])
     );
   };
-
-  //const  getTotalItems = (cartItems) => {
-  //   return cartItems.reduce((a, c) => a + c.qty, 0);
-  // };
 
   return (
     <BrowserRouter>
