@@ -18,9 +18,6 @@ const SignUpPage = (props) => {
     if (data.get("password") != data.get("confirm-password")) {
       setError("Error: Passwords do not match.");
     }
-    let obj = {};
-    data.forEach((value, key) => (obj[key] = value));
-    console.log(obj);
     let response = await fetch("/api/signup", {
       method: "POST",
       body: data,
