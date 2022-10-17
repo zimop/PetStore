@@ -251,7 +251,7 @@ export default function PrimarySearchAppBar({ cartItems }) {
             </Drawer>
           </React.Fragment>
 
-          <a href={"/catalogue"} style={{ textDecoration: "none" }}>
+          <a href={"/home"} style={{ textDecoration: "none" }}>
             <Typography
               variant="h6"
               noWrap
