@@ -4,7 +4,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import { ThemeProvider } from "@emotion/react";
 import Button from "@mui/material/Button";
 
-import useTheme from "../../muiTheme";
+import useTheme from "../../../../muiTheme";
 import "./landingInfoCard.css";
 
 const LandingInfoCard = (props) => {
@@ -12,7 +12,7 @@ const LandingInfoCard = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <Card sx={{ bgcolor: "homepageInfoCard.background" }}>
-        <CardActionArea href={"/"}>
+        <CardActionArea href={props.link}>
           <CardContent
             sx={{
               objectFit: "contain",
@@ -40,7 +40,7 @@ const LandingInfoCard = (props) => {
           </CardContent>
         </CardActionArea>
 
-        <CardActionArea href={"/"}>
+        <CardActionArea href={props.link}>
           <Button
             variant="outlined"
             size="small"
