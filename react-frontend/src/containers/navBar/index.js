@@ -87,6 +87,8 @@ export default function PrimarySearchAppBar({ cartItems }) {
 
   const isCartOpen = Boolean(cartIsOpen);
 
+  const theme = useTheme();
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -248,14 +250,23 @@ export default function PrimarySearchAppBar({ cartItems }) {
               {list()}
             </Drawer>
           </React.Fragment>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            PETSHOP
-          </Typography>
+
+          <a href={"/catalogue"} style={{ textDecoration: "none" }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "block",
+                  color: theme.palette.navigationHeader.text,
+                },
+              }}
+            >
+              PETSHOP
+            </Typography>
+          </a>
 
           <Search>
             <SearchIconWrapper>
