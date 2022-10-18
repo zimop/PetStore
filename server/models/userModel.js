@@ -9,24 +9,34 @@ const createUser = async (
   password,
   isManager = false
 ) => {
-  query = `INSERT INTO Users
+  let query = `INSERT INTO Users
     (Email, FirstName, LastName, Password, IsManager)
     VALUES(
         ${mysql.escape(email)},
         ${mysql.escape(firstName)},
         ${mysql.escape(lastName)},
         ${mysql.escape(bcrypt.hashSync(password))},
-        ${mysql.escape(isManager)},
+        ${mysql.escape(isManager)}
     );`;
-  await mysqlHandle.query(query);
-  let uid = (
-    await mysqlHandle.query(
-      `SELECT UserID FROM Users WHERE Email=${mysql.escape(email)};`
-    )
-  )[0].UserID;
-  return uid;
+  let result = await mysqlHandle.query(query);
+  console.log(result);
+  return result.insertId;
+};
+
+const getUser = async (userId) => {
+  let query = `SELECT * FROM Users WHERE UserId=${mysql.escape(userId)};`;
+  let result = await mysqlHandle.query(query);
+  return result[0];
+};
+
+const getUserByEmail = async (userEmail) => {
+  let query = `SELECT * FROM Users WHERE Email=${mysql.escape(userEmail)};`;
+  let result = await mysqlHandle.query(query);
+  return result[0];
 };
 
 module.exports = {
   createUser,
+  getUser,
+  getUserByEmail,
 };
