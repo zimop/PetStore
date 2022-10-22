@@ -6,14 +6,15 @@ import {
   FormControl,
   TextField,
   FormHelperText,
+  CardActionArea,
+  Avatar,
+  Link,
 } from "@mui/material";
 
 import "./addEditProduct.css";
-
 import useTheme from "../../../muiTheme";
-import { ThemeProvider } from "@emotion/react";
-import { flexbox } from "@mui/system";
-
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import { useTheme } from "@emotion/react";
 class AddEditProductPage extends React.Component {
   constructor(props) {
     super(props);
@@ -84,7 +85,30 @@ class AddEditProductPage extends React.Component {
           </CardContent>
         </Card>
 
-        <Card></Card>
+        {/* Make a upload card to upload images */}
+        <Card>
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+            Upload Images
+          </Typography>
+
+          <CardActionArea>
+            <AddPhotoAlternateIcon sx />
+
+            <CardContent>
+              <Link>
+                <Typography variant="h5" component="div">
+                  Click to upload
+                </Typography>
+              </Link>
+              <Typography variant="h5" component="div">
+                or drag and drop
+              </Typography>
+              <Typography variant="h5" component="div">
+                SVG, PNG, JPG or GIF (max. 3MB)
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </div>
     );
   }
