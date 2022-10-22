@@ -13,82 +13,6 @@ import "./addEditProduct.css";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 import { flexbox } from "@mui/system";
-/*
-const AddEditProductPage = (props) => {
-  //   const { children = <></> } = props;
-  return (
-      <Card sx={{ minWidth: 275 }}>
-        <CardContent>
-          <div className="productName">
-            //{ productName header and box}
-            <div className="productName-header">
-              <Typography
-                variant="body2"
-                sx={{ fontWeight: "bold" }}
-              ></Typography>
-              <h1>product name </h1>
-
-              <Typography
-                variant="body2"
-                component="div"
-                marginLeft={1}
-                marginRight={1}
-              >
-                all-day luna Rectangle dog mattress
-              </Typography>
-            </div>
-
-            //{  productPrice and the price in box }
-            <div className="productPrice">
-              <div className="productPrice-header">
-                <h1>product price </h1>
-                <Typography
-                  variant="body2"
-                  sx={{ fontWeight: "bold" }}
-                ></Typography>
-
-                <Typography
-                  variant="body2"
-                  component="div"
-                  marginLeft={1}
-                  marginRight={1}
-                >
-                  $28.99
-                </Typography>
-              </div>
-
-              //{ productCategory }
-              <div className="productCategory-header">
-                <Typography
-                  variant="body2"
-                  sx={{ fontWeight: "bold" }}
-                ></Typography>
-                <h2>productCategory</h2>
-                <div> Dog </div>
-              </div>
-
-              <div className="productDescription">
-                //{ product Descprition}
-                <div className="productDescription-header">
-                  <h3>product Description </h3>
-                  <div>
-                    <p>
-                      The All-Day Luna Rectangle Dog Mattress is a comfortable
-                      and stylish bed for your doggy Features and benefits •
-                      Plush velvet lining for extra softness • Fully machine
-                      washable • Removable cover • Exclusive to Petbarn Size
-                      Guide Large 91x68x10cm
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-  );
-};
-*/
 
 class AddEditProductPage extends React.Component {
   constructor(props) {
@@ -102,96 +26,65 @@ class AddEditProductPage extends React.Component {
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <FormControl className="add-product-form">
-              <Typography variant="h">Add/Edit Product</Typography>
               <div className="inline-flexbox">
-                <TextField
-                  className="inline-flexbox-item"
-                  id="product-name"
-                  label="Product Name"
-                  margin="normal"
-                  required
-                />
-                <TextField
-                  className="inline-flexbox-item"
-                  id="product-price"
-                  label="Price"
-                  margin="normal"
-                  required
-                />
-              </div>
-              <TextField
-                id="product-description"
-                label="Product Description"
-                margin="normal"
-                required
-                fullWidth
-                multiline
-                rows={4}
-              />
-            </FormControl>
-            <div className="productName">
-              <div className="productName-header">
-                <Typography
-                  variant="body2"
-                  sx={{ fontWeight: "bold" }}
-                ></Typography>
-                <h1>product name </h1>
-
-                <Typography
-                  variant="body2"
-                  component="div"
-                  marginLeft={1}
-                  marginRight={1}
-                >
-                  all-day luna Rectangle dog mattress
-                </Typography>
-              </div>
-
-              <div className="productPrice">
-                <div className="productPrice-header">
-                  <h1>product price </h1>
-                  <Typography
-                    variant="body2"
-                    sx={{ fontWeight: "bold" }}
-                  ></Typography>
-
-                  <Typography
-                    variant="body2"
-                    component="div"
-                    marginLeft={1}
-                    marginRight={1}
-                  >
-                    $28.99
+                <div>
+                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    Product name
                   </Typography>
+                  <TextField
+                    className="inline-flexbox-item"
+                    id="product-name"
+                    label="Product Name"
+                    margin="normal"
+                    required
+                  />
                 </div>
 
-                <div className="productCategory-header">
-                  <Typography
-                    variant="body2"
-                    sx={{ fontWeight: "bold" }}
-                  ></Typography>
-                  <h2>productCategory</h2>
-                  <div> Dog </div>
+                <div>
+                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    Product price
+                  </Typography>
+                  <TextField
+                    className="inline-flexbox-item"
+                    id="product-price"
+                    label="Price"
+                    margin="normal"
+                    required
+                  />
                 </div>
 
-                <div className="productDescription">
-                  <div className="productDescription-header">
-                    <h3>product Description </h3>
-                    <div>
-                      <p>
-                        The All-Day Luna Rectangle Dog Mattress is a comfortable
-                        and stylish bed for your doggy Features and benefits •
-                        Plush velvet lining for extra softness • Fully machine
-                        washable • Removable cover • Exclusive to Petbarn Size
-                        Guide Large 91x68x10cm
-                      </p>
-                    </div>
-                  </div>
+                <div>
+                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    Product Category
+                  </Typography>
+                  <TextField
+                    className="inline-flexbox-item"
+                    id="product-category"
+                    label="Category"
+                    margin="normal"
+                    required
+                  />
                 </div>
               </div>
-            </div>
+              <div>
+                <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                  Product Description
+                </Typography>
+                <TextField
+                  id="product-description"
+                  label="Product Description"
+                  margin="normal"
+                  required
+                  fullWidth
+                  multiline
+                  rows={4}
+                />
+              </div>
+            </FormControl>
           </CardContent>
         </Card>
+
+        <Card></Card>
       </div>
     );
   }
