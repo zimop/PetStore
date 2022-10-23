@@ -11,7 +11,10 @@ const ManagerBrowse = ({ props }) => {
   return (
     <ThemeProvider theme={theme}>
       {/* Background */}
-      <ProductRow></ProductRow>
+      <ProductRow
+        productName="Supercoat Chicken Large Breed Adult Dog Food 18kg"
+        stock="6"
+      ></ProductRow>
       <ProductRow></ProductRow>
     </ThemeProvider>
   );

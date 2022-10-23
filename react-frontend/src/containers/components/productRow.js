@@ -9,12 +9,10 @@ const ProductRow = (props) => {
     <div className="productRow">
       <Grid container spacing={0}>
         <Grid item xs={8}>
-          <div className="productText">
-            Supercoat Chicken Large Breed Adult Dog Food 18kg
-          </div>
+          <div className="productText">{props.productName}</div>
         </Grid>
         <Grid item xs={1}>
-          <div className="stockText">Stock: 6</div>
+          <div className="stockText">Stock: {props.stock}</div>
         </Grid>
         <Grid item xs={3} container justifyContent="flex-end">
           <div className="editDeleteButtons">
