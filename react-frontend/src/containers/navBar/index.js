@@ -76,7 +76,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 //let Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ cartItems }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -86,6 +86,8 @@ export default function PrimarySearchAppBar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const isCartOpen = Boolean(cartIsOpen);
+
+  const theme = useTheme();
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -248,14 +250,23 @@ export default function PrimarySearchAppBar() {
               {list()}
             </Drawer>
           </React.Fragment>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            PETSHOP
-          </Typography>
+
+          <a href={"/home"} style={{ textDecoration: "none" }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "block",
+                  color: theme.palette.navigationHeader.text,
+                },
+              }}
+            >
+              PETSHOP
+            </Typography>
+          </a>
 
           <Search>
             <SearchIconWrapper>
@@ -272,7 +283,7 @@ export default function PrimarySearchAppBar() {
               display: { xs: "none", md: "flex" },
             }}
           >
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
@@ -280,7 +291,7 @@ export default function PrimarySearchAppBar() {
               <Badge badgeContent={5} color="error">
                 <MailIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -299,8 +310,16 @@ export default function PrimarySearchAppBar() {
               onClick={handleCartCheckoutOpen}
               color="inherit"
             >
-              <Badge badgeContent={2} color="error">
+              <Badge
+                badgeContent={
+                  cartItems.length
+                    ? cartItems.reduce((a, c) => a + c.qty, 0)
+                    : "0"
+                }
+                color="error"
+              >
                 <ShoppingCartIcon />
+                {/* <ShoppingCart /> */}
               </Badge>
             </IconButton>
 
