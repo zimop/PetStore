@@ -1,7 +1,14 @@
 .catalogue-header {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 7vmax;
+  flex-direction: row;
+}
+
+.search-sort-wrapper {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 7vmax;
+  flex-direction: row;
 }
