@@ -3,9 +3,21 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
+import { useState, useEffect } from "react";
+
 import "./orderSummary.css";
 
-const OrderSummary = (props) => {
+const OrderSummary = ({ cartItems }) => {
+  const [total, setTotal] = useState(0);
+  const [shippingPrice, setShippingPrice] = useState(0);
+  // const [tax, setTax] = useState(0);
+
+  useEffect(() => {
+    let itemsPrice = cartItems.reduce((a, c) => a + c.Price * c.qty, 0);
+    setTotal(itemsPrice);
+    setShippingPrice(itemsPrice > 100 || itemsPrice === 0 ? 0 : 5.9);
+  }, [cartItems]);
+
   return (
     <Card sx={{ width: 500 }}>
       <CardContent>
@@ -15,7 +27,7 @@ const OrderSummary = (props) => {
               Subtotal:
             </Typography>
             <Typography variant="h4" component="div">
-              $999
+              ${total.toFixed(2)}
             </Typography>
           </div>
           <div className="text-align">
@@ -23,12 +35,14 @@ const OrderSummary = (props) => {
               Standard Shipping:
             </Typography>
             <Typography variant="h4" component="div">
-              $90
+              ${shippingPrice.toFixed(2)}
             </Typography>
           </div>
           <div className="total">
             <Typography variant="h4">Total:</Typography>
-            <Typography variant="h4">$2999</Typography>
+            <Typography variant="h4">
+              ${(total + shippingPrice).toFixed(2)}
+            </Typography>
           </div>
         </div>
       </CardContent>

@@ -23,6 +23,10 @@ export const useTheme = () => {
         text: "#ffffff",
         background: "#104F4F",
       },
+
+      navigationHeader: {
+        text: "#ffffff",
+      },
     },
   });
 
