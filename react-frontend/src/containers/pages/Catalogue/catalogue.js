@@ -31,46 +31,24 @@ class Catalogue extends React.Component {
     this.setState({ searchTerm: event.target.value });
   };
 
-  // // Sort by price ascending
-  // sortByPriceAsc = () => {
-  //   this.setState({
-  //     catalogueData: this.state.catalogueData.sort((a, b) => a.price - b.price),
-  //   });
-  // };
-
-  // // Sort by price descending
-  // sortByPriceDesc = () => {
-  //   this.setState({
-  //     catalogueData: this.state.catalogueData.sort((a, b) => b.price - a.price),
-  //   });
-  // };
-
-  // // Sort by product name A-Z
-  // sortByNameAsc = () => {
-  //   this.setState({
-  //     catalogueData: this.state.catalogueData.sort((a, b) =>
-  //       a.name.localeCompare(b.name)
-  //     ),
-  //   });
-  // };
-
+  // Handle sorting box input
   handleSortProducts = (target) => {
     if (target === "price-asc") {
       this.setState({
         catalogueData: this.state.catalogueData.sort(
-          (a, b) => a.price - b.price
+          (a, b) => a.Price - b.Price
         ),
       });
     } else if (target === "price-desc") {
       this.setState({
         catalogueData: this.state.catalogueData.sort(
-          (a, b) => b.price - a.price
+          (a, b) => b.Price - a.Price
         ),
       });
     } else {
       this.setState({
         catalogueData: this.state.catalogueData.sort((a, b) =>
-          a.name.localeCompare(b.name)
+          a.ProductName.localeCompare(b.ProductName)
         ),
       });
     }
@@ -100,7 +78,6 @@ class Catalogue extends React.Component {
               height="350"
               itemData={itemData}
               handleAddToCart={this.props.handleAddToCart}
-              // handleRemoveFromCart={() => props.handleRemoveFromCart(itemData)}
               // handleCheckout={this.handleCheckout}
             />
           </Grid>
@@ -114,14 +91,14 @@ class Catalogue extends React.Component {
           <Typography variant="h2">Catalogue</Typography>
 
           <div className="search-sort-wrapper">
-            {/* Search Bar */}
+            {/* Searching Bar */}
             <SearchBar onChange={this.handleOnSearch} />
-
-            {/* Sort Box */}
+            {/* Sorting Box */}
             <SortBox onSort={this.handleSortProducts} />
           </div>
         </div>
 
+        {/* Catalogue Items */}
         <Grid container spacing={4}>
           {catalogueItems}
         </Grid>
