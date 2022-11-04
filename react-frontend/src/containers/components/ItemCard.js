@@ -37,7 +37,7 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
             className="fullWidthButton"
             variant="outlined"
             size="large"
-            onClick={() => handleAddToCart(itemData)}
+            onClick={() => handleAddToCart(itemData, 1)}
           >
             Add to Cart
           </Button>

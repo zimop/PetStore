@@ -25,7 +25,7 @@ function App() {
     }, 1500);
   }, []);
 
-  const handleAddToCart = (clickedItem) => {
+  const handleAddToCart = (clickedItem, addQty) => {
     setCartItems((prev) => {
       const isItemInCart = cartItems.find(
         (item) => item.ProductId === clickedItem.ProductId
@@ -33,11 +33,11 @@ function App() {
       if (isItemInCart) {
         return prev.map((item) =>
           item.ProductId === clickedItem.ProductId
-            ? { ...item, qty: item.qty + 1 }
+            ? { ...item, qty: item.qty + addQty }
             : { ...item }
         );
       }
-      return [...prev, { ...clickedItem, qty: 1 }];
+      return [...prev, { ...clickedItem, qty: addQty }];
     });
   };
 
