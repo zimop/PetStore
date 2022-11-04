@@ -203,7 +203,7 @@ export default function PrimarySearchAppBar({ cartItems }) {
 
           <a href={"/home"} style={{ textDecoration: "none" }}>
             <Typography
-              variant="h6"
+              variant="h5"
               noWrap
               component="div"
               sx={{
@@ -224,15 +224,6 @@ export default function PrimarySearchAppBar({ cartItems }) {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {/* <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={5} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -259,8 +250,8 @@ export default function PrimarySearchAppBar({ cartItems }) {
                 }
                 color="error"
               >
-                <ShoppingCartIcon />
                 {/* <ShoppingCart /> */}
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
 
