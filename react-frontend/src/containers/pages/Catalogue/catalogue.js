@@ -17,6 +17,7 @@ class Catalogue extends React.Component {
     super(props);
     this.state = {
       catalogueData: Array(0),
+      searchTerm: "",
     };
   }
 
@@ -27,22 +28,39 @@ class Catalogue extends React.Component {
     console.log(this.state.catalogueData);
   }
 
+  handleOnSearch = (event) => {
+    this.setState({ searchTerm: event.target.value });
+  };
+
   render() {
     let catalogueData = this.state.catalogueData;
-    let catalogueItems = catalogueData.map((itemData) => {
-      return (
-        <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
-          <ItemCard
-            id={itemData.ProductId}
-            height="350"
-            itemData={itemData}
-            handleAddToCart={this.props.handleAddToCart}
-            // handleRemoveFromCart={() => props.handleRemoveFromCart(itemData)}
-            // handleCheckout={this.handleCheckout}
-          />
-        </Grid>
-      );
-    });
+    let catalogueItems = catalogueData
+      .filter((val) => {
+        if (this.state.searchTerm === "") {
+          return val;
+        } else if (
+          val.ProductName.toLowerCase().includes(
+            this.state.searchTerm.toLowerCase()
+          )
+        ) {
+          return val;
+        }
+      })
+      .map((itemData) => {
+        return (
+          <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
+            <ItemCard
+              id={itemData.ProductId}
+              height="350"
+              itemData={itemData}
+              handleAddToCart={this.props.handleAddToCart}
+              // handleRemoveFromCart={() => props.handleRemoveFromCart(itemData)}
+              // handleCheckout={this.handleCheckout}
+            />
+          </Grid>
+        );
+      });
+
     return (
       <div style={{ padding: "5%" }}>
         <div className="catalogue-header">
@@ -51,7 +69,7 @@ class Catalogue extends React.Component {
 
           <div className="search-sort-wrapper">
             {/* Search Bar */}
-            <SearchBar />
+            <SearchBar onChange={this.handleOnSearch} />
 
             <div>
               {/* <SortIcon> */}
