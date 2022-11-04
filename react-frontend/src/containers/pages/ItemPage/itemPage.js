@@ -24,7 +24,7 @@ import { useParams } from "react-router-dom";
 const ItemPage = ({ handleAddToCart }) => {
   const theme = useTheme();
   const [productData, setProductData] = useState({ images: Array(0) });
-  const [value, setValue] = useState("0");
+  const [value] = useState("0");
   const [addQty, setAddQty] = useState(1);
   const params = useParams();
 
