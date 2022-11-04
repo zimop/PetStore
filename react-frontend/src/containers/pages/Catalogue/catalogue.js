@@ -45,6 +45,8 @@ class Catalogue extends React.Component {
         ) {
           return val;
         }
+        // No need for this return null, just get rid of the warning
+        return null;
       })
       .map((itemData) => {
         return (
