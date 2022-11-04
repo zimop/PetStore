@@ -25,11 +25,12 @@ const SortByBox = ({ onSort }) => {
           label="Sort by"
         >
           <MenuItem value="">
-            <em>Default</em>
+            <em>Featured</em>
           </MenuItem>
           <MenuItem value={"price-asc"}>Price Ascending</MenuItem>
           <MenuItem value={"price-desc"}>Price Descending</MenuItem>
-          <MenuItem value={"product-name"}>Product Name A-Z</MenuItem>
+          <MenuItem value={"product-name-asc"}>Product Name A-Z</MenuItem>
+          <MenuItem value={"product-name-desc"}>Product Name Z-A</MenuItem>
         </Select>
       </FormControl>
     </div>

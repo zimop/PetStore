@@ -43,10 +43,16 @@ class Catalogue extends React.Component {
           (a, b) => b.Price - a.Price
         ),
       });
-    } else {
+    } else if (target === "product-name-asc") {
       this.setState({
         catalogueData: this.state.catalogueData.sort((a, b) =>
           a.ProductName.localeCompare(b.ProductName)
+        ),
+      });
+    } else if (target === "product-name-desc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort((a, b) =>
+          b.ProductName.localeCompare(a.ProductName)
         ),
       });
     }
