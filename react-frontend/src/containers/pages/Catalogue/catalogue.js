@@ -1,14 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 
 import SearchBar from "../../components/SearchBar/SearchBar";
+import SortBox from "../../components/SortBox/SortBox";
 import ItemCard from "../../components/ItemCard";
 
+import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
 class Catalogue extends React.Component {
   constructor(props) {
@@ -18,6 +16,8 @@ class Catalogue extends React.Component {
       searchTerm: "",
     };
   }
+
+  theme = useTheme();
 
   componentDidMount() {
     getCatalogueData().then((catalogueData) =>
@@ -31,27 +31,49 @@ class Catalogue extends React.Component {
     this.setState({ searchTerm: event.target.value });
   };
 
-  // Sort by price ascending
-  sortByPriceAsc = () => {
-    this.setState({
-      catalogueData: this.state.catalogueData.sort((a, b) => a.price - b.price),
-    });
-  };
+  // // Sort by price ascending
+  // sortByPriceAsc = () => {
+  //   this.setState({
+  //     catalogueData: this.state.catalogueData.sort((a, b) => a.price - b.price),
+  //   });
+  // };
 
-  // Sort by price descending
-  sortByPriceDesc = () => {
-    this.setState({
-      catalogueData: this.state.catalogueData.sort((a, b) => b.price - a.price),
-    });
-  };
+  // // Sort by price descending
+  // sortByPriceDesc = () => {
+  //   this.setState({
+  //     catalogueData: this.state.catalogueData.sort((a, b) => b.price - a.price),
+  //   });
+  // };
 
-  // Sort by product name A-Z
-  sortByNameAsc = () => {
-    this.setState({
-      catalogueData: this.state.catalogueData.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      ),
-    });
+  // // Sort by product name A-Z
+  // sortByNameAsc = () => {
+  //   this.setState({
+  //     catalogueData: this.state.catalogueData.sort((a, b) =>
+  //       a.name.localeCompare(b.name)
+  //     ),
+  //   });
+  // };
+
+  handleSortProducts = (target) => {
+    if (target === "price-asc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort(
+          (a, b) => a.price - b.price
+        ),
+      });
+    } else if (target === "price-desc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort(
+          (a, b) => b.price - a.price
+        ),
+      });
+    } else {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        ),
+      });
+    }
   };
 
   render() {
@@ -95,27 +117,8 @@ class Catalogue extends React.Component {
             {/* Search Bar */}
             <SearchBar onChange={this.handleOnSearch} />
 
-            <div>
-              <FormControl sx={{ m: 1, minWidth: 80 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">
-                  Sort
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
-                  // onChange={handleChange}
-                  autoWidth
-                  label="Sort"
-                >
-                  <MenuItem value="">
-                    <em>Default</em>
-                  </MenuItem>
-                  <MenuItem value={0}>Price Ascending</MenuItem>
-                  <MenuItem value={1}>Price Descending</MenuItem>
-                  <MenuItem value={2}>Product Name A-Z</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
+            {/* Sort Box */}
+            <SortBox onSort={this.handleSortProducts} />
           </div>
         </div>
 
