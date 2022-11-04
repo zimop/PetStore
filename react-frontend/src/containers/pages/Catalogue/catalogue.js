@@ -26,8 +26,32 @@ class Catalogue extends React.Component {
     console.log(this.state.catalogueData);
   }
 
+  // Handle search bar input
   handleOnSearch = (event) => {
     this.setState({ searchTerm: event.target.value });
+  };
+
+  // Sort by price ascending
+  sortByPriceAsc = () => {
+    this.setState({
+      catalogueData: this.state.catalogueData.sort((a, b) => a.price - b.price),
+    });
+  };
+
+  // Sort by price descending
+  sortByPriceDesc = () => {
+    this.setState({
+      catalogueData: this.state.catalogueData.sort((a, b) => b.price - a.price),
+    });
+  };
+
+  // Sort by product name A-Z
+  sortByNameAsc = () => {
+    this.setState({
+      catalogueData: this.state.catalogueData.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
+    });
   };
 
   render() {
@@ -88,6 +112,7 @@ class Catalogue extends React.Component {
                   </MenuItem>
                   <MenuItem value={0}>Price Ascending</MenuItem>
                   <MenuItem value={1}>Price Descending</MenuItem>
+                  <MenuItem value={2}>Product Name A-Z</MenuItem>
                 </Select>
               </FormControl>
             </div>
