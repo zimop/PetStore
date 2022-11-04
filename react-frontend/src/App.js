@@ -64,7 +64,15 @@ function App() {
             <Route path="/info/delivery" element={<DeliveryPage />} />
             <Route path="/info/about-us" element={<AboutUsPage />} />
 
-            <Route path="/product/:productId" element={<ItemPage />} />
+            <Route
+              path="/product/:productId"
+              element={
+                <ItemPage
+                  handleAddToCart={handleAddToCart}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              }
+            />
             <Route
               path="/checkout"
               element={

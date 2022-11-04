@@ -21,7 +21,7 @@ import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "../../components/imageSwipeBox";
 import { useParams } from "react-router-dom";
 
-const ItemPage = ({ props }) => {
+const ItemPage = ({ handleAddToCart }) => {
   const theme = useTheme();
   const [productData, setProductData] = useState({ images: Array(0) });
   const [value, setValue] = useState("0");
@@ -79,7 +79,11 @@ const ItemPage = ({ props }) => {
               </Select>
 
               {/* AddtoCart Button */}
-              <Button variant="contained" sx={{ size: "small" }}>
+              <Button
+                variant="contained"
+                sx={{ size: "small" }}
+                onClick={() => handleAddToCart(productData)}
+              >
                 Add to Cart
               </Button>
             </div>
