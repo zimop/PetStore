@@ -4,6 +4,8 @@ import * as React from "react";
 import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
+import CollectionMethodsTabs from "./CollectionMethodsTabs";
+
 import CheckoutItem from "../../components/ShoppingCart/CartItem";
 import OrderSummary from "../../components/ShoppingCart/orderSummary";
 import { Typography } from "@mui/material";
@@ -40,6 +42,11 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
         <div className="order-summary">
           <OrderSummary cartItems={cartItems} />
         </div>
+
+        <div className="collection-methods-wrapper">
+          <CollectionMethodsTabs />
+        </div>
+
         <div className="button">
           <Button
             variant="contained"
