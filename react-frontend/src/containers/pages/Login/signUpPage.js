@@ -15,7 +15,7 @@ const SignUpPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    if (data.get("password") != data.get("confirm-password")) {
+    if (data.get("password") !== data.get("confirm-password")) {
       setError("Error: Passwords do not match.");
     }
     let response = await fetch("/api/signup", {
@@ -23,9 +23,10 @@ const SignUpPage = (props) => {
       body: data,
     });
     let body = await response.json();
-    if (response.status != 200) {
+    if (response.status !== 200) {
       setError(body.error);
     }
+    props.setToken(body.accessToken);
   };
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js

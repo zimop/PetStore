@@ -8,7 +8,6 @@ import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
 import LoginPage from "./containers/pages/Login/loginPage";
 import SignUpPage from "./containers/pages/Login/signUpPage";
-import CheckoutPage from "./containers/pages/checkout/checkoutPage";
 import ShoppingCartPage from "./containers/pages/shoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
@@ -18,9 +17,25 @@ import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 
+function setToken(userToken) {
+  console.log(userToken);
+  sessionStorage.setItem("token", JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem("token");
+  console.log(tokenString);
+  if (tokenString == "undefined") {
+    return null;
+  }
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token;
+}
+
 function App() {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
+  const token = getToken();
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -66,8 +81,11 @@ function App() {
             <Route path="info/click-collect" element={<ClickCollectPage />} />
             <Route path="/info/delivery" element={<DeliveryPage />} />
             <Route path="/info/about-us" element={<AboutUsPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/login" element={<LoginPage setToken={setToken} />} />
+            <Route
+              path="/signup"
+              element={<SignUpPage setToken={setToken} />}
+            />
             <Route path="/product/:productId" element={<ItemPage />} />
             <Route
               path="/checkout"

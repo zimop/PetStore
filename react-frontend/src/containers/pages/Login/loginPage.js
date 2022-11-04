@@ -23,9 +23,10 @@ const LoginPage = (props) => {
       body: data,
     });
     let body = await response.json();
-    if (response.status != 200) {
+    if (response.status !== 200) {
       setError(body.error);
     }
+    props.setToken(body.accessToken);
   };
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js
