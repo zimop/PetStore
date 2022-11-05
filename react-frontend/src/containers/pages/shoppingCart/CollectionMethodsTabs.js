@@ -11,8 +11,6 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
 import Typography from "@mui/material/Typography";
 
-import StoreMap from "./StoreMap.js";
-
 export default function IconLabelTabs() {
   const [value, setValue] = React.useState(0);
 
