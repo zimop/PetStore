@@ -11,7 +11,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 import "./cartItem.css";
 
-const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
+const CartItem = ({ item, addToCart, removeFromCart }) => {
   return (
     <Grid item xs={3}>
       <Card variant="undefined">
@@ -68,4 +68,4 @@ const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
   );
 };
 
-export default CheckoutItem;
+export default CartItem;

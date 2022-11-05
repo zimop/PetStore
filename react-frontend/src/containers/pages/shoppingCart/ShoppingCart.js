@@ -4,13 +4,13 @@ import * as React from "react";
 import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
-import CheckoutItem from "../../components/ShoppingCart/CartItem";
+import CartItem from "../../components/ShoppingCart/CartItem";
 import OrderSummary from "../../components/ShoppingCart/OrderSummary";
 import { Typography } from "@mui/material";
 
 import CollectionMethodsTabs from "./CollectionMethodsTabs";
 
-const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
+const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
   const [pickup, setPickup] = useState(false);
 
   const handlePickup = (pickup) => {
@@ -30,7 +30,7 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
               </div>
             ) : (
               cartItems.map((item) => (
-                <CheckoutItem
+                <CartItem
                   key={item.id}
                   item={item}
                   addToCart={addToCart}
@@ -68,4 +68,4 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
   );
 };
 
-export default CheckoutPage;
+export default ShoppingCart;

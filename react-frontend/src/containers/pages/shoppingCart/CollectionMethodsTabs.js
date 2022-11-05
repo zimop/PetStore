@@ -11,7 +11,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
 import Typography from "@mui/material/Typography";
 
-export default function IconLabelTabs({ handlePickup }) {
+export default function CollectionMethodsTabs({ handlePickup }) {
   const [value, setValue] = React.useState("0");
 
   const handleChange = (event, newValue) => {
