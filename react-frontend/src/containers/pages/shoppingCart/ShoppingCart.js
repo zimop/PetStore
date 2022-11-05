@@ -4,11 +4,11 @@ import * as React from "react";
 import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
-import CollectionMethodsTabs from "./CollectionMethodsTabs";
-
 import CheckoutItem from "../../components/ShoppingCart/CartItem";
 import OrderSummary from "../../components/ShoppingCart/orderSummary";
 import { Typography } from "@mui/material";
+
+import CollectionMethodsTabs from "./CollectionMethodsTabs";
 
 const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
   return (

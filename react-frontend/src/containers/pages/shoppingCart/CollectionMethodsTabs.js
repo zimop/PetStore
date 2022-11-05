@@ -1,15 +1,14 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import PhoneIcon from "@mui/icons-material/Phone";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import TabPanel from "@mui/lab/TabPanel";
 import Card from "@mui/material/Card";
-// import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import TabContext from "@mui/lab/TabContext";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
+
+import StoreMap from "./StoreMap.js";
 
 export default function IconLabelTabs() {
   const [value, setValue] = React.useState(0);
@@ -39,6 +38,7 @@ export default function IconLabelTabs() {
         </TabPanel>
         <TabPanel value="1">
           <p>testing 1</p>
+          <StoreMap />
         </TabPanel>
       </TabContext>
     </Card>
