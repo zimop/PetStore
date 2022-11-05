@@ -11,12 +11,18 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
 import Typography from "@mui/material/Typography";
 
-export default function IconLabelTabs() {
+export default function IconLabelTabs({ handlePickup }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  // const [pickup, setPickup] = React.useState(false);
+
+  // const handlePickupDeliveryCost = () => {
+  //   setPickup(true);
+  // };
 
   return (
     <Card sx={{ width: 500 }}>
@@ -30,8 +36,18 @@ export default function IconLabelTabs() {
             centered
             scrollButtons="auto"
           >
-            <Tab icon={<LocalShippingIcon />} label="Delivery" value="0" />
-            <Tab icon={<PlaceIcon />} label="Pickup in Store" value="1" />
+            <Tab
+              icon={<LocalShippingIcon />}
+              label="Delivery"
+              value="0"
+              onClick={() => handlePickup(false)}
+            />
+            <Tab
+              icon={<PlaceIcon />}
+              label="Pickup in Store"
+              value="1"
+              onClick={() => handlePickup(true)}
+            />
           </Tabs>
         </Box>
         <TabPanel value="0">

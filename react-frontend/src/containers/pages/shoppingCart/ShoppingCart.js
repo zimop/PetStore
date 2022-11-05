@@ -1,16 +1,22 @@
-import * as React from "react";
+import { React, useState } from "react";
 // import { Link } from "react-router-dom";
 
 import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
 import CheckoutItem from "../../components/ShoppingCart/CartItem";
-import OrderSummary from "../../components/ShoppingCart/orderSummary";
+import OrderSummary from "../../components/ShoppingCart/OrderSummary";
 import { Typography } from "@mui/material";
 
 import CollectionMethodsTabs from "./CollectionMethodsTabs";
 
 const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
+  const [pickup, setPickup] = useState(false);
+
+  const handlePickup = (pickup) => {
+    setPickup(pickup);
+  };
+
   return (
     <div className="all-items">
       {/* checkout page items display */}
@@ -40,12 +46,12 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
       <div className="shopping-heading">
         <div className="collection-methods-wrapper">
           <Typography variant="h4">Collection Methods</Typography>
-          <CollectionMethodsTabs />
+          <CollectionMethodsTabs handlePickup={handlePickup} />
         </div>
 
         <div className="order-summary">
           <Typography variant="h4">Order Summary</Typography>
-          <OrderSummary cartItems={cartItems} />
+          <OrderSummary cartItems={cartItems} pickup={pickup} />
         </div>
 
         <div className="button">
