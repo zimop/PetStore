@@ -8,6 +8,7 @@ import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
 import LoginPage from "./containers/pages/Login/loginPage";
 import SignUpPage from "./containers/pages/Login/signUpPage";
+import ProfilePage from "./containers/pages/Profile/profilePage";
 import ShoppingCartPage from "./containers/pages/shoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
@@ -16,26 +17,12 @@ import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
-
-function setToken(userToken) {
-  console.log(userToken);
-  sessionStorage.setItem("token", JSON.stringify(userToken));
-}
-
-function getToken() {
-  const tokenString = sessionStorage.getItem("token");
-  console.log(tokenString);
-  if (tokenString == "undefined") {
-    return null;
-  }
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token;
-}
+import useToken from "./containers/components/useToken";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
-  const token = getToken();
+  const { token, setToken } = useToken();
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -78,7 +65,7 @@ function App() {
         <div className="App">
           <Routes>
             {/* Static Pages */}
-            <Route path="info/click-collect" element={<ClickCollectPage />} />
+            <Route path="/info/click-collect" element={<ClickCollectPage />} />
             <Route path="/info/delivery" element={<DeliveryPage />} />
             <Route path="/info/about-us" element={<AboutUsPage />} />
             <Route path="/login" element={<LoginPage setToken={setToken} />} />
@@ -97,6 +84,7 @@ function App() {
                 />
               }
             />
+            <Route path="/profile" element={<ProfilePage token={token} />} />
           </Routes>
 
           {/* Loading Animation */}

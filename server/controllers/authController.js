@@ -1,5 +1,3 @@
-const productModel = require("../models/productModel.js");
-const imageModel = require("../models/imageModel.js");
 const userModel = require("../models/userModel.js");
 const jwt = require("jsonwebtoken");
 const secrets = require("../../secrets.json");

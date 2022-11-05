@@ -35,8 +35,17 @@ const getUserByEmail = async (userEmail) => {
   return result[0];
 };
 
+const getIsManager = async (userId) => {
+  let query = `SELECT IsManager FROM Users WHERE UserId=${mysql.escape(
+    userId
+  )};`;
+  let result = await mysqlHandle.query(query);
+  return result[0].IsManager;
+};
+
 module.exports = {
   createUser,
   getUser,
   getUserByEmail,
+  getIsManager,
 };
