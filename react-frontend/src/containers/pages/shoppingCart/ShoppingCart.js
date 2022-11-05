@@ -5,7 +5,7 @@ import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
 import CartItem from "../../components/ShoppingCart/CartItem";
-import OrderSummary from "../../components/ShoppingCart/OrderSummary";
+import OrderSummary from "../../components/ShoppingCart/orderSummary";
 import { Typography } from "@mui/material";
 
 import CollectionMethodsTabs from "./CollectionMethodsTabs";
