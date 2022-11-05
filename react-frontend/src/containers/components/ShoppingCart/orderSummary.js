@@ -16,7 +16,7 @@ const OrderSummary = ({ cartItems, pickup }) => {
     let itemsPrice = cartItems.reduce((a, c) => a + c.Price * c.qty, 0);
     setTotal(itemsPrice);
     setShippingPrice(
-      itemsPrice > 100 || pickup || itemsPrice === 0 ? 0 : itemsPrice * 0.07
+      itemsPrice > 79 || pickup || itemsPrice === 0 ? 0 : itemsPrice * 0.08
     );
     setTax(itemsPrice * 0.1);
   }, [cartItems, pickup]);
@@ -38,9 +38,13 @@ const OrderSummary = ({ cartItems, pickup }) => {
               <Typography variant="h6" component="div">
                 Pickup in Store:
               </Typography>
+            ) : total > 100 ? (
+              <Typography variant="h6" component="div">
+                Standard Shipping (Over $79):
+              </Typography>
             ) : (
               <Typography variant="h6" component="div">
-                Standard Shipping (7%):
+                Standard Shipping (8%):
               </Typography>
             )}
             <Typography variant="h6" component="div">
