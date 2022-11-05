@@ -1,20 +1,34 @@
-import React, { Component } from "react";
-import LocationPicker from "react-location-picker";
-
+// import React, { Component } from "react";
+// import LocationPicker from "react-location-picker";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import "./storeMap.css";
 
-{
-  /* <script src="https://maps.googleapis.com/maps/api/js?key=<AIzaSyD1XGjf7uCGa_fbbxpN4DRVxKdwbOujg2k>&v=3.exp&libraries=geometry,drawing,places"></script>; */
-}
-
-export default function Map() {
+function MapLoading() {
   const { isLoaded } = useLoadScript({
-    googleApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
-  return <div>Map</div>;
+  //   return <div><p>{this.googleMapsApiKey}</p></div>;
+  return <Map />;
+}
+
+export default MapLoading;
+
+function Map() {
+  const center = { lat: 37.8136, lng: 144.9631 };
+  return (
+    <div>
+      <GoogleMap
+        mapContainerClassName="map-container"
+        zoom={10}
+        center={center}
+      ></GoogleMap>
+      <Marker position={center} />
+      <p>succeed</p>
+    </div>
+  );
 }
 
 // /* Default position */
@@ -62,3 +76,14 @@ export default function Map() {
 // }
 
 // export default LocationPickerExample;
+
+// <div>
+//       <GoogleMap
+//         mapContainerClassName="map-container"
+//         zoom={10}
+//         center={{ lat: 37.8136, lng: 144.9631 }}
+//       >
+//         <Marker position={{ lat: 37.8136, lng: 144.9631 }} />
+//       </GoogleMap>
+//       <p>succeed</p>
+//     </div>
