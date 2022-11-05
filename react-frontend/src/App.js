@@ -6,7 +6,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
-import ShoppingCartPage from "./containers/pages/shoppingCart/ShoppingCart";
+import ShoppingCart from "./containers/pages/shoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
@@ -68,7 +68,7 @@ function App() {
             <Route
               path="/checkout"
               element={
-                <ShoppingCartPage
+                <ShoppingCart
                   cartItems={cartItems}
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}
