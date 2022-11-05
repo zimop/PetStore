@@ -15,7 +15,7 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
     <div className="all-items">
       {/* checkout page items display */}
       <div className="shopping-heading">
-        <Typography variant="h3">Shopping Cart</Typography>
+        <Typography variant="h4">Shopping Cart</Typography>
         <div className="moveBox">
           <div className="shopping-cart">
             {cartItems.length === 0 ? (
@@ -38,13 +38,14 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
 
       {/* checkout page summary */}
       <div className="shopping-heading">
-        <Typography variant="h3">Order Summary</Typography>
-        <div className="order-summary">
-          <OrderSummary cartItems={cartItems} />
+        <div className="collection-methods-wrapper">
+          <Typography variant="h4">Collection Methods</Typography>
+          <CollectionMethodsTabs />
         </div>
 
-        <div className="collection-methods-wrapper">
-          <CollectionMethodsTabs />
+        <div className="order-summary">
+          <Typography variant="h4">Order Summary</Typography>
+          <OrderSummary cartItems={cartItems} />
         </div>
 
         <div className="button">

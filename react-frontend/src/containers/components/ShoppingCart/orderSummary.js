@@ -23,24 +23,24 @@ const OrderSummary = ({ cartItems }) => {
       <CardContent>
         <div>
           <div className="text-align">
-            <Typography variant="h4" component="div">
+            <Typography variant="h6" component="div">
               Subtotal:
             </Typography>
-            <Typography variant="h4" component="div">
+            <Typography variant="h6" component="div">
               ${total.toFixed(2)}
             </Typography>
           </div>
           <div className="text-align">
-            <Typography variant="h4" component="div">
+            <Typography variant="h6" component="div">
               Standard Shipping:
             </Typography>
-            <Typography variant="h4" component="div">
+            <Typography variant="h6" component="div">
               ${shippingPrice.toFixed(2)}
             </Typography>
           </div>
           <div className="total">
-            <Typography variant="h4">Total:</Typography>
-            <Typography variant="h4">
+            <Typography variant="h6">Total:</Typography>
+            <Typography variant="h6">
               ${(total + shippingPrice).toFixed(2)}
             </Typography>
           </div>
