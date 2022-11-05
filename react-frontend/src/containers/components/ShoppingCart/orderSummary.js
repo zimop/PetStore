@@ -35,11 +35,9 @@ const OrderSummary = ({ cartItems, pickup }) => {
           </div>
           <div className="text-align">
             {pickup === true ? (
-              <div>
-                <Typography variant="h6" component="div">
-                  Pickup in Store:
-                </Typography>
-              </div>
+              <Typography variant="h6" component="div">
+                Pickup in Store:
+              </Typography>
             ) : (
               <Typography variant="h6" component="div">
                 Standard Shipping (7%):

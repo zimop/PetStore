@@ -12,17 +12,11 @@ import PlaceIcon from "@mui/icons-material/Place";
 import Typography from "@mui/material/Typography";
 
 export default function IconLabelTabs({ handlePickup }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState("0");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  // const [pickup, setPickup] = React.useState(false);
-
-  // const handlePickupDeliveryCost = () => {
-  //   setPickup(true);
-  // };
 
   return (
     <Card sx={{ width: 500 }}>
@@ -50,6 +44,7 @@ export default function IconLabelTabs({ handlePickup }) {
             />
           </Tabs>
         </Box>
+
         <TabPanel value="0">
           <CardContent align="left">
             <Typography variant="h6" align="left" sx={{ fontWeight: "bold" }}>
