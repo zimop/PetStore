@@ -1,14 +1,10 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-
 import SearchBar from "../../components/SearchBar/SearchBar";
+import SortByBox from "../../components/SortByBox/SortByBox";
 import ItemCard from "../../components/ItemCard";
-
+import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
 class Catalogue extends React.Component {
   constructor(props) {
@@ -19,6 +15,8 @@ class Catalogue extends React.Component {
     };
   }
 
+  theme = useTheme();
+
   componentDidMount() {
     getCatalogueData().then((catalogueData) =>
       this.setState({ catalogueData: catalogueData })
@@ -26,8 +24,38 @@ class Catalogue extends React.Component {
     console.log(this.state.catalogueData);
   }
 
+  // Handle search bar input
   handleOnSearch = (event) => {
     this.setState({ searchTerm: event.target.value });
+  };
+
+  // Handle sorting box input
+  handleSortProducts = (target) => {
+    if (target === "price-asc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort(
+          (a, b) => a.Price - b.Price
+        ),
+      });
+    } else if (target === "price-desc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort(
+          (a, b) => b.Price - a.Price
+        ),
+      });
+    } else if (target === "product-name-asc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort((a, b) =>
+          a.ProductName.localeCompare(b.ProductName)
+        ),
+      });
+    } else if (target === "product-name-desc") {
+      this.setState({
+        catalogueData: this.state.catalogueData.sort((a, b) =>
+          b.ProductName.localeCompare(a.ProductName)
+        ),
+      });
+    }
   };
 
   render() {
@@ -43,7 +71,7 @@ class Catalogue extends React.Component {
         ) {
           return val;
         }
-        // No need for this 'return null', just get rid of the warning
+        // No need for this 'return null', just to get rid of the warning
         return null;
       })
       .map((itemData) => {
@@ -54,7 +82,6 @@ class Catalogue extends React.Component {
               height="350"
               itemData={itemData}
               handleAddToCart={this.props.handleAddToCart}
-              // handleRemoveFromCart={() => props.handleRemoveFromCart(itemData)}
               // handleCheckout={this.handleCheckout}
             />
           </Grid>
@@ -68,32 +95,14 @@ class Catalogue extends React.Component {
           <Typography variant="h2">Catalogue</Typography>
 
           <div className="search-sort-wrapper">
-            {/* Search Bar */}
+            {/* Searching Bar */}
             <SearchBar onChange={this.handleOnSearch} />
-
-            <div>
-              <FormControl sx={{ m: 1, minWidth: 80 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">
-                  Sort
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
-                  // onChange={handleChange}
-                  autoWidth
-                  label="Sort"
-                >
-                  <MenuItem value="">
-                    <em>Default</em>
-                  </MenuItem>
-                  <MenuItem value={0}>Price Ascending</MenuItem>
-                  <MenuItem value={1}>Price Descending</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
+            {/* SortBy Box */}
+            <SortByBox onSort={this.handleSortProducts} />
           </div>
         </div>
 
+        {/* Catalogue Items */}
         <Grid container spacing={4}>
           {catalogueItems}
         </Grid>
