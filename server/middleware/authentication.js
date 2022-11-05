@@ -31,11 +31,7 @@ const userAuthentication = async (req, res, next) => {
       return res.status(500).send();
     }
   } else {
-    if (req.hasToken) {
-      return res.status(403).send();
-    } else {
-      return res.status(401).send();
-    }
+    return res.status(401).send();
   }
   next();
 };

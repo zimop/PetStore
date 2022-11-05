@@ -18,6 +18,7 @@ const LoginPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const useLocal = data.get("remember") != undefined;
     let response = await fetch("/api/login", {
       method: "POST",
       body: data,
@@ -26,7 +27,7 @@ const LoginPage = (props) => {
     if (response.status !== 200) {
       setError(body.error);
     }
-    props.setToken(body.accessToken);
+    props.setToken(body.accessToken, useLocal);
   };
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js
@@ -56,7 +57,7 @@ const LoginPage = (props) => {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox name="remember" value="true" color="primary" />}
             label="Remember me"
           />
           {error !== null && <p style={{ color: "red" }}>{error}</p>}

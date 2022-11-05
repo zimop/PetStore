@@ -26,7 +26,7 @@ const SignUpPage = (props) => {
     if (response.status !== 200) {
       setError(body.error);
     }
-    props.setToken(body.accessToken);
+    props.setToken(body.accessToken, false);
   };
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js
