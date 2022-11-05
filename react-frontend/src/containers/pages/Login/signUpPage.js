@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import {
   Typography,
   FormControl,
@@ -25,9 +26,14 @@ const SignUpPage = (props) => {
     let body = await response.json();
     if (response.status !== 200) {
       setError(body.error);
+    } else {
+      props.setToken(body.accessToken, false);
+      window.location.reload(false);
     }
-    props.setToken(body.accessToken, false);
   };
+  if (props.token) {
+    return <Navigate to="/profile" />;
+  }
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js
     // Licenced under MIT licence

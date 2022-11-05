@@ -29,6 +29,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 import useTheme from "../../muiTheme/index";
 
+import resetToken from "../../resetToken";
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -113,6 +115,17 @@ export default function PrimarySearchAppBar({ cartItems }) {
   const handleCartCheckoutClose = () => {
     setCartStatus(null);
   };
+
+  const openProfile = () => {
+    window.location = "/profile";
+  };
+
+  const logOut = () => {
+    resetToken();
+    handleMenuClose();
+    window.location.reload(false);
+  };
+
   //dmnkenkdwnownowmnomwoowm
   const [state, setState] = React.useState();
 
@@ -203,8 +216,8 @@ export default function PrimarySearchAppBar({ cartItems }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={openProfile}>Profile</MenuItem>
+      <MenuItem onClick={logOut}>Log out</MenuItem>
     </Menu>
   );
 

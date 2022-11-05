@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import resetToken from "../../../resetToken";
 
 const ProfilePage = (props) => {
   const [userData, setUserData] = useState({});
@@ -35,6 +36,10 @@ const getUserData = async (token) => {
       "x-access-token": `${token}`,
     },
   });
+  if (response.status == 401) {
+    // Token invalid or expired
+    resetToken();
+  }
   let data = await response.json();
   return data;
 };

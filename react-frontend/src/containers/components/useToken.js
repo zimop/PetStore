@@ -31,10 +31,8 @@ export default function useToken() {
 
   const saveToken = (userToken, useLocal) => {
     if (useLocal) {
-      console.log("Use local storage");
       localStorage.setItem("token", JSON.stringify(userToken));
     } else {
-      console.log("Use session storage");
       sessionStorage.setItem("token", JSON.stringify(userToken));
     }
     setToken(userToken);

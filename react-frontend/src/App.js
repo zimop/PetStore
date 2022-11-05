@@ -68,10 +68,13 @@ function App() {
             <Route path="/info/click-collect" element={<ClickCollectPage />} />
             <Route path="/info/delivery" element={<DeliveryPage />} />
             <Route path="/info/about-us" element={<AboutUsPage />} />
-            <Route path="/login" element={<LoginPage setToken={setToken} />} />
+            <Route
+              path="/login"
+              element={<LoginPage token={token} setToken={setToken} />}
+            />
             <Route
               path="/signup"
-              element={<SignUpPage setToken={setToken} />}
+              element={<SignUpPage token={token} setToken={setToken} />}
             />
             <Route path="/product/:productId" element={<ItemPage />} />
             <Route
