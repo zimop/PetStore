@@ -112,19 +112,11 @@ class Catalogue extends React.Component {
             <Link
               underline="hover"
               sx={{ display: "flex", alignItems: "center" }}
-              color="inherit"
-              href="/catalogue"
+              color="text.primary"
             >
               <ListIcon sx={{ mr: 0.5 }} fontSize="inherit" />
               Catalogue
             </Link>
-            {/* <Typography
-              sx={{ display: "flex", alignItems: "center" }}
-              color="text.primary"
-            >
-              <WbIncandescentIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-              Product
-            </Typography> */}
           </Breadcrumbs>
         </div>
 
