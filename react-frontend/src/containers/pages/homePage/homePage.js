@@ -11,8 +11,12 @@ import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js";
 import LandingInfoCard from "./staticPage/landingInfoCard.js";
 
-import advImages from "./advImages";
+import advImages from "./advImages/advImages";
 import tabsInfo from "./staticPage/tabsInGlance.js";
+
+import Ads5 from "./advImages/Homepage-ads5.png";
+import Ads6 from "./advImages/Homepage-ads6.png";
+import { CardMedia } from "@mui/material";
 
 const HomePage = ({ props }) => {
   const theme = useTheme();
@@ -126,8 +130,18 @@ const HomePage = ({ props }) => {
 
         {/* Big block of advs in lower page */}
 
-        <Card variant="ImgMediaCard" sx={{ my: 6 }}>
-          <img src="https://picsum.photos/id/237/1200/600" alt="Ad media"></img>
+        <Card
+          variant="ImgMediaCard"
+          sx={{ mt: 7, maxHeight: 400, maxWidth: 600 }}
+        >
+          <CardMedia
+            style={{
+              width: "auto",
+              maxHeight: "400px",
+            }}
+            component="img"
+            image={Ads5}
+          />
         </Card>
       </div>
     </ThemeProvider>
