@@ -74,7 +74,7 @@ function App() {
               }
             />
             <Route
-              path="/checkout"
+              path="/shopping-cart"
               element={
                 <ShoppingCart
                   cartItems={cartItems}
