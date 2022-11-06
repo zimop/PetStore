@@ -30,6 +30,15 @@ const HomePage = ({ props }) => {
           <Grid container spacing={7} style={{ alignContent: "center" }}>
             <Grid item style={{ alignContent: "center" }}>
               <CardActionArea href={"/catalogue"}>
+                <Avatar sx={{ width: 50, height: 50 }}>All</Avatar>
+                {/* <Avatar
+                  src="./catalogueIcons/dragon_face.png"
+                  sx={{ width: 50, height: 50, borderRadius: 0 }}
+                /> */}
+              </CardActionArea>
+            </Grid>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue"}>
                 <Avatar
                   // src="./catalogueIcons/cat_face.png"
                   src="./catalogueIcons/cat_face.png"
@@ -85,15 +94,6 @@ const HomePage = ({ props }) => {
                 />
               </CardActionArea>
             </Grid> */}
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
-                <Avatar sx={{ width: 50, height: 50 }}>All</Avatar>
-                {/* <Avatar
-                  src="./catalogueIcons/dragon_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                /> */}
-              </CardActionArea>
-            </Grid>
           </Grid>
         </div>
 
