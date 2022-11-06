@@ -55,7 +55,7 @@ const CartItem = ({ item, addToCart, removeFromCart }) => {
                 <ToggleButton
                   value="more"
                   aria-label="more"
-                  onClick={() => addToCart(item)}
+                  onClick={() => addToCart(item, 1)}
                 >
                   <AddIcon />
                 </ToggleButton>
