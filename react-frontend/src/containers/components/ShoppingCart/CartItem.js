@@ -11,7 +11,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 import "./cartItem.css";
 
-const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
+const CartItem = ({ item, addToCart, removeFromCart }) => {
   return (
     <Grid item xs={3}>
       <Card variant="undefined">
@@ -33,7 +33,9 @@ const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
           </div>
           <div className="productDetails-middle">
             <div>
-              <Typography variant="h4">${item.Price.toFixed(2)}</Typography>
+              <Typography variant="h5" sx={{ ml: 5 }}>
+                ${item.Price.toFixed(2)}
+              </Typography>
             </div>
             <div className="toggleQuantity">
               <TextField
@@ -66,4 +68,4 @@ const CheckoutItem = ({ item, addToCart, removeFromCart }) => {
   );
 };
 
-export default CheckoutItem;
+export default CartItem;

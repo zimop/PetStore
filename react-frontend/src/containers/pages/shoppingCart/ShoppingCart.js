@@ -1,19 +1,27 @@
+import { useState } from "react";
 import * as React from "react";
-// import { Link } from "react-router-dom";
 
 import "./shoppingCart.css";
 import Button from "@mui/material/Button";
 
-import CheckoutItem from "../../components/ShoppingCart/CartItem";
+import CartItem from "../../components/ShoppingCart/CartItem";
 import OrderSummary from "../../components/ShoppingCart/orderSummary";
 import { Typography } from "@mui/material";
 
-const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
+import CollectionMethodsTabs from "./CollectionMethodsTabs";
+
+const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
+  const [pickup, setPickup] = useState(false);
+
+  const handlePickup = (pickup) => {
+    setPickup(pickup);
+  };
+
   return (
     <div className="all-items">
       {/* checkout page items display */}
       <div className="shopping-heading">
-        <Typography variant="h3">Shopping Cart</Typography>
+        <Typography variant="h4">Shopping Cart</Typography>
         <div className="moveBox">
           <div className="shopping-cart">
             {cartItems.length === 0 ? (
@@ -22,7 +30,7 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
               </div>
             ) : (
               cartItems.map((item) => (
-                <CheckoutItem
+                <CartItem
                   key={item.id}
                   item={item}
                   addToCart={addToCart}
@@ -36,10 +44,16 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
 
       {/* checkout page summary */}
       <div className="shopping-heading">
-        <Typography variant="h3">Order Summary</Typography>
-        <div className="order-summary">
-          <OrderSummary cartItems={cartItems} />
+        <div className="collection-methods-wrapper">
+          <Typography variant="h4">Collection Methods</Typography>
+          <CollectionMethodsTabs handlePickup={handlePickup} />
         </div>
+
+        <div className="order-summary">
+          <Typography variant="h4">Order Summary</Typography>
+          <OrderSummary cartItems={cartItems} pickup={pickup} />
+        </div>
+
         <div className="button">
           <Button
             variant="contained"
@@ -54,4 +68,4 @@ const CheckoutPage = ({ cartItems, addToCart, removeFromCart }) => {
   );
 };
 
-export default CheckoutPage;
+export default ShoppingCart;
