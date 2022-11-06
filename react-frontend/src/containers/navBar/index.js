@@ -130,7 +130,10 @@ export default function PrimarySearchAppBar({ cartItems }) {
       open={isCartOpen}
       onClose={handleCartCheckoutClose}
     >
-      <Link to="/checkout" style={{ color: "inherit", textDecoration: "none" }}>
+      <Link
+        to="/shopping-cart"
+        style={{ color: "inherit", textDecoration: "none" }}
+      >
         <MenuItem onClick={handleCartCheckoutClose}>View Cart</MenuItem>
       </Link>
     </Menu>
