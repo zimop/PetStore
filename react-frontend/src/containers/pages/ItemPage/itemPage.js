@@ -13,6 +13,11 @@ import Tab from "@mui/material/Tab";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Typography from "@mui/material/Typography";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/List";
+import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
 
 import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
@@ -43,6 +48,40 @@ const ItemPage = ({ handleAddToCart }) => {
     <ThemeProvider theme={theme}>
       {/* Background */}
       <div className="itemPage">
+        {/* Breadcrumbs pages navigation */}
+        <div>
+          <Breadcrumbs
+            aria-label="breadcrumb"
+            sx={{ ml: 6, my: 4, alignItems: "left" }}
+          >
+            <Link
+              underline="hover"
+              sx={{ display: "flex", alignItems: "center" }}
+              color="inherit"
+              href="/"
+            >
+              <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              Home
+            </Link>
+            <Link
+              underline="hover"
+              sx={{ display: "flex", alignItems: "center" }}
+              color="inherit"
+              href="/catalogue"
+            >
+              <ListIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              Catalogue
+            </Link>
+            <Typography
+              sx={{ display: "flex", alignItems: "center" }}
+              color="text.primary"
+            >
+              <WbIncandescentIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              Product
+            </Typography>
+          </Breadcrumbs>
+        </div>
+
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">

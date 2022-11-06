@@ -1,6 +1,10 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/List";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortByBox from "../../components/SortByBox/SortByBox";
 import ItemCard from "../../components/ItemCard";
@@ -90,6 +94,40 @@ class Catalogue extends React.Component {
 
     return (
       <div style={{ padding: "5%" }}>
+        {/* Breadcrumbs pages navigation */}
+        <div>
+          <Breadcrumbs
+            aria-label="breadcrumb"
+            sx={{ mb: 3, alignItems: "left" }}
+          >
+            <Link
+              underline="hover"
+              sx={{ display: "flex", alignItems: "center" }}
+              color="inherit"
+              href="/"
+            >
+              <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              Home
+            </Link>
+            <Link
+              underline="hover"
+              sx={{ display: "flex", alignItems: "center" }}
+              color="inherit"
+              href="/catalogue"
+            >
+              <ListIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              Catalogue
+            </Link>
+            {/* <Typography
+              sx={{ display: "flex", alignItems: "center" }}
+              color="text.primary"
+            >
+              <WbIncandescentIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+              Product
+            </Typography> */}
+          </Breadcrumbs>
+        </div>
+
         <div className="catalogue-header">
           {/* Header */}
           <Typography variant="h2">Catalogue</Typography>
