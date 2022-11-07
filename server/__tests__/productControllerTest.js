@@ -125,7 +125,7 @@ describe("Integration testing - product controller", () => {
   test("Get All Products", () => {
     let expected = {
       ProductId: 1,
-      ProductName: "Test Product",
+      ProductName: "Dog Food",
       Price: 7.99,
       ProductImage:
         "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=640",
@@ -143,8 +143,8 @@ describe("Integration testing - product controller", () => {
   test("Get Product 1", () => {
     let expected = {
       ProductId: 1,
-      ProductName: "Test Product",
-      Price: 7.99,
+      ProductName: "Dog Bed 2",
+      Price: 13.7,
       images: [
         {
           ImageURL:
