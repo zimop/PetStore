@@ -25,11 +25,11 @@ describe("Unit testing - product controller", () => {
         ProductName: "Dog Bed 2",
         Price: 19.99,
       },
-      // {
-      //   ProductId: 3,
-      //   ProductName: "Sonic the Hedgehog",
-      //   Price: 1991.99,
-      // },
+      {
+        ProductId: 3,
+        ProductName: "Sonic the Hedgehog",
+        Price: 1991.99,
+      },
     ]);
 
     productModel.getProductById = jest.fn((productId) => {
@@ -73,12 +73,12 @@ describe("Unit testing - product controller", () => {
         Price: 19.99,
         ProductImage: "https://picsum.photos/200/200",
       },
-      // {
-      //   ProductId: 3,
-      //   ProductName: "Sonic the Hedgehog",
-      //   Price: 1991.99,
-      //   ProductImage: "https://picsum.photos/200/200",
-      // },
+      {
+        ProductId: 3,
+        ProductName: "Sonic the Hedgehog",
+        Price: 1991.99,
+        ProductImage: "https://picsum.photos/200/200",
+      },
     ];
     expect(results).toEqual(expectedResults);
     expect(productModel.getProductList).toHaveBeenCalledTimes(1);
@@ -143,8 +143,8 @@ describe("Integration testing - product controller", () => {
   test("Get Product 1", () => {
     let expected = {
       ProductId: 1,
-      ProductName: "Dog Bed 2",
-      Price: 13.7,
+      ProductName: "Dog Food",
+      Price: 7.99,
       images: [
         {
           ImageURL:
