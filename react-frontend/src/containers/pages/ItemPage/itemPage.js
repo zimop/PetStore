@@ -24,7 +24,7 @@ import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
 import RecommendationCard from "./threeTabs/recommendationCard/recommendationCard.js";
 import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "../../components/imageSwipeBox";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ItemPage = ({ handleAddToCart }) => {
   const theme = useTheme();
@@ -68,7 +68,7 @@ const ItemPage = ({ handleAddToCart }) => {
               underline="hover"
               sx={{ display: "flex", alignItems: "center" }}
               color="inherit"
-              href="/catalogue"
+              href={"/catalogue/get-" + productData.ProductType + "-products"}
             >
               <ListIcon sx={{ mr: 0.5 }} fontSize="inherit" />
               Catalogue
