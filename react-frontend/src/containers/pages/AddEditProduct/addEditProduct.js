@@ -38,8 +38,8 @@ class AddEditProductPage extends React.Component {
                     </Typography>
                     <TextField
                       className="inline-flexbox-item"
-                      name="product-name"
-                      id="product-name"
+                      name="productName"
+                      id="productName"
                       label="Product Name"
                       margin="normal"
                       required
@@ -52,8 +52,8 @@ class AddEditProductPage extends React.Component {
                     </Typography>
                     <TextField
                       className="inline-flexbox-item"
-                      name="product-price"
-                      id="product-price"
+                      name="productPrice"
+                      id="productPrice"
                       label="Price"
                       margin="normal"
                       type="number"
@@ -67,8 +67,8 @@ class AddEditProductPage extends React.Component {
                     </Typography>
                     <TextField
                       className="inline-flexbox-item"
-                      name="product-category"
-                      id="product-category"
+                      name="productCategory"
+                      id="productCategory"
                       label="Category"
                       margin="normal"
                       required
@@ -80,8 +80,8 @@ class AddEditProductPage extends React.Component {
                     Product Description
                   </Typography>
                   <TextField
-                    id="product-description"
-                    name="product-description"
+                    id="productDescription"
+                    name="productDescription"
                     label="Product Description"
                     margin="normal"
                     required
