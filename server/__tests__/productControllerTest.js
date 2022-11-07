@@ -17,19 +17,19 @@ describe("Unit testing - product controller", () => {
     productModel.getProductList = jest.fn().mockReturnValue([
       {
         ProductId: 1,
-        ProductName: "Test Product",
+        ProductName: "Dog Food",
         Price: 5.99,
       },
       {
         ProductId: 2,
-        ProductName: "Test Product 2",
+        ProductName: "Dog Bed 2",
         Price: 19.99,
       },
-      {
-        ProductId: 3,
-        ProductName: "Sonic the Hedgehog",
-        Price: 1991.99,
-      },
+      // {
+      //   ProductId: 3,
+      //   ProductName: "Sonic the Hedgehog",
+      //   Price: 1991.99,
+      // },
     ]);
 
     productModel.getProductById = jest.fn((productId) => {
@@ -63,22 +63,22 @@ describe("Unit testing - product controller", () => {
     let expectedResults = [
       {
         ProductId: 1,
-        ProductName: "Test Product",
+        ProductName: "Dog Food",
         Price: 5.99,
         ProductImage: "https://picsum.photos/200/200",
       },
       {
         ProductId: 2,
-        ProductName: "Test Product 2",
+        ProductName: "Dog Bed 2",
         Price: 19.99,
         ProductImage: "https://picsum.photos/200/200",
       },
-      {
-        ProductId: 3,
-        ProductName: "Sonic the Hedgehog",
-        Price: 1991.99,
-        ProductImage: "https://picsum.photos/200/200",
-      },
+      // {
+      //   ProductId: 3,
+      //   ProductName: "Sonic the Hedgehog",
+      //   Price: 1991.99,
+      //   ProductImage: "https://picsum.photos/200/200",
+      // },
     ];
     expect(results).toEqual(expectedResults);
     expect(productModel.getProductList).toHaveBeenCalledTimes(1);
