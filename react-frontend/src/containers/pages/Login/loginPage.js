@@ -18,7 +18,7 @@ const LoginPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const useLocal = data.get("remember") != undefined;
+    const useLocal = data.get("remember") !== undefined;
     let response = await fetch("/api/login", {
       method: "POST",
       body: data,
