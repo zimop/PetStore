@@ -7,9 +7,11 @@ const ProfilePage = (props) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    getUserData(props.token.accessToken).then((userData) => {
-      setUserData(userData);
-    });
+    if (props.token) {
+      getUserData(props.token.accessToken).then((userData) => {
+        setUserData(userData);
+      });
+    }
   }, [props.token]);
 
   if (!props.token) {

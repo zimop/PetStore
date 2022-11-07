@@ -16,6 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 import Drawer from "@mui/material/Drawer";
@@ -78,7 +79,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 //let Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function PrimarySearchAppBar({ cartItems }) {
+export default function PrimarySearchAppBar({ hasToken, cartItems }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -335,18 +336,28 @@ export default function PrimarySearchAppBar({ cartItems }) {
                 {/* <ShoppingCart /> */}
               </Badge>
             </IconButton>
-
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {hasToken && (
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            )}
+            {!hasToken && (
+              <Button
+                variant="string"
+                size="medium"
+                onClick={() => (window.location = "/login")}
+              >
+                Login
+              </Button>
+            )}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

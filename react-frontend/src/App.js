@@ -61,7 +61,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppLayout cartItems={cartItems}>
+      <AppLayout cartItems={cartItems} hasToken={token != null}>
         <div className="App">
           <Routes>
             {/* Static Pages */}
