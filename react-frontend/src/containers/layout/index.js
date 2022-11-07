@@ -1,4 +1,4 @@
-import { Box, Button, Divider, ThemeProvider, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 // import { useHistory, useLocation } from "react-router-dom";
@@ -18,7 +18,7 @@ const AppLayout = (props) => {
     <Fragment>
       <ThemeProvider theme={theme}>
         {/* nav bar */}
-        <PrimarySearchAppBar />
+        <PrimarySearchAppBar cartItems={props.cartItems} />
 
         {/* body content of the page */}
         <div className="content">

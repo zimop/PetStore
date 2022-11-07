@@ -4,9 +4,6 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import Container from "@mui/material/Container";
 
-import useTheme from "../../muiTheme/index";
-import { ThemeProvider } from "@emotion/react";
-
 import "./index.css";
 
 export default function ProductPageFooter() {

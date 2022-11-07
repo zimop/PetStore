@@ -17,12 +17,16 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     // GET A PRODUCT OBJECT FROM DB
+
     let data = await productModel.getProductById(req.params.id);
+    if (!data) {
+      return res.status(404).json({ error: "Product not found" });
+    }
     data.images = await imageModel.getImagesByProductID(req.params.id);
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ error: "Internal server error" });
   }
 };
 

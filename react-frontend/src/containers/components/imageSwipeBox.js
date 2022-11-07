@@ -11,7 +11,7 @@ import { autoPlay } from "react-swipeable-views-utils";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 function SwipeableTextMobileStepper({ height, width, images }) {
-  const theme = useTheme();
+  useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
@@ -45,7 +45,6 @@ function SwipeableTextMobileStepper({ height, width, images }) {
                   width: width,
                   display: "block",
                   overflow: "hidden",
-                  width: "100%",
                   objectFit: "contain",
                 }}
                 src={step.ImageURL}
