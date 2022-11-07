@@ -116,14 +116,13 @@ class Catalogue extends React.Component {
               <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
               Home
             </Link>
-            <Link
-              underline="hover"
+            <Typography
               sx={{ display: "flex", alignItems: "center" }}
               color="text.primary"
             >
               <ListIcon sx={{ mr: 0.5 }} fontSize="inherit" />
               Catalogue
-            </Link>
+            </Typography>
           </Breadcrumbs>
         </div>
 
