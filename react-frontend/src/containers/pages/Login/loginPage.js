@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import {
   Typography,
@@ -8,7 +8,6 @@ import {
   FormControlLabel,
   Checkbox,
   Button,
-  Grid,
   Link,
 } from "@mui/material";
 
