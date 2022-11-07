@@ -38,7 +38,7 @@ function isNumber(n) {
 const addProduct = async (req, res) => {
   try {
     if (!isNumber(req.body.productPrice)) {
-      return res.status(400).send("Price is not a number");
+      return res.status(400).json({ error: "Price is not a number" });
     }
     let productId = await productModel.addProduct(
       req.body.productName,

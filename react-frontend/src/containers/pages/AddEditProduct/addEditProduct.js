@@ -16,6 +16,9 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 class AddEditProductPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      error: null,
+    };
   }
 
   render() {
@@ -23,6 +26,17 @@ class AddEditProductPage extends React.Component {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
       console.log(data);
+      let response = await fetch("/api/add-product", {
+        method: "POST",
+        body: data,
+      });
+      let body = await response.json();
+      if (response.status !== 200) {
+        this.state.error = body.error;
+      } else {
+        // Product is successfully submitted
+        console.log("Successfully added product");
+      }
     };
     return (
       <div className="add-edit-product-page">
@@ -114,6 +128,9 @@ class AddEditProductPage extends React.Component {
                     </CardContent>
                   </CardActionArea>
                 </Card>
+                {this.state.error !== null && (
+                  <p style={{ color: "red" }}>{this.state.error}</p>
+                )}
                 <Button
                   type="submit"
                   fullWidth
