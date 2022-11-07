@@ -106,7 +106,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/home" element={<HomePage />} />
               <Route
-                path="/catalogue"
+                path="/catalogue/:api"
                 element={
                   <Catalogue
                     handleAddToCart={handleAddToCart}

@@ -10,6 +10,13 @@ import SortByBox from "../../components/SortByBox/SortByBox";
 import ItemCard from "../../components/ItemCard";
 import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
+
+import { useParams } from "react-router-dom";
+// Can't use useParams in class component, so wrap it in a function component
+function withParams(Component) {
+  return (props) => <Component {...props} params={useParams()} />;
+}
+
 class Catalogue extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +29,7 @@ class Catalogue extends React.Component {
   theme = useTheme();
 
   componentDidMount() {
-    getCatalogueData().then((catalogueData) =>
+    getCatalogueData(this.props.params.api).then((catalogueData) =>
       this.setState({ catalogueData: catalogueData })
     );
     console.log(this.state.catalogueData);
@@ -141,10 +148,10 @@ class Catalogue extends React.Component {
   }
 }
 
-const getCatalogueData = async () => {
-  let response = await fetch("/api/get-all-products");
+const getCatalogueData = async (api) => {
+  let response = await fetch(`/api/${api}`);
   let data = await response.json();
   return data;
 };
 
-export default Catalogue;
+export default withParams(Catalogue);
