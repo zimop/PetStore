@@ -1,65 +1,154 @@
 import * as React from "react";
-import { Card } from "@mui/material";
+import {
+  Card,
+  Typography,
+  CardContent,
+  FormControl,
+  TextField,
+  Button,
+  CardActionArea,
+  Link,
+} from "@mui/material";
 
+import "./addEditProduct.css";
 import useTheme from "../../../muiTheme";
-import { ThemeProvider } from "@emotion/react";
-import "./itemPage.css";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+class AddEditProductPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
 
-/* <CardElementsCardContent
-  formsSettingsBasicProps={{
-    buttonTextProps: {
-      children: "Add/edit Product",
-    }, */
+  render() {
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      console.log(data);
+      let response = await fetch("/api/add-product", {
+        method: "POST",
+        body: data,
+      });
+      let body = await response.json();
+      if (response.status !== 200) {
+        this.state.error = body.error;
+      } else {
+        // Product is successfully submitted
+        console.log("Successfully added product");
+      }
+    };
+    return (
+      <div className="add-edit-product-page">
+        <Typography variant="h3">Add Product</Typography>
+        <Card sx={{ minWidth: 275 }}>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <FormControl className="add-product-form">
+                <div className="inline-flexbox">
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Product name
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="productName"
+                      id="productName"
+                      label="Product Name"
+                      margin="normal"
+                      required
+                    />
+                  </div>
 
-const addEditProductPage = (props) => {
-  //   const { children = <></> } = props;
-  const theme = useTheme();
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Product price
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="productPrice"
+                      id="productPrice"
+                      label="Price"
+                      margin="normal"
+                      type="number"
+                      required
+                    />
+                  </div>
 
-  return (
-    <ThemeProvider theme={theme}>
-      {/* Background */}
-      <div className="productName">
-        {/* productName header and box*/}
-        <div className="productName-header">
-          <h1>product name </h1>
-          <div> all-day luna Rectangle dog mattress </div>
-        </div>
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Product Category
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="productCategory"
+                      id="productCategory"
+                      label="Category"
+                      margin="normal"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    Product Description
+                  </Typography>
+                  <TextField
+                    id="productDescription"
+                    name="productDescription"
+                    label="Product Description"
+                    margin="normal"
+                    required
+                    fullWidth
+                    multiline
+                    rows={4}
+                  />
+                </div>
+                {/* Make a upload card to upload images */}
+                <Card>
+                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    Upload Images
+                  </Typography>
 
-        {/*  productPrice and the price in box */}
-        <div className="productPrice">
-          <div className="productPrice-header">
-            <h1>product price </h1>
-            <div>$28.99</div>
-          </div>
+                  <CardActionArea>
+                    <AddPhotoAlternateIcon sx />
 
-          {/* productCategory */}
-          <div className="productCategory-header">
-            <h2>productCategory</h2>
-            <div> Dog </div>
-          </div>
-
-          <div className="productDescription">
-            {/* product Descprition*/}
-            <div className="productDescription-header">
-              <h3>product Description </h3>
-              <div>
-                <p>
-                  The All-Day Luna Rectangle Dog Mattress is a comfortable and
-                  stylish bed for your doggy Features and benefits • Plush
-                  velvet lining for extra softness • Fully machine washable •
-                  Removable cover • Exclusive to Petbarn Size Guide Large
-                  91x68x10cm
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+                    <CardContent>
+                      <Link>
+                        <Typography variant="h5" component="div">
+                          Click to upload
+                        </Typography>
+                      </Link>
+                      <Typography variant="h5" component="div">
+                        or drag and drop
+                      </Typography>
+                      <Typography variant="h5" component="div">
+                        SVG, PNG, JPG or GIF (max. 3MB)
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+                {this.state.error !== null && (
+                  <p style={{ color: "red" }}>{this.state.error}</p>
+                )}
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Save
+                </Button>
+              </FormControl>
+            </form>
+          </CardContent>
+        </Card>
       </div>
-    </ThemeProvider>
-  );
-};
+    );
+  }
+}
 
-export default addEditProductPage;
+export default AddEditProductPage;
 
 //JSX
 

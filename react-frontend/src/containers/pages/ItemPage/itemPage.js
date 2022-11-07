@@ -1,5 +1,4 @@
-import * as React from "react";
-
+import { useState, useEffect } from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
@@ -22,19 +21,19 @@ import ItemDescription from "./threeTabs/itemDescription/itemDescription.js";
 import ProductImagesSwiper from "../../components/imageSwipeBox";
 import { useParams } from "react-router-dom";
 
-const ItemPage = ({ props }) => {
+const ItemPage = ({ handleAddToCart }) => {
   const theme = useTheme();
-
-  const [productData, setProductData] = React.useState({ images: Array(0) });
-  const [value, setValue] = React.useState("0");
+  const [productData, setProductData] = useState({ images: Array(0) });
+  const [value] = useState("0");
+  const [addQty, setAddQty] = useState(1);
   const params = useParams();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event) => {
+    setAddQty(event.target.value);
   };
 
   // Hook to get product data
-  React.useEffect(() => {
+  useEffect(() => {
     getProductData(params.productId).then((productData) =>
       setProductData(productData)
     );
@@ -70,6 +69,7 @@ const ItemPage = ({ props }) => {
                 defaultValue={1}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
+                onChange={handleChange}
               >
                 {/*  ES6 syntax for loop in React JSX  */}
                 {[...Array(9)].map((x, i) => (
@@ -79,9 +79,12 @@ const ItemPage = ({ props }) => {
                   </MenuItem>
                 ))}
               </Select>
-
               {/* AddtoCart Button */}
-              <Button variant="contained" sx={{ size: "small" }}>
+              <Button
+                variant="contained"
+                sx={{ size: "small" }}
+                onClick={() => handleAddToCart(productData, addQty)}
+              >
                 Add to Cart
               </Button>
             </div>

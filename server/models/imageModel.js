@@ -15,6 +15,9 @@ const getFirstImageByProductID = async (productId) => {
       productId
     )} LIMIT 1;`
   );
+  if (image[0] == null) {
+    return null;
+  }
   return image[0].ImageURL;
 };
 

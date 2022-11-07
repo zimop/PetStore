@@ -1,0 +1,9 @@
+.loginContainer {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  text-align: center;
+}
+
+.loginForm {
+  width: min(80%, 400px);
+}

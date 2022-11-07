@@ -7,38 +7,56 @@ import {
   CardMedia,
 } from "@mui/material";
 import Button from "@mui/material/Button";
+// import { Link } from "react-router-dom";
 
 import "./ItemCard.css";
+// import CheckoutPage from "../pages/shoppingCart/ShoppingCart";
 
-const ItemCard = (props) => {
+const ItemCard = ({ itemData, handleAddToCart, height }) => {
   return (
     <Card>
-      <CardActionArea href={`/product/${props.itemData.ProductId}`}>
+      <CardActionArea href={`/product/${itemData.ProductId}`}>
         <CardMedia
           component="img"
-          height={props.height}
-          image={props.itemData.ProductImage}
-          alt={props.itemData.ProductName}
+          height={height}
+          image={itemData.ProductImage}
+          alt={itemData.ProductName}
           sx={{ objectFit: "contain" }}
           className="productImage"
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            {props.itemData.ProductName}
+            {itemData.ProductName}
           </Typography>
-          <Typography variant="h5">
-            ${props.itemData.Price.toFixed(2)}
-          </Typography>
+          <Typography variant="h5">${itemData.Price.toFixed(2)}</Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <div className="buttonContainer">
-          <Button className="fullWidthButton" variant="outlined" size="large">
+          <Button
+            className="fullWidthButton"
+            variant="outlined"
+            size="large"
+            onClick={() => handleAddToCart(itemData, 1)}
+          >
             Add to Cart
           </Button>
-          <Button className="fullWidthButton" variant="contained" size="large">
-            Buy Now
-          </Button>
+
+          <a href="/checkout" style={{ textDecoration: "none" }}>
+            {/* Using Link will lead to test failure */}
+            {/* <Link
+            to="/checkout"
+            style={{ color: "inherit", textDecoration: "none" }}
+          > */}
+            <Button
+              className="fullWidthButton"
+              variant="contained"
+              size="large"
+              onClick={() => handleAddToCart(itemData)}
+            >
+              Buy Now
+            </Button>
+          </a>
         </div>
       </CardActions>
     </Card>

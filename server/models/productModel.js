@@ -13,7 +13,20 @@ const getProductById = async (id) => {
   )[0];
 };
 
+const addProduct = async (productName, description, productType, price) => {
+  let result = await mysqlHandle.query(`INSERT INTO 
+    Product (ProductName, Description, ProductType, Price) 
+    VALUES (
+      ${mysql.escape(productName)}, 
+      ${mysql.escape(description)}, 
+      ${mysql.escape(productType)}, 
+      ${mysql.escape(price)}
+    );`);
+  return result.insertId;
+};
+
 module.exports = {
   getProductList,
   getProductById,
+  addProduct,
 };
