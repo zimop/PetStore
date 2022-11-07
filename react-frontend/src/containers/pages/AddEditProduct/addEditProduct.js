@@ -5,109 +5,126 @@ import {
   CardContent,
   FormControl,
   TextField,
-  FormHelperText,
+  Button,
   CardActionArea,
-  Avatar,
   Link,
 } from "@mui/material";
 
 import "./addEditProduct.css";
 import useTheme from "../../../muiTheme";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-import { useTheme } from "@emotion/react";
 class AddEditProductPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      console.log(data);
+    };
     return (
       <div className="add-edit-product-page">
         <Typography variant="h3">Add Product</Typography>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <FormControl className="add-product-form">
-              <div className="inline-flexbox">
-                <div>
-                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                    Product name
-                  </Typography>
-                  <TextField
-                    className="inline-flexbox-item"
-                    id="product-name"
-                    label="Product Name"
-                    margin="normal"
-                    required
-                  />
-                </div>
+            <form onSubmit={handleSubmit}>
+              <FormControl className="add-product-form">
+                <div className="inline-flexbox">
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Product name
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="product-name"
+                      id="product-name"
+                      label="Product Name"
+                      margin="normal"
+                      required
+                    />
+                  </div>
 
-                <div>
-                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                    Product price
-                  </Typography>
-                  <TextField
-                    className="inline-flexbox-item"
-                    id="product-price"
-                    label="Price"
-                    margin="normal"
-                    required
-                  />
-                </div>
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Product price
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="product-price"
+                      id="product-price"
+                      label="Price"
+                      margin="normal"
+                      type="number"
+                      required
+                    />
+                  </div>
 
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Product Category
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="product-category"
+                      id="product-category"
+                      label="Category"
+                      margin="normal"
+                      required
+                    />
+                  </div>
+                </div>
                 <div>
                   <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                    Product Category
+                    Product Description
                   </Typography>
                   <TextField
-                    className="inline-flexbox-item"
-                    id="product-category"
-                    label="Category"
+                    id="product-description"
+                    name="product-description"
+                    label="Product Description"
                     margin="normal"
                     required
+                    fullWidth
+                    multiline
+                    rows={4}
                   />
                 </div>
-              </div>
-              <div>
-                <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                  Product Description
-                </Typography>
-                <TextField
-                  id="product-description"
-                  label="Product Description"
-                  margin="normal"
-                  required
+                {/* Make a upload card to upload images */}
+                <Card>
+                  <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                    Upload Images
+                  </Typography>
+
+                  <CardActionArea>
+                    <AddPhotoAlternateIcon sx />
+
+                    <CardContent>
+                      <Link>
+                        <Typography variant="h5" component="div">
+                          Click to upload
+                        </Typography>
+                      </Link>
+                      <Typography variant="h5" component="div">
+                        or drag and drop
+                      </Typography>
+                      <Typography variant="h5" component="div">
+                        SVG, PNG, JPG or GIF (max. 3MB)
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+                <Button
+                  type="submit"
                   fullWidth
-                  multiline
-                  rows={4}
-                />
-              </div>
-            </FormControl>
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Save
+                </Button>
+              </FormControl>
+            </form>
           </CardContent>
-        </Card>
-
-        {/* Make a upload card to upload images */}
-        <Card>
-          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-            Upload Images
-          </Typography>
-
-          <CardActionArea>
-            <AddPhotoAlternateIcon sx />
-
-            <CardContent>
-              <Link>
-                <Typography variant="h5" component="div">
-                  Click to upload
-                </Typography>
-              </Link>
-              <Typography variant="h5" component="div">
-                or drag and drop
-              </Typography>
-              <Typography variant="h5" component="div">
-                SVG, PNG, JPG or GIF (max. 3MB)
-              </Typography>
-            </CardContent>
-          </CardActionArea>
         </Card>
       </div>
     );
