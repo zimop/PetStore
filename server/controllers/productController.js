@@ -2,7 +2,7 @@ productModel = require("../models/productModel.js");
 imageModel = require("../models/imageModel.js");
 
 const getProductsImages = async (data) => {
-  return await Promise.all(
+  await Promise.all(
     data.map(async (row) => {
       row.ProductImage = await imageModel.getFirstImageByProductID(
         row.ProductId
@@ -14,17 +14,17 @@ const getProductsImages = async (data) => {
 
 const getAllProducts = async (req, res) => {
   let data = await productModel.getProductList();
-  data = getProductsImages(data);
+  await getProductsImages(data);
   res.json(data);
 };
 
 const getCatProducts = async (req, res) => {
   try {
-    let data = await productModel.getCatProducts();
+    let data = await productModel.getProductByType("cat");
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
     }
-    data = getProductsImages(data);
+    await getProductsImages(data);
     return res.status(200).json(data);
   } catch (error) {
     console.log(error);
@@ -34,11 +34,11 @@ const getCatProducts = async (req, res) => {
 
 const getDogProducts = async (req, res) => {
   try {
-    let data = await productModel.getDogProducts();
+    let data = await productModel.getProductByType("dog");
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
     }
-    data = getProductsImages(data);
+    await getProductsImages(data);
     return res.status(200).json(data);
   } catch (error) {
     console.log(error);
@@ -48,11 +48,11 @@ const getDogProducts = async (req, res) => {
 
 const getMouseProducts = async (req, res) => {
   try {
-    let data = await productModel.getMouseProducts();
+    let data = await productModel.getProductByType("mouse");
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
     }
-    data = getProductsImages(data);
+    await getProductsImages(data);
     return res.status(200).json(data);
   } catch (error) {
     console.log(error);
@@ -62,11 +62,11 @@ const getMouseProducts = async (req, res) => {
 
 const getRabbitProducts = async (req, res) => {
   try {
-    let data = await productModel.getRabbitProducts();
+    let data = await productModel.getProductByType("rabbit");
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
     }
-    data = getProductsImages(data);
+    await getProductsImages(data);
     return res.status(200).json(data);
   } catch (error) {
     console.log(error);
@@ -76,11 +76,11 @@ const getRabbitProducts = async (req, res) => {
 
 const getBirdProducts = async (req, res) => {
   try {
-    let data = await productModel.getBirdProducts();
+    let data = await productModel.getProductByType("bird");
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
     }
-    data = getProductsImages(data);
+    await getProductsImages(data);
     return res.status(200).json(data);
   } catch (error) {
     console.log(error);
@@ -90,11 +90,11 @@ const getBirdProducts = async (req, res) => {
 
 const getFishProducts = async (req, res) => {
   try {
-    let data = await productModel.getFishProducts();
+    let data = await productModel.getProductByType("fish");
     if (!data) {
       return res.status(404).json({ error: "Product not found" });
     }
-    data = getProductsImages(data);
+    await getProductsImages(data);
     return res.status(200).json(data);
   } catch (error) {
     console.log(error);
@@ -120,11 +120,11 @@ const getProductById = async (req, res) => {
 
 module.exports = {
   getAllProducts,
-  getCatsProducts,
-  getDogsProducts,
+  getCatProducts,
+  getDogProducts,
   getMouseProducts,
-  getRabbitsProducts,
-  getBirdsProducts,
+  getRabbitProducts,
+  getBirdProducts,
   getFishProducts,
   getProductById,
 };
