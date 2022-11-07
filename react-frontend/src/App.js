@@ -9,7 +9,7 @@ import HomePage from "./containers/pages/homePage/homePage";
 import LoginPage from "./containers/pages/Login/loginPage";
 import SignUpPage from "./containers/pages/Login/signUpPage";
 import ProfilePage from "./containers/pages/Profile/profilePage";
-import ShoppingCartPage from "./containers/pages/shoppingCart/ShoppingCart";
+import ShoppingCart from "./containers/pages/shoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
@@ -30,7 +30,7 @@ function App() {
     }, 1500);
   }, []);
 
-  const handleAddToCart = (clickedItem) => {
+  const handleAddToCart = (clickedItem, addQty) => {
     setCartItems((prev) => {
       const isItemInCart = cartItems.find(
         (item) => item.ProductId === clickedItem.ProductId
@@ -38,11 +38,11 @@ function App() {
       if (isItemInCart) {
         return prev.map((item) =>
           item.ProductId === clickedItem.ProductId
-            ? { ...item, qty: item.qty + 1 }
+            ? { ...item, qty: item.qty + addQty }
             : { ...item }
         );
       }
-      return [...prev, { ...clickedItem, qty: 1 }];
+      return [...prev, { ...clickedItem, qty: addQty }];
     });
   };
 
@@ -78,9 +78,18 @@ function App() {
             />
             <Route path="/product/:productId" element={<ItemPage />} />
             <Route
-              path="/checkout"
+              path="/product/:productId"
               element={
-                <ShoppingCartPage
+                <ItemPage
+                  handleAddToCart={handleAddToCart}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              }
+            />
+            <Route
+              path="/shopping-cart"
+              element={
+                <ShoppingCart
                   cartItems={cartItems}
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}

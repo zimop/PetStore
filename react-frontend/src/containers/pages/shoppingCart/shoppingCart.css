@@ -19,9 +19,6 @@
   height: 100%;
 
   margin-top: 3%;
-
-  /* testing */
-  /* background-color: red; */
 }
 
 .moveBox {
@@ -39,15 +36,15 @@
 
 .all-items {
   display: flex;
-  /*align-items: center;*/
   flex-direction: row;
   justify-content: space-around;
-
-  /* margin-right: 10%;
-  margin-left: 10%; */
-  /* margin: 3%; */
 }
 
 .button {
   margin-top: 5%;
+}
+
+.collection-methods-wrapper {
+  margin-top: 10vmin;
+  margin-bottom: 10vmin;
 }
