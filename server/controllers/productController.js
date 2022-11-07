@@ -32,11 +32,75 @@ const getCatProducts = async (req, res) => {
   }
 };
 
-const getDogProducts = async (req, res) => {};
-const getMouseProducts = async (req, res) => {};
-const getRabbitProducts = async (req, res) => {};
-const getBirdProducts = async (req, res) => {};
-const getFishProducts = async (req, res) => {};
+const getDogProducts = async (req, res) => {
+  try {
+    let data = await productModel.getDogProducts();
+    if (!data) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    data = getProductsImages(data);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getMouseProducts = async (req, res) => {
+  try {
+    let data = await productModel.getMouseProducts();
+    if (!data) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    data = getProductsImages(data);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getRabbitProducts = async (req, res) => {
+  try {
+    let data = await productModel.getRabbitProducts();
+    if (!data) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    data = getProductsImages(data);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getBirdProducts = async (req, res) => {
+  try {
+    let data = await productModel.getBirdProducts();
+    if (!data) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    data = getProductsImages(data);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const getFishProducts = async (req, res) => {
+  try {
+    let data = await productModel.getFishProducts();
+    if (!data) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    data = getProductsImages(data);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 const getProductById = async (req, res) => {
   try {
