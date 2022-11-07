@@ -18,6 +18,7 @@ import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
+import Alert from "@mui/material/Alert";
 
 import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
@@ -82,6 +83,11 @@ const ItemPage = ({ handleAddToCart }) => {
             </Typography>
           </Breadcrumbs>
         </div>
+
+        <Alert severity="success">Item added to cart successfully!</Alert>
+        <Alert severity="error">
+          Item out of stock, please try again later!
+        </Alert>
 
         {/* ItemPage header*/}
         <div className="itemPage-header">
