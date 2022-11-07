@@ -1,23 +1,44 @@
+import "./managerBrowse.css";
 import * as React from "react";
 
-import useTheme from "../../../muiTheme";
-import { ThemeProvider } from "@emotion/react";
-
 import ProductRow from "../../components/productRow";
+import Typography from "@mui/material/Typography";
 
-const ManagerBrowse = ({ props }) => {
-  const theme = useTheme();
+class ManagerBrowse extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productData: Array(0),
+    };
+  }
 
-  return (
-    <ThemeProvider theme={theme}>
-      {/* Background */}
-      <ProductRow
-        productName="Supercoat Chicken Large Breed Adult Dog Food 18kg"
-        stock="6"
-      ></ProductRow>
-      <ProductRow></ProductRow>
-    </ThemeProvider>
-  );
+  componentDidMount() {
+    getProductData().then((productData) =>
+      this.setState({ productData: productData })
+    );
+    console.log(this.state.productData);
+  }
+
+  render() {
+    let productData = this.state.productData;
+    let items = productData.map((itemData) => {
+      return (
+        <ProductRow productName={itemData.ProductName} stock="0"></ProductRow>
+      );
+    });
+    return (
+      <div>
+        <div className="title">Edit/Delete Products</div>
+        <div>{items}</div>
+      </div>
+    );
+  }
+}
+
+const getProductData = async () => {
+  let response = await fetch("/api/get-all-products");
+  let data = await response.json();
+  return data;
 };
 
 export default ManagerBrowse;
