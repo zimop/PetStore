@@ -28,7 +28,7 @@ const LoginPage = (props) => {
     if (response.status !== 200) {
       setError(body.error);
     } else {
-      props.setToken(body.accessToken, useLocal);
+      props.setToken(body, useLocal);
       window.location.reload(false);
     }
   };

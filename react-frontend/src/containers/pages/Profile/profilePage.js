@@ -7,7 +7,7 @@ const ProfilePage = (props) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    getUserData(props.token).then((userData) => {
+    getUserData(props.token.accessToken).then((userData) => {
       setUserData(userData);
     });
   }, [props.token]);
@@ -36,7 +36,7 @@ const getUserData = async (token) => {
       "x-access-token": `${token}`,
     },
   });
-  if (response.status == 401) {
+  if (response.status === 401) {
     // Token invalid or expired
     resetToken();
   }

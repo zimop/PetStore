@@ -27,7 +27,7 @@ const SignUpPage = (props) => {
     if (response.status !== 200) {
       setError(body.error);
     } else {
-      props.setToken(body.accessToken, false);
+      props.setToken(body, false);
       window.location.reload(false);
     }
   };

@@ -39,7 +39,8 @@ const signup = async (req, res) => {
 
 const getTokenResponse = (userId) => {
   let token = jwt.sign({ id: userId }, secrets.secretKey, { expiresIn: 300 });
-  return { id: userId, accessToken: token };
+  let isManager = userModel.getIsManager(userId);
+  return { id: userId, isManager: isManager, accessToken: token };
 };
 
 module.exports = {
