@@ -27,6 +27,7 @@ class Catalogue extends React.Component {
   }
 
   theme = useTheme();
+  catalogueType = this.props.params.api;
 
   componentDidMount() {
     getCatalogueData(this.props.params.api).then((catalogueData) =>
@@ -72,6 +73,8 @@ class Catalogue extends React.Component {
   render() {
     let catalogueData = this.state.catalogueData;
     let catalogueItems = catalogueData
+
+      // Filter items by search term
       .filter((val) => {
         if (this.state.searchTerm === "") {
           return val;
@@ -85,6 +88,8 @@ class Catalogue extends React.Component {
         // No need for this 'return null', just to get rid of the warning
         return null;
       })
+
+      // Map items to ItemCard components
       .map((itemData) => {
         return (
           <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
@@ -121,14 +126,25 @@ class Catalogue extends React.Component {
               color="text.primary"
             >
               <ListIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-              Catalogue
+              {this.catalogueType[4].toUpperCase() +
+                this.catalogueType.slice(5, -9)}
+              {this.catalogueType === "get-all-products"
+                ? " Catalogues"
+                : " Catalogue"}
             </Typography>
           </Breadcrumbs>
         </div>
 
         <div className="catalogue-header">
           {/* Header */}
-          <Typography variant="h2">Catalogue</Typography>
+          <Typography variant="h2">
+            {" "}
+            {this.catalogueType[4].toUpperCase() +
+              this.catalogueType.slice(5, -9)}
+            {this.catalogueType === "get-all-products"
+              ? " Catalogues"
+              : " Catalogue"}
+          </Typography>
 
           <div className="search-sort-wrapper">
             {/* Searching Bar */}
