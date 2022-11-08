@@ -13,7 +13,6 @@ const createOrder = async (data) => {
       ${mysql.escape(data.addressLine1)},
       ${mysql.escape(data.addressLine2)},
       ${mysql.escape(data.suburb)},
-      ${mysql.escape(data.suburb)},
       ${mysql.escape(data.state)},
       ${mysql.escape(data.postcode)}
     );`;
@@ -27,7 +26,7 @@ const addProductToOrder = async (orderId, productId, quantity) => {
     VALUES(
       ${mysql.escape(orderId)},
       ${mysql.escape(productId)},
-      ${mysql.escape(quantity)},
+      ${mysql.escape(quantity)}
     );`;
   await mysqlHandle.query(query);
 };
