@@ -18,6 +18,10 @@ const OrderPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    if (props.cartItems.length === 0) {
+      setError("Error: Cart cannot be empty");
+      return;
+    }
     let cartItemsJson = JSON.stringify(props.cartItems);
     data.append("cartItems", cartItemsJson);
     data.append("pickup", props.pickup);
@@ -29,6 +33,8 @@ const OrderPage = (props) => {
     if (response.status !== 200) {
       setError(body.error);
     } else {
+      setError(null);
+      props.clearCart();
       console.log(body.orderId);
     }
   };

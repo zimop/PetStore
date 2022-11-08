@@ -22,6 +22,14 @@ const createOrder = async (req, res) => {
 
 const validateData = (data) => {
   // TODO: data validation logic here (e.g. check address)
+  try {
+    let cartItems = JSON.parse(data.cartItems);
+    if (cartItems.length === 0) {
+      return false;
+    }
+  } catch {
+    return false;
+  }
   return true;
 };
 

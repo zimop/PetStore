@@ -11,7 +11,7 @@ import { Typography } from "@mui/material";
 
 import CollectionMethodsTabs from "./CollectionMethodsTabs";
 
-const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
+const ShoppingCart = ({ cartItems, addToCart, removeFromCart, clearCart }) => {
   const [pickup, setPickup] = useState(false);
   const [placingOrder, setPlacingOrder] = useState(false);
 
@@ -41,6 +41,7 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
         goBack={handleGoBack}
         cartItems={cartItemKeyInfo}
         pickup={pickup}
+        clearCart={clearCart}
       />
     );
   } else {
@@ -89,6 +90,17 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
               onClick={handleCheckout}
             >
               Checkout
+            </Button>
+          </div>
+
+          <div classname="button" style={{ marginTop: "10px" }}>
+            <Button
+              variant="outlined"
+              size="large"
+              sx={{ width: 500, height: 50 }}
+              onClick={clearCart}
+            >
+              Clear Cart
             </Button>
           </div>
         </div>
