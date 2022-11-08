@@ -12,6 +12,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import "./cartItem.css";
 
 const CartItem = ({ item, addToCart, removeFromCart }) => {
+  let image = item.images[0] ? item.images[0].ImageURL : null;
   return (
     <Grid item xs={3}>
       <Card variant="undefined">
@@ -19,7 +20,7 @@ const CartItem = ({ item, addToCart, removeFromCart }) => {
           <CardMedia
             component="img"
             height={300}
-            image={item.ProductImage}
+            image={image}
             alt="Food"
             sx={{ objectFit: "contain", width: 450 }}
             className="productImage"

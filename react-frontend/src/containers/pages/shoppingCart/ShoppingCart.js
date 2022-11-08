@@ -13,7 +13,7 @@ import CollectionMethodsTabs from "./CollectionMethodsTabs";
 
 const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
   const [pickup, setPickup] = useState(false);
-  const [placingOrder, setPlacingOrder] = useState(true);
+  const [placingOrder, setPlacingOrder] = useState(false);
 
   const handlePickup = (pickup) => {
     setPickup(pickup);
