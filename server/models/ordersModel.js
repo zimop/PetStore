@@ -2,11 +2,12 @@ mysqlHandle = require("../mysqlHandle.js");
 mysql = require("mysql");
 
 const createOrder = async (data) => {
+  let mysqlTimestamp = new Date().toISOString().slice(0, 19).replace("T", " ");
   let query = `INSERT INTO Orders
     (UserID, OrderTime, RecipientName, IsPickup, IsFulfilled, AddressLine1, AddressLine2, Suburb, State, Postcode)
     VALUES(
       ${mysql.escape(data.userId)},
-      ${mysql.escape(Date.now())},
+      ${mysql.escape(mysqlTimestamp)},
       ${mysql.escape(data.recipientName)},
       ${mysql.escape(data.pickup)},
       ${false},
