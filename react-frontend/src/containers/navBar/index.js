@@ -13,6 +13,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 import Drawer from "@mui/material/Drawer";
@@ -26,7 +27,11 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 import useTheme from "../../muiTheme/index";
 
-export default function PrimarySearchAppBar({ cartItems }) {
+import resetToken from "../../resetToken";
+
+//let Anchor = 'top' | 'left' | 'bottom' | 'right';
+
+export default function PrimarySearchAppBar({ hasToken, cartItems }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -63,6 +68,17 @@ export default function PrimarySearchAppBar({ cartItems }) {
   const handleCartCheckoutClose = () => {
     setCartStatus(null);
   };
+
+  const openProfile = () => {
+    window.location = "/profile";
+  };
+
+  const logOut = () => {
+    resetToken();
+    handleMenuClose();
+    window.location.reload(false);
+  };
+
   //dmnkenkdwnownowmnomwoowm
   const [state, setState] = React.useState();
 
@@ -156,8 +172,8 @@ export default function PrimarySearchAppBar({ cartItems }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={openProfile}>Profile</MenuItem>
+      <MenuItem onClick={logOut}>Log out</MenuItem>
     </Menu>
   );
 
@@ -257,18 +273,28 @@ export default function PrimarySearchAppBar({ cartItems }) {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {hasToken && (
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            )}
+            {!hasToken && (
+              <Button
+                variant="string"
+                size="medium"
+                onClick={() => (window.location = "/login")}
+              >
+                Login
+              </Button>
+            )}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
