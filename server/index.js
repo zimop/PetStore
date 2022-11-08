@@ -9,9 +9,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const productRouter = require("./routers/productRouter");
+const ordersRouter = require("./routers/ordersRouter");
 
 const apiRouter = express.Router();
 apiRouter.use(productRouter);
+apiRouter.use(ordersRouter);
 
 app.use("/api", apiRouter);
 

@@ -19,8 +19,30 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
     setPickup(pickup);
   };
 
+  const handleGoBack = () => {
+    setPlacingOrder(false);
+  };
+
+  const handleCheckout = () => {
+    setPlacingOrder(true);
+  };
+
+  let cartItemKeyInfo = [];
+  cartItems.map((item) => {
+    cartItemKeyInfo.push({
+      id: item.ProductId,
+      qty: item.qty,
+    });
+  });
+
   if (placingOrder) {
-    return <OrderPage />;
+    return (
+      <OrderPage
+        goBack={handleGoBack}
+        cartItems={cartItemKeyInfo}
+        pickup={pickup}
+      />
+    );
   } else {
     return (
       <div className="all-items">
@@ -64,6 +86,7 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart }) => {
               variant="contained"
               size="large"
               sx={{ width: 500, height: 50 }}
+              onClick={handleCheckout}
             >
               Checkout
             </Button>

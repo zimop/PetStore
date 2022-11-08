@@ -18,7 +18,19 @@ const OrderPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data);
+    let cartItemsJson = JSON.stringify(props.cartItems);
+    data.append("cartItems", cartItemsJson);
+    data.append("pickup", props.pickup);
+    let response = await fetch("/api/createOrder", {
+      method: "POST",
+      body: data,
+    });
+    let body = await response.json();
+    if (response.status !== 200) {
+      setError(body.error);
+    } else {
+      console.log(body.orderId);
+    }
   };
   if (props.token) {
     return <Navigate to="/profile" />;
@@ -33,7 +45,8 @@ const OrderPage = (props) => {
         fullWidth
         variant="outlined"
         sx={{ mt: 3, mb: 2 }}
-        className="orderForm"
+        onClick={props.goBack}
+        style={{ width: "min(80%, 1000px)" }}
       >
         Return to Shopping Cart
       </Button>
