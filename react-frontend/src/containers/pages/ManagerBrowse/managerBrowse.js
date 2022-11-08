@@ -2,7 +2,6 @@ import "./managerBrowse.css";
 import * as React from "react";
 
 import ProductRow from "../../components/productRow";
-import Typography from "@mui/material/Typography";
 
 class ManagerBrowse extends React.Component {
   constructor(props) {

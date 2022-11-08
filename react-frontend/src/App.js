@@ -131,7 +131,7 @@ function App() {
                 }
               />
               <Route path="/addProduct" element={<AddEditProductPage />} />
-              <Route path="/manager/browse" element={<ManagerBrowse />} />
+              <Route path="/editProduct" element={<ManagerBrowse />} />
             </Routes>
           )}
         </div>

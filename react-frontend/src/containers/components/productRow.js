@@ -5,9 +5,26 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
 const ProductRow = (props) => {
+  const handleDelete = async (event) => {
+    event.preventDefault();
+    const id = props.ProductId;
+    console.log(id);
+    let response = await fetch("/api/delete-product", {
+      method: "POST",
+      body: id,
+    });
+    let body = await response.json();
+    if (response.status !== 200) {
+      this.state.error = body.error;
+    } else {
+      // Product is successfully deleted
+      console.log("Successfully deleted product");
+    }
+  };
+
   return (
     <div className="productRow">
-      <Grid container spacing={0}>
+      <Grid key={`productId-${props.ProductId}`} container spacing={0}>
         <Grid item xs={8}>
           <div className="productText">{props.productName}</div>
         </Grid>
@@ -27,6 +44,7 @@ const ProductRow = (props) => {
               variant="contained"
               startIcon={<DeleteIcon />}
               style={{ minHeight: "40px", maxWidth: "100px" }}
+              onClick={() => handleDelete()}
             >
               Delete
             </Button>

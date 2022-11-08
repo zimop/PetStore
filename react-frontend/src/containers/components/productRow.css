@@ -9,6 +9,7 @@
 .productText {
   line-height: 40px;
   margin-left: 2%;
+  text-align: left;
 }
 
 .stockText {
