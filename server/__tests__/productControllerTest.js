@@ -17,12 +17,12 @@ describe("Unit testing - product controller", () => {
     productModel.getProductList = jest.fn().mockReturnValue([
       {
         ProductId: 1,
-        ProductName: "Test Product",
+        ProductName: "Dog Food",
         Price: 5.99,
       },
       {
         ProductId: 2,
-        ProductName: "Test Product 2",
+        ProductName: "Dog Bed 2",
         Price: 19.99,
       },
       {
@@ -63,13 +63,13 @@ describe("Unit testing - product controller", () => {
     let expectedResults = [
       {
         ProductId: 1,
-        ProductName: "Test Product",
+        ProductName: "Dog Food",
         Price: 5.99,
         ProductImage: "https://picsum.photos/200/200",
       },
       {
         ProductId: 2,
-        ProductName: "Test Product 2",
+        ProductName: "Dog Bed 2",
         Price: 19.99,
         ProductImage: "https://picsum.photos/200/200",
       },
@@ -125,7 +125,7 @@ describe("Integration testing - product controller", () => {
   test("Get All Products", () => {
     let expected = {
       ProductId: 1,
-      ProductName: "Test Product",
+      ProductName: "Dog Food",
       Price: 7.99,
       ProductImage:
         "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=640",
@@ -143,7 +143,7 @@ describe("Integration testing - product controller", () => {
   test("Get Product 1", () => {
     let expected = {
       ProductId: 1,
-      ProductName: "Test Product",
+      ProductName: "Dog Food",
       Price: 7.99,
       images: [
         {
