@@ -19,14 +19,21 @@ const getProductById = async (id) => {
   )[0];
 };
 
-const addProduct = async (productName, description, productType, price) => {
+const addProduct = async (
+  productName,
+  description,
+  productType,
+  price,
+  stock
+) => {
   let result = await mysqlHandle.query(`INSERT INTO 
-    Product (ProductName, Description, ProductType, Price) 
+    Product (ProductName, Description, ProductType, Price, Stock) 
     VALUES (
       ${mysql.escape(productName)}, 
       ${mysql.escape(description)}, 
       ${mysql.escape(productType)}, 
-      ${mysql.escape(price)}
+      ${mysql.escape(price)},
+      ${mysql.escape(stock)}
     );`);
   return result.insertId;
 };
