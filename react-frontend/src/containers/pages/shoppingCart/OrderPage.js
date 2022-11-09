@@ -1,20 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import Receipt from "./Receipt";
 import {
   Typography,
   FormControl,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Button,
-  Link,
 } from "@mui/material";
 
 import "./orderPage.css";
 
 const OrderPage = (props) => {
   const [error, setError] = useState(null);
+  const [finish, setFinish] = useState(false);
+  const [cart , setCartItems] = useState([]);
+  const [pickup, setPickup] = useState(0);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -34,16 +34,24 @@ const OrderPage = (props) => {
       setError(body.error);
     } else {
       setError(null);
+      setFinish(true);
+      setCartItems(props.cartItems);
+      setPickup(props.pickup);
       props.clearCart();
       console.log(body.orderId);
     }
+    
   };
-  if (props.token) {
-    return <Navigate to="/profile" />;
+  if (finish) {
+    
+    return <Receipt 
+            cartItems = {cart}
+            pickup = {pickup}/>
   }
   return (
     // Adapted from https://github.com/mui/material-ui/blob/v5.10.8/docs/data/material/getting-started/templates/sign-in/SignIn.js
     // Licenced under MIT licence
+    
     <div className="ordersContainer">
       <Typography variant="h5">Place an Order</Typography>
       <Button

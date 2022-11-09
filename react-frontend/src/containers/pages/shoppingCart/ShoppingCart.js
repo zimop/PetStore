@@ -32,6 +32,7 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart, clearCart }) => {
     cartItemKeyInfo.push({
       id: item.ProductId,
       qty: item.qty,
+      item: item
     });
   });
 
@@ -93,7 +94,7 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart, clearCart }) => {
             </Button>
           </div>
 
-          <div classname="button" style={{ marginTop: "10px" }}>
+          <div className="button" style={{ marginTop: "10px" }}>
             <Button
               variant="outlined"
               size="large"

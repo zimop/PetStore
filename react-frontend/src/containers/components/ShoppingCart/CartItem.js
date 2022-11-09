@@ -12,7 +12,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import "./cartItem.css";
 
 const CartItem = ({ item, addToCart, removeFromCart }) => {
-  let image = item.images[0] ? item.images[0].ImageURL : null;
+  let images = item?.images?.[0]?.ImageURL;
   return (
     <Grid item xs={3}>
       <Card variant="undefined">
@@ -20,7 +20,7 @@ const CartItem = ({ item, addToCart, removeFromCart }) => {
           <CardMedia
             component="img"
             height={300}
-            image={image}
+            image={images}
             alt="Food"
             sx={{ objectFit: "contain", width: 450 }}
             className="productImage"
@@ -35,7 +35,7 @@ const CartItem = ({ item, addToCart, removeFromCart }) => {
           <div className="productDetails-middle">
             <div>
               <Typography variant="h5" sx={{ ml: 5 }}>
-                ${item.Price.toFixed(2)}
+                ${item.Price?.toFixed(2)}
               </Typography>
             </div>
             <div className="toggleQuantity">
