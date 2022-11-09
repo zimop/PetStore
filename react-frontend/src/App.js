@@ -82,12 +82,7 @@ function App() {
             />
             <Route
               path="/product/:productId"
-              element={
-                <ItemPage
-                  handleAddToCart={handleAddToCart}
-                  handleRemoveFromCart={handleRemoveFromCart}
-                />
-              }
+              element={<ItemPage handleAddToCart={handleAddToCart} />}
             />
             <Route
               path="/shopping-cart"
