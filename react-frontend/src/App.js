@@ -131,6 +131,10 @@ function App() {
                 }
               />
               <Route path="/addProduct" element={<AddEditProductPage />} />
+              <Route
+                path="/editProduct/:productId"
+                element={<AddEditProductPage />}
+              />
               <Route path="/managerBrowseProduct" element={<ManagerBrowse />} />
             </Routes>
           )}
