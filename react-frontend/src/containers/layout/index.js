@@ -18,7 +18,10 @@ const AppLayout = (props) => {
     <Fragment>
       <ThemeProvider theme={theme}>
         {/* nav bar */}
-        <PrimarySearchAppBar cartItems={props.cartItems} />
+        <PrimarySearchAppBar
+          cartItems={props.cartItems}
+          hasToken={props.hasToken}
+        />
 
         {/* body content of the page */}
         <div className="content">

@@ -13,4 +13,6 @@ router.get("/get-fish-products", productController.getFishProducts);
 
 router.get("/get-product/:id", productController.getProductById);
 
+router.post("/add-product", productController.addProduct);
+
 module.exports = router;
