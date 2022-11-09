@@ -46,7 +46,7 @@ const Receipt = (props) => {
               variant="outlined"
               size="large"
               sx={{ width: 620, height: 50 }}
-              href = {"\home"}
+              href = {"/home"}
               > 
             Back to home
         </Button>

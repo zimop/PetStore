@@ -10,7 +10,6 @@ import LoginPage from "./containers/pages/Login/loginPage";
 import SignUpPage from "./containers/pages/Login/signUpPage";
 import ProfilePage from "./containers/pages/Profile/profilePage";
 import ShoppingCart from "./containers/pages/shoppingCart/ShoppingCart";
-import Receipt from "./containers/pages/shoppingCart/Receipt";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
