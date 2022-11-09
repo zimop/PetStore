@@ -1,0 +1,9 @@
+.ordersContainer {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  text-align: center;
+}
+
+.orderForm {
+  width: min(80%, 1000px);
+}
