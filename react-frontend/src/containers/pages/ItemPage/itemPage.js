@@ -32,11 +32,26 @@ const ItemPage = ({ handleAddToCart }) => {
   const [productData, setProductData] = useState({ images: Array(0) });
   const [value, setValue] = useState("0");
   const [addQty, setAddQty] = useState(1);
+  const [accumulatedQty, setAccumulatedQty] = useState(0);
+  const [inStock, setInStock] = useState("init");
   const params = useParams();
 
   const handleChange = (event, newValue) => {
-    setAddQty(event.target.value);
     setValue(newValue);
+  };
+
+  const handleSelectQty = (event) => {
+    setAddQty(event.target.value);
+  };
+
+  const handleOnClickAddToCart = () => {
+    if (productData.Stock < addQty) {
+      setInStock("outStock");
+    } else {
+      handleAddToCart(productData, addQty);
+      setInStock("added");
+      setAccumulatedQty(accumulatedQty + addQty);
+    }
   };
 
   // Hook to get product data
@@ -84,10 +99,16 @@ const ItemPage = ({ handleAddToCart }) => {
           </Breadcrumbs>
         </div>
 
-        <Alert severity="success">Item added to cart successfully!</Alert>
-        <Alert severity="error">
-          Item out of stock, please try again later!
-        </Alert>
+        {/* Check the stock and render  */}
+        {inStock === "outStock" ? (
+          <Alert severity="error">
+            Item out of stock, please try again later!
+          </Alert>
+        ) : inStock === "added" ? (
+          <Alert severity="success">Item added to cart successfully!</Alert>
+        ) : (
+          <></>
+        )}
 
         {/* ItemPage header*/}
         <div className="itemPage-header">
@@ -115,7 +136,7 @@ const ItemPage = ({ handleAddToCart }) => {
                 defaultValue={1}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                onChange={handleChange}
+                onChange={handleSelectQty}
               >
                 {/*  ES6 syntax for loop in React JSX  */}
                 {[...Array(9)].map((x, i) => (
@@ -129,7 +150,7 @@ const ItemPage = ({ handleAddToCart }) => {
               <Button
                 variant="contained"
                 sx={{ size: "small" }}
-                onClick={() => handleAddToCart(productData, addQty)}
+                onClick={handleOnClickAddToCart}
               >
                 Add to Cart
               </Button>

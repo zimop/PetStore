@@ -73,9 +73,8 @@ class Catalogue extends React.Component {
   render() {
     let catalogueData = this.state.catalogueData;
     let catalogueItems = catalogueData
-
-      // Filter items by search term
       .filter((val) => {
+        // Filter items by search term
         if (this.state.searchTerm === "") {
           return val;
         } else if (
@@ -88,9 +87,8 @@ class Catalogue extends React.Component {
         // No need for this 'return null', just to get rid of the warning
         return null;
       })
-
-      // Map items to ItemCard components
       .map((itemData) => {
+        // Map items to ItemCard components
         return (
           <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
             <ItemCard
