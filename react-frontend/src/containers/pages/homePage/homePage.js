@@ -11,8 +11,12 @@ import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js";
 import LandingInfoCard from "./staticPage/landingInfoCard.js";
 
-import advImages from "./advImages";
+import advImages from "./advImages/advImages";
 import tabsInfo from "./staticPage/tabsInGlance.js";
+
+import Ads5 from "./advImages/Homepage-ads5.png";
+// import Ads6 from "./advImages/Homepage-ads6.png";
+import { CardMedia } from "@mui/material";
 
 const HomePage = ({ props }) => {
   const theme = useTheme();
@@ -23,72 +27,68 @@ const HomePage = ({ props }) => {
       <div className="home-background">
         {/* catalogue-icons header */}
         <div className="catalogue-icons">
-          <Grid container spacing={6}>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
+          <Grid container spacing={7} style={{ alignContent: "center" }}>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-all-products"}>
+                <Avatar sx={{ width: 50, height: 50 }}>All</Avatar>
+              </CardActionArea>
+            </Grid>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-cat-products"}>
                 <Avatar
-                  // src="./catalogueIcons/cat_face.png"
                   src="./catalogueIcons/cat_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
             </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-dog-products"}>
                 <Avatar
                   src="./catalogueIcons/dog_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
             </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-mouse-products"}>
                 <Avatar
                   src="./catalogueIcons/mouse_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
             </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-rabbit-products"}>
                 <Avatar
                   src="./catalogueIcons/rabbit_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
             </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-bird-products"}>
                 <Avatar
                   src="./catalogueIcons/bird_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
             </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
+            <Grid item style={{ alignContent: "center" }}>
+              <CardActionArea href={"/catalogue/get-fish-products"}>
                 <Avatar
                   src="./catalogueIcons/fish_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
             </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
+            {/* <Grid item style={{ alignContent: "center" }}>
               <CardActionArea href={"/catalogue"}>
                 <Avatar
                   src="./catalogueIcons/horse_face.png"
                   sx={{ width: 50, height: 50, borderRadius: 0 }}
                 />
               </CardActionArea>
-            </Grid>
-            <Grid item xs={1.5} style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
-                <Avatar
-                  src="./catalogueIcons/dragon_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
+            </Grid> */}
           </Grid>
         </div>
 
@@ -126,8 +126,18 @@ const HomePage = ({ props }) => {
 
         {/* Big block of advs in lower page */}
 
-        <Card variant="ImgMediaCard" sx={{ my: 6 }}>
-          <img src="https://picsum.photos/id/237/1200/600" alt="Ad media"></img>
+        <Card
+          variant="ImgMediaCard"
+          sx={{ mt: 7, maxHeight: 400, maxWidth: 600 }}
+        >
+          <CardMedia
+            style={{
+              width: "auto",
+              maxHeight: "400px",
+            }}
+            component="img"
+            image={Ads5}
+          />
         </Card>
       </div>
     </ThemeProvider>
