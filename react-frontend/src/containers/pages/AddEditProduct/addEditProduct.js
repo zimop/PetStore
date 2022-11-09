@@ -88,6 +88,21 @@ class AddEditProductPage extends React.Component {
                       required
                     />
                   </div>
+
+                  <div>
+                    <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                      Stock Quantity
+                    </Typography>
+                    <TextField
+                      className="inline-flexbox-item"
+                      name="stockQuantity"
+                      id="stockQuantity"
+                      label="Stock Quantity"
+                      margin="normal"
+                      type="number"
+                      required
+                    />
+                  </div>
                 </div>
                 <div>
                   <Typography variant="h4" sx={{ fontWeight: "bold" }}>
