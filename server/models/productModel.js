@@ -43,14 +43,16 @@ const editProduct = async (
   productName,
   description,
   productType,
-  price
+  price,
+  stock
 ) => {
   await mysqlHandle.query(`UPDATE 
     Product 
     SET ProductName = ${mysql.escape(productName)},
         Description = ${mysql.escape(description)},
         ProductType = ${mysql.escape(productType)},
-        Price = ${mysql.escape(price)}
+        Price = ${mysql.escape(price)},
+        Stock = ${mysql.escape(stock)}
     WHERE ProductID=${mysql.escape(productId)}`);
   return productId;
 };

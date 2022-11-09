@@ -148,6 +148,7 @@ class AddEditProductPage extends React.Component {
                       margin="normal"
                       type="number"
                       required
+                      defaultValue={this.state.product?.Stock}
                     />
                   </div>
                 </div>
