@@ -5,6 +5,12 @@ const getProductList = async () => {
   return await mysqlHandle.query("SELECT * FROM Product;");
 };
 
+const getProductByType = async (type) => {
+  return await mysqlHandle.query(
+    `SELECT * FROM Product WHERE ProductType="${type}";`
+  );
+};
+
 const getProductById = async (id) => {
   return (
     await mysqlHandle.query(
@@ -27,6 +33,7 @@ const addProduct = async (productName, description, productType, price) => {
 
 module.exports = {
   getProductList,
+  getProductByType,
   getProductById,
   addProduct,
 };
