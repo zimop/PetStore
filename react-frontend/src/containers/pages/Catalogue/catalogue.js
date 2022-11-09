@@ -30,6 +30,7 @@ class Catalogue extends React.Component {
 
   theme = useTheme();
   catalogueType = this.props.params.api;
+  ProductNameforStock = this.props.params.catalogueData.ProductName;
 
   componentDidMount() {
     getCatalogueData(this.props.params.api).then((catalogueData) =>

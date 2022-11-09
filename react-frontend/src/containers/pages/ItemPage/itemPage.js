@@ -103,10 +103,13 @@ const ItemPage = ({ handleAddToCart }) => {
         {/* Check the stock and render  */}
         {inStock === "outStock" ? (
           <Alert severity="error">
-            Item out of stock, please try again later!
+            Item "{productData.ProductName}" out of stock, please try again
+            later!
           </Alert>
         ) : inStock === "added" ? (
-          <Alert severity="success">Item added to cart successfully!</Alert>
+          <Alert severity="success">
+            Item "{productData.ProductName}" added to cart successfully!
+          </Alert>
         ) : (
           <></>
         )}
