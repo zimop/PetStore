@@ -20,16 +20,33 @@ import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 import useToken from "./containers/components/useToken";
+import resetToken from "./resetToken";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
   const { token, setToken } = useToken();
-  useEffect(() => {
+  useEffect(async () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
+    if (token) {
+      let response = await fetch("/api/validateToken", {
+        method: "POST",
+        body: JSON.stringify({ token: token.accessToken }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        let body = await response.json();
+        if (!body.isValid) {
+          resetToken();
+        }
+      }
+    }
   }, []);
 
   const handleAddToCart = (clickedItem, addQty) => {

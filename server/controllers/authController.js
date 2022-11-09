@@ -33,7 +33,23 @@ const signup = async (req, res) => {
     if (error.code == "ER_DUP_ENTRY") {
       return res.status(400).send({ error: "Error: Email is already in use." });
     }
-    return res.status(500);
+    console.log(error);
+    return res.status(500).send({ error: "Internal server error." });
+  }
+};
+
+const validateToken = (req, res) => {
+  try {
+    jwt.verify(req.body.token, secrets.secretKey, (err, decoded) => {
+      if (err) {
+        return res.status(200).send({ isValid: false });
+      } else {
+        return res.status(200).send({ isValid: true });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ error: "Internal server error." });
   }
 };
 
@@ -46,4 +62,5 @@ const getTokenResponse = (userId) => {
 module.exports = {
   login,
   signup,
+  validateToken,
 };
