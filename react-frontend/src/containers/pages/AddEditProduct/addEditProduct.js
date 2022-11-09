@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 
 import "./addEditProduct.css";
-import useTheme from "../../../muiTheme";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 class AddEditProductPage extends React.Component {
   constructor(props) {
