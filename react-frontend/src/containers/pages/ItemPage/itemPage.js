@@ -45,12 +45,13 @@ const ItemPage = ({ handleAddToCart }) => {
   };
 
   const handleOnClickAddToCart = () => {
-    if (productData.Stock < addQty) {
+    const newAccumulatedQty = accumulatedQty + addQty;
+    if (productData.Stock < newAccumulatedQty) {
       setInStock("outStock");
     } else {
       handleAddToCart(productData, addQty);
       setInStock("added");
-      setAccumulatedQty(accumulatedQty + addQty);
+      setAccumulatedQty(newAccumulatedQty);
     }
   };
 
