@@ -32,7 +32,7 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart, clearCart }) => {
     cartItemKeyInfo.push({
       id: item.ProductId,
       qty: item.qty,
-      item: item
+      item: item,
     });
   });
 
