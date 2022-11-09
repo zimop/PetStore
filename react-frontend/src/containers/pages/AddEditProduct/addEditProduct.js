@@ -82,7 +82,9 @@ class AddEditProductPage extends React.Component {
     };
     return (
       <div className="add-edit-product-page">
-        <Typography variant="h3">Add Product</Typography>
+        <Typography variant="h3">
+          {this.state.product ? "Edit Product" : "Add Product"}
+        </Typography>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <form onSubmit={handleSubmit}>
