@@ -12,34 +12,79 @@ import {
 
 import "./addEditProduct.css";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import { useParams } from "react-router-dom";
+
+function withParams(Component) {
+  //https://stackoverflow.com/a/70446743
+  return (props) => <Component {...props} params={useParams()} />;
+}
+
 class AddEditProductPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
+      product: null,
+      dataFetched: false,
     };
   }
 
+  async componentDidMount() {
+    if (this.props.params?.productId) {
+      let response = await fetch(
+        `/api/get-product/${this.props.params?.productId}`
+      );
+      if (response.status === 200) {
+        let data = await response.json();
+        this.setState({
+          error: this.state.error,
+          product: data,
+          dataFetched: true,
+        });
+      }
+    } else {
+      this.setState({
+        error: this.state.error,
+        product: this.state.product,
+        dataFetched: true,
+      });
+    }
+  }
+
   render() {
+    if (!this.state.dataFetched) {
+      return null;
+    }
     const handleSubmit = async (event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
-      console.log(data);
-      let response = await fetch("/api/add-product", {
-        method: "POST",
-        body: data,
-      });
+      let response;
+      if (this.state.product) {
+        data.append("productId", this.state.product.ProductId);
+        response = await fetch("/api/edit-product", {
+          method: "POST",
+          body: data,
+        });
+      } else {
+        response = await fetch("/api/add-product", {
+          method: "POST",
+          body: data,
+        });
+      }
       let body = await response.json();
       if (response.status !== 200) {
         this.state.error = body.error;
       } else {
         // Product is successfully submitted
-        console.log("Successfully added product");
+        console.log("Successfully added/edited product");
+        window.location = "/managerBrowseProduct";
       }
     };
     return (
       <div className="add-edit-product-page">
-        <Typography variant="h3">Add Product</Typography>
+        <Typography variant="h3">
+          {this.state.product ? "Edit Product" : "Add Product"}
+        </Typography>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
             <form onSubmit={handleSubmit}>
@@ -56,9 +101,9 @@ class AddEditProductPage extends React.Component {
                       label="Product Name"
                       margin="normal"
                       required
+                      defaultValue={this.state.product?.ProductName}
                     />
                   </div>
-
                   <div>
                     <Typography variant="h4" sx={{ fontWeight: "bold" }}>
                       Product price
@@ -71,6 +116,8 @@ class AddEditProductPage extends React.Component {
                       margin="normal"
                       type="number"
                       required
+                      defaultValue={this.state.product?.Price}
+                      inputProps={{ step: 0.01 }}
                     />
                   </div>
 
@@ -85,6 +132,7 @@ class AddEditProductPage extends React.Component {
                       label="Category"
                       margin="normal"
                       required
+                      defaultValue={this.state.product?.ProductType}
                     />
                   </div>
                 </div>
@@ -101,6 +149,7 @@ class AddEditProductPage extends React.Component {
                     fullWidth
                     multiline
                     rows={4}
+                    defaultValue={this.state.product?.Description}
                   />
                 </div>
                 {/* Make a upload card to upload images */}
@@ -147,7 +196,7 @@ class AddEditProductPage extends React.Component {
   }
 }
 
-export default AddEditProductPage;
+export default withParams(AddEditProductPage);
 
 //JSX
 
