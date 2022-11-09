@@ -28,7 +28,7 @@ const ShoppingCart = ({ cartItems, addToCart, removeFromCart, clearCart }) => {
   };
 
   let cartItemKeyInfo = [];
-  cartItems.map((item) => {
+  cartItems.forEach((item) => {
     cartItemKeyInfo.push({
       id: item.ProductId,
       qty: item.qty,
