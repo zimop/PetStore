@@ -77,15 +77,9 @@ function App() {
               path="/signup"
               element={<SignUpPage token={token} setToken={setToken} />}
             />
-            <Route path="/product/:productId" element={<ItemPage />} />
             <Route
               path="/product/:productId"
-              element={
-                <ItemPage
-                  handleAddToCart={handleAddToCart}
-                  handleRemoveFromCart={handleRemoveFromCart}
-                />
-              }
+              element={<ItemPage handleAddToCart={handleAddToCart} />}
             />
             <Route
               path="/shopping-cart"
