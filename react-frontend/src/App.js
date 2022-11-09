@@ -94,6 +94,7 @@ function App() {
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}
                   clearCart={handleClearCart}
+                  token={token}
                 />
               }
             />

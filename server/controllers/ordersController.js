@@ -3,6 +3,9 @@ ordersModel = require("../models/ordersModel");
 const createOrder = async (req, res) => {
   try {
     let data = req.body;
+    if (req.isAuthenticated) {
+      data.userId = req.userId;
+    }
     console.log(data);
     if (validateData(data)) {
       let orderId = await ordersModel.createOrder(data);
