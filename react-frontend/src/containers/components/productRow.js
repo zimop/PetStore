@@ -44,7 +44,7 @@ const ProductRow = (props) => {
               variant="contained"
               startIcon={<DeleteIcon />}
               style={{ minHeight: "40px", maxWidth: "100px" }}
-              onClick={() => handleDelete()}
+              onClick={handleDelete}
             >
               Delete
             </Button>

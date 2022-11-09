@@ -22,7 +22,11 @@ class ManagerBrowse extends React.Component {
     let productData = this.state.productData;
     let items = productData.map((itemData) => {
       return (
-        <ProductRow productName={itemData.ProductName} stock="0"></ProductRow>
+        <ProductRow
+          ProductId={itemData.ProductId}
+          productName={itemData.ProductName}
+          stock={itemData.Stock}
+        ></ProductRow>
       );
     });
     return (
