@@ -25,8 +25,15 @@ const addProduct = async (productName, description, productType, price) => {
   return result.insertId;
 };
 
+const deleteProduct = async (id) => {
+  await mysqlHandle.query(
+    `DELETE FROM Product WHERE ProductID=${mysql.escape(id)}`
+  );
+};
+
 module.exports = {
   getProductList,
   getProductById,
   addProduct,
+  deleteProduct,
 };

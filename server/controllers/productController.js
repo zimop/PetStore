@@ -53,8 +53,20 @@ const addProduct = async (req, res) => {
   }
 };
 
+const deleteProduct = async (req, res) => {
+  try {
+    console.log(req.body.id);
+    await productModel.deleteProduct(req.body.id);
+    return res.status(200).send();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   addProduct,
+  deleteProduct,
 };

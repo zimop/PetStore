@@ -11,14 +11,18 @@ const ProductRow = (props) => {
     console.log(id);
     let response = await fetch("/api/delete-product", {
       method: "POST",
-      body: id,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
     });
-    let body = await response.json();
     if (response.status !== 200) {
+      let body = await response.json();
       this.state.error = body.error;
     } else {
       // Product is successfully deleted
-      console.log("Successfully deleted product");
+      window.location.reload(false);
     }
   };
 
