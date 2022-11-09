@@ -7,19 +7,10 @@ import { useState, useEffect } from "react";
 
 const Receipt = (props) => {
   const [total, setTotal] = useState(0);
-  const value = [{ProductName : "dog",
-                  Quantity : 5,
-                  Price : 14.99},
-                  {ProductName : "cat",
-                  Quantity : 5,
-                  Price : 1.99},
-                  {ProductName : "nad",
-                  Quantity : 5,
-                  Price : 1.99}]
   useEffect(() => {
         let itemsPrice = props.cartItems.reduce((a, c) => a + c.item.Price * c.qty, 0);
         setTotal(itemsPrice);
-  }, [value]);
+  }, [props.cartItems]);
   return (
     <div className = "box">
         <Card sx = {{minWidth: 600, border: 1, borderRadius: '16px'}}>
@@ -55,6 +46,7 @@ const Receipt = (props) => {
               variant="outlined"
               size="large"
               sx={{ width: 620, height: 50 }}
+              href = {"\home"}
               > 
             Back to home
         </Button>
@@ -63,6 +55,3 @@ const Receipt = (props) => {
 }
 
 export default Receipt;
-
-//{props.cartItems.map(cart => {
-//})}

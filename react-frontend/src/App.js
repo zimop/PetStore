@@ -133,7 +133,6 @@ function App() {
                   />
                 }
               />
-              <Route path="dogs" element={<Receipt />} />
             </Routes>
           )}
         </div>
