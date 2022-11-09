@@ -6,6 +6,9 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
+import LoginPage from "./containers/pages/Login/loginPage";
+import SignUpPage from "./containers/pages/Login/signUpPage";
+import ProfilePage from "./containers/pages/Profile/profilePage";
 import ShoppingCart from "./containers/pages/shoppingCart/ShoppingCart";
 
 import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollectPage";
@@ -14,10 +17,12 @@ import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
+import useToken from "./containers/components/useToken";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
+  const { token, setToken } = useToken();
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -56,22 +61,24 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppLayout cartItems={cartItems}>
+      <AppLayout cartItems={cartItems} hasToken={token != null}>
         <div className="App">
           <Routes>
             {/* Static Pages */}
-            <Route path="info/click-collect" element={<ClickCollectPage />} />
+            <Route path="/info/click-collect" element={<ClickCollectPage />} />
             <Route path="/info/delivery" element={<DeliveryPage />} />
             <Route path="/info/about-us" element={<AboutUsPage />} />
-
+            <Route
+              path="/login"
+              element={<LoginPage token={token} setToken={setToken} />}
+            />
+            <Route
+              path="/signup"
+              element={<SignUpPage token={token} setToken={setToken} />}
+            />
             <Route
               path="/product/:productId"
-              element={
-                <ItemPage
-                  handleAddToCart={handleAddToCart}
-                  handleRemoveFromCart={handleRemoveFromCart}
-                />
-              }
+              element={<ItemPage handleAddToCart={handleAddToCart} />}
             />
             <Route
               path="/shopping-cart"
@@ -83,6 +90,7 @@ function App() {
                 />
               }
             />
+            <Route path="/profile" element={<ProfilePage token={token} />} />
           </Routes>
 
           {/* Loading Animation */}
