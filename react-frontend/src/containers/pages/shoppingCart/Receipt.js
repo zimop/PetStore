@@ -7,10 +7,17 @@ import { useState, useEffect } from "react";
 
 const Receipt = (props) => {
   const [total, setTotal] = useState(0);
+  const [shippingPrice, setShippingPrice] = useState(0);
+  const [tax, setTax] = useState(0);
+
   useEffect(() => {
         let itemsPrice = props.cartItems.reduce((a, c) => a + c.item.Price * c.qty, 0);
         setTotal(itemsPrice);
-  }, [props.cartItems]);
+        setShippingPrice(
+            itemsPrice > 79 || props.pickup || itemsPrice === 0 ? 0 : itemsPrice * 0.08
+          );
+        setTax(itemsPrice * 0.1);
+  }, [props.cartItems, props.pickup]);
   return (
     <div className = "box">
         <Card sx = {{minWidth: 600, border: 1, borderRadius: '16px'}}>
@@ -38,7 +45,7 @@ const Receipt = (props) => {
                         </Card>
                    );})}
                 <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
-                    Total: {total.toFixed(2)}
+                    Total: {(total+ shippingPrice + tax).toFixed(2)}
                 </Typography>
             </CardContent> 
         </Card>
