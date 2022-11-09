@@ -8,6 +8,7 @@ import ListIcon from "@mui/icons-material/List";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortByBox from "../../components/SortByBox/SortByBox";
 import ItemCard from "../../components/ItemCard";
+import Alert from "@mui/material/Alert";
 import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
 
@@ -23,6 +24,7 @@ class Catalogue extends React.Component {
     this.state = {
       catalogueData: Array(0),
       searchTerm: "",
+      inStock: "init",
     };
   }
 
@@ -35,6 +37,11 @@ class Catalogue extends React.Component {
     );
     console.log(this.state.catalogueData);
   }
+
+  //
+  handleOutStock = (value) => {
+    this.setState({ inStock: value });
+  };
 
   // Handle search bar input
   handleOnSearch = (event) => {
@@ -95,6 +102,8 @@ class Catalogue extends React.Component {
               id={itemData.ProductId}
               height="350"
               itemData={itemData}
+              cartItems={this.props.cartItems}
+              handleOutStock={this.handleOutStock}
               handleAddToCart={this.props.handleAddToCart}
               // handleCheckout={this.handleCheckout}
             />
@@ -151,6 +160,17 @@ class Catalogue extends React.Component {
             <SortByBox onSort={this.handleSortProducts} />
           </div>
         </div>
+
+        {/* Alert for add to cart */}
+        {this.state.inStock === "outStock" ? (
+          <Alert severity="error">
+            Item out of stock, please try again later!
+          </Alert>
+        ) : this.state.inStock === "added" ? (
+          <Alert severity="success">Item added to cart successfully!</Alert>
+        ) : (
+          <></>
+        )}
 
         {/* Catalogue Items */}
         <Grid container spacing={4}>
