@@ -6,6 +6,7 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
+import ManagerBrowse from "./containers/pages/ManagerBrowse/managerBrowse";
 import AddEditProductPage from "./containers/pages/AddEditProduct/addEditProduct";
 import LoginPage from "./containers/pages/Login/loginPage";
 import SignUpPage from "./containers/pages/Login/signUpPage";
@@ -124,6 +125,11 @@ function App() {
                 }
               />
               <Route path="/addProduct" element={<AddEditProductPage />} />
+              <Route
+                path="/editProduct/:productId"
+                element={<AddEditProductPage />}
+              />
+              <Route path="/managerBrowseProduct" element={<ManagerBrowse />} />
             </Routes>
           )}
         </div>
