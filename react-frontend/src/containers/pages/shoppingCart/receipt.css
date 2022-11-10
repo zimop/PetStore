@@ -1,0 +1,10 @@
+.box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 700;
+  height: 300;
+  margin-top: 5%;
+}

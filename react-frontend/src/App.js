@@ -6,6 +6,8 @@ import AppLayout from "./containers/layout/index";
 import ItemPage from "./containers/pages/ItemPage/itemPage";
 import Catalogue from "./containers/pages/Catalogue/catalogue";
 import HomePage from "./containers/pages/homePage/homePage";
+import ManagerBrowse from "./containers/pages/ManagerBrowse/managerBrowse";
+import AddEditProductPage from "./containers/pages/AddEditProduct/addEditProduct";
 import LoginPage from "./containers/pages/Login/loginPage";
 import SignUpPage from "./containers/pages/Login/signUpPage";
 import ProfilePage from "./containers/pages/Profile/profilePage";
@@ -18,6 +20,8 @@ import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 import useToken from "./containers/components/useToken";
+import resetToken from "./resetToken";
+import { Typography } from "@mui/material";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -28,7 +32,28 @@ function App() {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []);
+
+    async function validateToken(token) {
+      if (token) {
+        let response = await fetch("/api/validateToken", {
+          method: "POST",
+          body: JSON.stringify({ token: token.accessToken }),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.status === 200) {
+          let body = await response.json();
+          if (!body.isValid) {
+            resetToken();
+          }
+        }
+      }
+    }
+
+    validateToken(token);
+  }, [token]);
 
   const handleAddToCart = (clickedItem, addQty) => {
     setCartItems((prev) => {
@@ -37,7 +62,8 @@ function App() {
       );
       if (isItemInCart) {
         return prev.map((item) =>
-          item.ProductId === clickedItem.ProductId
+          item.ProductId === clickedItem.ProductId &&
+          item.Stock >= item.qty + addQty
             ? { ...item, qty: item.qty + addQty }
             : { ...item }
         );
@@ -57,6 +83,10 @@ function App() {
         }
       }, [])
     );
+  };
+
+  const handleClearCart = () => {
+    setCartItems([]);
   };
 
   return (
@@ -87,10 +117,18 @@ function App() {
                   cartItems={cartItems}
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}
+                  clearCart={handleClearCart}
+                  token={token}
                 />
               }
             />
             <Route path="/profile" element={<ProfilePage token={token} />} />
+            <Route
+              path="/insufficient-access"
+              element={
+                <Typography variant="h1">Insufficient Access</Typography>
+              }
+            />
           </Routes>
 
           {/* Loading Animation */}
@@ -117,10 +155,23 @@ function App() {
                 path="/catalogue/:api"
                 element={
                   <Catalogue
+                    cartItems={cartItems}
                     handleAddToCart={handleAddToCart}
                     handleRemoveFromCart={handleRemoveFromCart}
                   />
                 }
+              />
+              <Route
+                path="/addProduct"
+                element={<AddEditProductPage token={token} />}
+              />
+              <Route
+                path="/editProduct/:productId"
+                element={<AddEditProductPage token={token} />}
+              />
+              <Route
+                path="/managerBrowseProduct"
+                element={<ManagerBrowse token={token} />}
               />
             </Routes>
           )}

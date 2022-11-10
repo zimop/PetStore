@@ -48,6 +48,14 @@ Controllers, in the folder `./server/controllers`, are responsible for the appli
 
 Finally, models in `./server/models` get relevant data by querying the SQL database. To accomplish this, they use the `server/mysqlHandle.js` file which defines some convenience functions that make it easier to send SQL queries using the mysql npm package.
 
+### Running the Docker container
+
+To build Docker, run `docker build .`.
+
+Remember the built container ID outputted by the `docker build` command. E.g. `Successfully built [container ID]`.
+
+Then to run the container, run `docker run -p 8000:8000 [container ID]`.
+
 ## Testing
 
 ### Running the Tests

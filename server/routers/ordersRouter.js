@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const profileController = require("../controllers/profileController");
+const ordersController = require("../controllers/ordersController");
 const authenticationMiddleware = require("../middleware/authentication");
 
 router.post(
-  "/get-user",
+  "/createOrder",
   authenticationMiddleware.authenticateUser,
-  authenticationMiddleware.userAuthentication,
-  profileController.getUser
+  ordersController.createOrder
 );
 
 module.exports = router;
