@@ -13,6 +13,11 @@ import "./ItemCard.css";
 // import CheckoutPage from "../pages/shoppingCart/ShoppingCart";
 
 const ItemCard = ({ itemData, handleAddToCart, height }) => {
+  const handlePurchase = () => {
+    handleAddToCart(itemData, 1);
+    window.location = "/shopping-cart";
+  };
+
   return (
     <Card>
       <CardActionArea href={`/product/${itemData.ProductId}`}>
@@ -42,21 +47,14 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
             Add to Cart
           </Button>
 
-          <a href="/checkout" style={{ textDecoration: "none" }}>
-            {/* Using Link will lead to test failure */}
-            {/* <Link
-            to="/checkout"
-            style={{ color: "inherit", textDecoration: "none" }}
-          > */}
-            <Button
-              className="fullWidthButton"
-              variant="contained"
-              size="large"
-              onClick={() => handleAddToCart(itemData)}
-            >
-              Buy Now
-            </Button>
-          </a>
+          <Button
+            className="fullWidthButton"
+            variant="contained"
+            size="large"
+            onClick={handlePurchase}
+          >
+            Buy Now
+          </Button>
         </div>
       </CardActions>
     </Card>
