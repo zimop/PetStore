@@ -54,7 +54,9 @@ const validateToken = (req, res) => {
 };
 
 const getTokenResponse = async (userId) => {
-  let token = jwt.sign({ id: userId }, secrets.secretKey, { expiresIn: 300 });
+  let token = jwt.sign({ id: userId }, secrets.secretKey, {
+    expiresIn: 60 * 60 * 24 * 7,
+  });
   let isManager = await userModel.getIsManager(userId);
   return { id: userId, isManager: isManager, accessToken: token };
 };
