@@ -50,19 +50,26 @@ export default function ProductPageFooter() {
                 Click and Collect
               </Link>
             </Box>
-          </Grid>
 
-          <Grid item xs={12} sm={4}>
-            <Box borderBottom={1}>Services</Box>
             <Box>
               <Link href="/info/delivery" color="footerText.main">
                 Delivery
               </Link>
             </Box>
+          </Grid>
+
+          <Grid item xs={12} sm={4}>
+            <Box borderBottom={1}>Manager Admin</Box>
 
             <Box>
               <Link href="/managerBrowseProduct" color="footerText.main">
                 Manager Login
+              </Link>
+            </Box>
+
+            <Box>
+              <Link href="/managerBrowseProduct" color="footerText.main">
+                Manager Edit Product
               </Link>
             </Box>
           </Grid>
