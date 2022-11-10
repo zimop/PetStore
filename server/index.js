@@ -11,11 +11,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(expressFormData.parse());
 
 const productRouter = require("./routers/productRouter");
+const ordersRouter = require("./routers/ordersRouter");
 const authRouter = require("./routers/authRouter");
 const profileRouter = require("./routers/profileRouter");
 
 const apiRouter = express.Router();
 apiRouter.use(productRouter);
+apiRouter.use(ordersRouter);
 apiRouter.use(authRouter);
 apiRouter.use(profileRouter);
 

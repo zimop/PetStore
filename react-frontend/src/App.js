@@ -61,6 +61,10 @@ function App() {
     );
   };
 
+  const handleClearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <BrowserRouter>
       <AppLayout cartItems={cartItems} hasToken={token != null}>
@@ -89,6 +93,7 @@ function App() {
                   cartItems={cartItems}
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}
+                  clearCart={handleClearCart}
                 />
               }
             />
