@@ -12,7 +12,31 @@ import Button from "@mui/material/Button";
 import "./ItemCard.css";
 // import CheckoutPage from "../pages/shoppingCart/ShoppingCart";
 
-const ItemCard = ({ itemData, handleAddToCart, height }) => {
+const ItemCard = ({
+  height,
+  itemData,
+  cartItems,
+  handleOutStock,
+  handleAddToCart,
+}) => {
+  //
+  const handleOnClick = () => {
+    handleAddToCart(itemData, 1);
+    // check for stock using shopping carts
+    const itemInCart = cartItems.find(
+      (item) => item.ProductId === itemData.ProductId
+    );
+    if (itemInCart) {
+      if (itemInCart.qty + 1 > itemData.Stock) {
+        handleOutStock("outStock");
+      } else {
+        handleOutStock("added");
+      }
+    } else if (1 > itemData.Stock) {
+      handleOutStock("outStock");
+    }
+  };
+
   return (
     <Card>
       <CardActionArea href={`/product/${itemData.ProductId}`}>
@@ -37,7 +61,7 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
             className="fullWidthButton"
             variant="outlined"
             size="large"
-            onClick={() => handleAddToCart(itemData, 1)}
+            onClick={handleOnClick}
           >
             Add to Cart
           </Button>
@@ -52,7 +76,7 @@ const ItemCard = ({ itemData, handleAddToCart, height }) => {
               className="fullWidthButton"
               variant="contained"
               size="large"
-              onClick={() => handleAddToCart(itemData)}
+              // onClick={() => handleAddToCart(itemData)}
             >
               Buy Now
             </Button>

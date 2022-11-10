@@ -18,6 +18,7 @@ import Link from "@mui/material/Link";
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import WbIncandescentIcon from "@mui/icons-material/WbIncandescent";
+import Alert from "@mui/material/Alert";
 
 import "./itemPage.css";
 import ReviewCard from "./threeTabs/reviewCard/reviewCard.js";
@@ -31,11 +32,27 @@ const ItemPage = ({ handleAddToCart }) => {
   const [productData, setProductData] = useState({ images: Array(0) });
   const [value, setValue] = useState("0");
   const [addQty, setAddQty] = useState(1);
+  const [accumulatedQty, setAccumulatedQty] = useState(0);
+  const [inStock, setInStock] = useState("init");
   const params = useParams();
 
   const handleChange = (event, newValue) => {
-    setAddQty(event.target.value);
     setValue(newValue);
+  };
+
+  const handleSelectQty = (event) => {
+    setAddQty(event.target.value);
+  };
+
+  const handleOnClickAddToCart = () => {
+    const newAccumulatedQty = accumulatedQty + addQty;
+    if (productData.Stock < newAccumulatedQty) {
+      setInStock("outStock");
+    } else {
+      handleAddToCart(productData, addQty);
+      setInStock("added");
+      setAccumulatedQty(newAccumulatedQty);
+    }
   };
 
   // Hook to get product data
@@ -83,6 +100,20 @@ const ItemPage = ({ handleAddToCart }) => {
           </Breadcrumbs>
         </div>
 
+        {/* Check the stock and render  */}
+        {inStock === "outStock" ? (
+          <Alert severity="error">
+            Item "{productData.ProductName}" out of stock, please try again
+            later!
+          </Alert>
+        ) : inStock === "added" ? (
+          <Alert severity="success">
+            Item "{productData.ProductName}" added to cart successfully!
+          </Alert>
+        ) : (
+          <></>
+        )}
+
         {/* ItemPage header*/}
         <div className="itemPage-header">
           <div className="product-image">
@@ -109,7 +140,7 @@ const ItemPage = ({ handleAddToCart }) => {
                 defaultValue={1}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                onChange={handleChange}
+                onChange={handleSelectQty}
               >
                 {/*  ES6 syntax for loop in React JSX  */}
                 {[...Array(9)].map((x, i) => (
@@ -123,7 +154,7 @@ const ItemPage = ({ handleAddToCart }) => {
               <Button
                 variant="contained"
                 sx={{ size: "small" }}
-                onClick={() => handleAddToCart(productData, addQty)}
+                onClick={handleOnClickAddToCart}
               >
                 Add to Cart
               </Button>

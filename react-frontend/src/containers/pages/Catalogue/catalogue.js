@@ -8,6 +8,7 @@ import ListIcon from "@mui/icons-material/List";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortByBox from "../../components/SortByBox/SortByBox";
 import ItemCard from "../../components/ItemCard";
+import Alert from "@mui/material/Alert";
 import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
 
@@ -23,6 +24,7 @@ class Catalogue extends React.Component {
     this.state = {
       catalogueData: Array(0),
       searchTerm: "",
+      inStock: "init",
     };
   }
 
@@ -35,6 +37,11 @@ class Catalogue extends React.Component {
     );
     console.log(this.state.catalogueData);
   }
+
+  //
+  handleOutStock = (value) => {
+    this.setState({ inStock: value });
+  };
 
   // Handle search bar input
   handleOnSearch = (event) => {
@@ -73,9 +80,8 @@ class Catalogue extends React.Component {
   render() {
     let catalogueData = this.state.catalogueData;
     let catalogueItems = catalogueData
-
-      // Filter items by search term
       .filter((val) => {
+        // Filter items by search term
         if (this.state.searchTerm === "") {
           return val;
         } else if (
@@ -88,15 +94,16 @@ class Catalogue extends React.Component {
         // No need for this 'return null', just to get rid of the warning
         return null;
       })
-
-      // Map items to ItemCard components
       .map((itemData) => {
+        // Map items to ItemCard components
         return (
           <Grid key={`productId-${itemData.ProductId}`} item xs={3}>
             <ItemCard
               id={itemData.ProductId}
               height="350"
               itemData={itemData}
+              cartItems={this.props.cartItems}
+              handleOutStock={this.handleOutStock}
               handleAddToCart={this.props.handleAddToCart}
               // handleCheckout={this.handleCheckout}
             />
@@ -153,6 +160,17 @@ class Catalogue extends React.Component {
             <SortByBox onSort={this.handleSortProducts} />
           </div>
         </div>
+
+        {/* Alert for add to cart */}
+        {this.state.inStock === "outStock" ? (
+          <Alert severity="error">
+            Item out of stock, please try again later!
+          </Alert>
+        ) : this.state.inStock === "added" ? (
+          <Alert severity="success">Item added to cart successfully!</Alert>
+        ) : (
+          <></>
+        )}
 
         {/* Catalogue Items */}
         <Grid container spacing={4}>

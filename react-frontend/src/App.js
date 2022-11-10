@@ -62,7 +62,8 @@ function App() {
       );
       if (isItemInCart) {
         return prev.map((item) =>
-          item.ProductId === clickedItem.ProductId
+          item.ProductId === clickedItem.ProductId &&
+          item.Stock >= item.qty + addQty
             ? { ...item, qty: item.qty + addQty }
             : { ...item }
         );
@@ -154,6 +155,7 @@ function App() {
                 path="/catalogue/:api"
                 element={
                   <Catalogue
+                    cartItems={cartItems}
                     handleAddToCart={handleAddToCart}
                     handleRemoveFromCart={handleRemoveFromCart}
                   />

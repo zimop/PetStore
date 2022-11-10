@@ -132,7 +132,8 @@ const addProduct = async (req, res) => {
       req.body.productName,
       req.body.productDescription,
       req.body.productCategory,
-      req.body.productPrice
+      req.body.productPrice,
+      req.body.stockQuantity
     );
     return res.status(200).json({ productId });
   } catch (error) {
@@ -151,7 +152,8 @@ const editProduct = async (req, res) => {
       req.body.productName,
       req.body.productDescription,
       req.body.productCategory,
-      req.body.productPrice
+      req.body.productPrice,
+      req.body.stockQuantity
     );
     return res.status(200).json({ productId });
   } catch (error) {
