@@ -18,13 +18,13 @@ export default function ProductPageFooter() {
           <Grid item xs={12} sm={4}>
             <Box borderBottom={1}>Shop</Box>
             <Box>
-              <Link herf="/login" color="footerText.main">
+              <Link href="/login" color="footerText.main">
                 Customer Login
               </Link>
             </Box>
 
             <Box>
-              <Link herf="/signup" color="footerText.main">
+              <Link href="/signup" color="footerText.main">
                 Customer SignUp
               </Link>
             </Box>
@@ -34,19 +34,19 @@ export default function ProductPageFooter() {
             <Box borderBottom={1}> Information </Box>
 
             <Box>
-              <Link herf="/info/about-us" color="footerText.main">
+              <Link href="/info/about-us" color="footerText.main">
                 About Us
               </Link>
             </Box>
 
             <Box>
-              <Link herf="/" color="footerText.main">
+              <Link href="/info/about-us" color="footerText.main">
                 Contact Us
               </Link>
             </Box>
 
             <Box>
-              <Link herf="/" color="footerText.main">
+              <Link href="/info/click-collect" color="footerText.main">
                 Click and Collect
               </Link>
             </Box>
@@ -55,13 +55,13 @@ export default function ProductPageFooter() {
           <Grid item xs={12} sm={4}>
             <Box borderBottom={1}>Services</Box>
             <Box>
-              <Link herf="/info/delivery" color="footerText.main">
-                FQA
+              <Link href="/info/delivery" color="footerText.main">
+                Delivery
               </Link>
             </Box>
 
             <Box>
-              <Link herf="/managerBrowseProduct" color="footerText.main">
+              <Link href="/managerBrowseProduct" color="footerText.main">
                 Manager Login
               </Link>
             </Box>
