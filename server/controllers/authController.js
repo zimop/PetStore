@@ -16,7 +16,7 @@ const login = async (req, res) => {
       .status(401)
       .send({ error: "Error: Incorrect email or password." });
   } else {
-    return res.status(200).send(getTokenResponse(user.UserID));
+    return res.status(200).send(await getTokenResponse(user.UserID));
   }
 };
 
@@ -28,7 +28,7 @@ const signup = async (req, res) => {
       req.body.lastname,
       req.body.password
     );
-    return res.status(200).send(getTokenResponse(userId));
+    return res.status(200).send(await getTokenResponse(userId));
   } catch (error) {
     if (error.code == "ER_DUP_ENTRY") {
       return res.status(400).send({ error: "Error: Email is already in use." });
@@ -53,9 +53,9 @@ const validateToken = (req, res) => {
   }
 };
 
-const getTokenResponse = (userId) => {
+const getTokenResponse = async (userId) => {
   let token = jwt.sign({ id: userId }, secrets.secretKey, { expiresIn: 300 });
-  let isManager = userModel.getIsManager(userId);
+  let isManager = await userModel.getIsManager(userId);
   return { id: userId, isManager: isManager, accessToken: token };
 };
 

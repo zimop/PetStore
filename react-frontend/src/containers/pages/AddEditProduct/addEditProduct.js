@@ -14,6 +14,8 @@ import "./addEditProduct.css";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { useParams } from "react-router-dom";
 
+import { Navigate } from "react-router-dom";
+
 function withParams(Component) {
   //https://stackoverflow.com/a/70446743
   return (props) => <Component {...props} params={useParams()} />;
@@ -52,6 +54,11 @@ class AddEditProductPage extends React.Component {
   }
 
   render() {
+    if (!this.props.token) {
+      return <Navigate to="/login" />;
+    } else if (!this.props.token.isManager) {
+      return <Navigate to="/insufficient-access" />;
+    }
     if (!this.state.dataFetched) {
       return null;
     }

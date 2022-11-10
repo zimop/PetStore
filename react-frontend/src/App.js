@@ -21,6 +21,7 @@ import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 import useToken from "./containers/components/useToken";
 import resetToken from "./resetToken";
+import { Typography } from "@mui/material";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -116,6 +117,12 @@ function App() {
               }
             />
             <Route path="/profile" element={<ProfilePage token={token} />} />
+            <Route
+              path="/insufficient-access"
+              element={
+                <Typography variant="h1">Insufficient Access</Typography>
+              }
+            />
           </Routes>
 
           {/* Loading Animation */}
