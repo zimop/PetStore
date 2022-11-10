@@ -10,7 +10,6 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from "@mui/material/Button";
@@ -28,8 +27,6 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import useTheme from "../../muiTheme/index";
 
 import resetToken from "../../resetToken";
-
-//let Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function PrimarySearchAppBar({ hasToken, cartItems }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -247,11 +244,7 @@ export default function PrimarySearchAppBar({ hasToken, cartItems }) {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
-            >
-              <Badge badgeContent={99} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            ></IconButton>
 
             <IconButton
               size="large"
