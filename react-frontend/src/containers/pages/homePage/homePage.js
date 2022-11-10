@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
@@ -20,6 +20,32 @@ import CatalogueIcons from "../../components/CatalogueIcons/catalogueIcons";
 
 const HomePage = ({ props }) => {
   const theme = useTheme();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
+  if (loading) {
+    return (
+      <img
+        src={require("../../../containers/pages/homePage/staticPage/animations/30206-loading.gif")}
+        style={{
+          width: "30%",
+          height: "100%",
+          border: 0,
+          display: "flex",
+          margin: "auto",
+          marginTop: "10%",
+          marginBottom: "10%",
+        }}
+        alt="Walking Elephant, loading Gif"
+      />
+    );
+  }
 
   return (
     <ThemeProvider theme={theme}>

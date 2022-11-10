@@ -26,6 +26,7 @@ class Catalogue extends React.Component {
       catalogueData: Array(0),
       searchTerm: "",
       inStock: "init",
+      loading: false,
     };
   }
 
@@ -37,6 +38,10 @@ class Catalogue extends React.Component {
       this.setState({ catalogueData: catalogueData })
     );
     console.log(this.state.catalogueData);
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1500);
   }
 
   //
@@ -112,6 +117,23 @@ class Catalogue extends React.Component {
         );
       });
 
+    if (this.state.loading) {
+      return (
+        <img
+          src={require("../../../containers/pages/homePage/staticPage/animations/30206-loading.gif")}
+          style={{
+            width: "30%",
+            height: "100%",
+            border: 0,
+            display: "flex",
+            margin: "auto",
+            marginTop: "10%",
+            marginBottom: "10%",
+          }}
+          alt="Walking Elephant, loading Gif"
+        />
+      );
+    }
     return (
       <div style={{ padding: "5%" }}>
         {/* Breadcrumbs pages navigation */}
