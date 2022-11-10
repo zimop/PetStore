@@ -27,28 +27,33 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
   const { token, setToken } = useToken();
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-    if (token) {
-      let response = await fetch("/api/validateToken", {
-        method: "POST",
-        body: JSON.stringify({ token: token.accessToken }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status === 200) {
-        let body = await response.json();
-        if (!body.isValid) {
-          resetToken();
+
+    async function validateToken(token) {
+      if (token) {
+        let response = await fetch("/api/validateToken", {
+          method: "POST",
+          body: JSON.stringify({ token: token.accessToken }),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.status === 200) {
+          let body = await response.json();
+          if (!body.isValid) {
+            resetToken();
+          }
         }
       }
     }
-  }, []);
+
+    validateToken(token);
+  }, [token]);
 
   const handleAddToCart = (clickedItem, addQty) => {
     setCartItems((prev) => {
