@@ -25,8 +25,6 @@ import useTheme from "../../muiTheme/index";
 
 import resetToken from "../../resetToken";
 
-//let Anchor = 'top' | 'left' | 'bottom' | 'right';
-
 export default function PrimarySearchAppBar({
   hasToken,
   isManager,
