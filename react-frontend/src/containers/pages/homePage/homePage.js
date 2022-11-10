@@ -16,7 +16,7 @@ import tabsInfo from "./staticPage/tabsInGlance.js";
 
 import Ads5 from "./advImages/Homepage-ads5.png";
 // import Ads6 from "./advImages/Homepage-ads6.png";
-import { CardMedia } from "@mui/material";
+import { CardMedia, Typography } from "@mui/material";
 
 const HomePage = ({ props }) => {
   const theme = useTheme();
@@ -26,6 +26,9 @@ const HomePage = ({ props }) => {
       {/* Background */}
       <div className="home-background">
         {/* catalogue-icons header */}
+        <Typography variant="h2" style={{ marginBottom: "20px" }}>
+          Browse Products by Category
+        </Typography>
         <div className="catalogue-icons">
           <Grid container spacing={7} style={{ alignContent: "center" }}>
             <Grid item style={{ alignContent: "center" }}>
