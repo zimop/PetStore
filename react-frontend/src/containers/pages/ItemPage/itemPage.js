@@ -120,7 +120,9 @@ const ItemPage = ({ handleAddToCart }) => {
             <ProductImagesSwiper
               width={400}
               height={400}
-              images={productData.images}
+              images={productData.images.map((element) => {
+                return { Image: element.ImageURL };
+              })}
             />
           </div>
 
