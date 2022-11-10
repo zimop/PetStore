@@ -11,6 +11,7 @@ import ItemCard from "../../components/ItemCard";
 import Alert from "@mui/material/Alert";
 import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
+import CatalogueIcons from "../../components/CatalogueIcons/catalogueIcons";
 
 import { useParams } from "react-router-dom";
 // Can't use useParams in class component, so wrap it in a function component
@@ -159,6 +160,12 @@ class Catalogue extends React.Component {
             {/* SortBy Box */}
             <SortByBox onSort={this.handleSortProducts} />
           </div>
+        </div>
+
+        {/* Row of catalogue icons */}
+        <Typography variant="h6">Product Categories</Typography>
+        <div className="catalogue-icons">
+          <CatalogueIcons />
         </div>
 
         {/* Alert for add to cart */}

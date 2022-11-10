@@ -9,13 +9,6 @@
   align-content: space-around;
 }
 
-.catalogue-icons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
 .adv-swipe-box {
   margin: 2%;
 }
