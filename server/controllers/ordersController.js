@@ -1,4 +1,5 @@
 ordersModel = require("../models/ordersModel");
+productModel = require("../models/productModel");
 
 const createOrder = async (req, res) => {
   try {
@@ -6,12 +7,24 @@ const createOrder = async (req, res) => {
     if (req.isAuthenticated) {
       data.userId = req.userId;
     }
-    console.log(data);
     if (validateData(data)) {
-      let orderId = await ordersModel.createOrder(data);
       let cartItems = JSON.parse(data.cartItems);
+      let outOfStockItems = await checkCartStock(cartItems);
+      if (outOfStockItems.length !== 0) {
+        // Some items are out of stock
+        let message = "The following items are out of stock: ";
+        for (const id of outOfStockItems) {
+          let productName = await productModel.getProductName(id);
+          message += productName + ", ";
+        }
+        message +=
+          "please reduce their quantities or remove them from your shopping cart.";
+        return res.status(409).send({ error: message });
+      }
+      let orderId = await ordersModel.createOrder(data);
       for (const item of cartItems) {
         await ordersModel.addProductToOrder(orderId, item.id, item.qty);
+        await productModel.reduceStock(item.id, item.qty);
       }
       return res.status(200).send({ orderId });
     } else {
@@ -29,11 +42,28 @@ const validateData = (data) => {
     let cartItems = JSON.parse(data.cartItems);
     if (cartItems.length === 0) {
       return false;
+    } else {
+      for (const item of cartItems) {
+        if (item.qty <= 0) {
+          return false;
+        }
+      }
     }
   } catch {
     return false;
   }
   return true;
+};
+
+const checkCartStock = async (cartItems) => {
+  let outOfStockItems = [];
+  for (const item of cartItems) {
+    let stock = await productModel.getProductStock(item.id);
+    if (item.qty > stock) {
+      outOfStockItems.push(item.id);
+    }
+  }
+  return outOfStockItems;
 };
 
 module.exports = {
