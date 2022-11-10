@@ -11,6 +11,7 @@ import ItemCard from "../../components/ItemCard";
 import Alert from "@mui/material/Alert";
 import useTheme from "../../../muiTheme/index.js";
 import "./catalogue.css";
+import CatalogueIcons from "../../components/CatalogueIcons/catalogueIcons";
 
 import { useParams } from "react-router-dom";
 // Can't use useParams in class component, so wrap it in a function component
@@ -25,6 +26,7 @@ class Catalogue extends React.Component {
       catalogueData: Array(0),
       searchTerm: "",
       inStock: "init",
+      loading: false,
     };
   }
 
@@ -36,6 +38,10 @@ class Catalogue extends React.Component {
       this.setState({ catalogueData: catalogueData })
     );
     console.log(this.state.catalogueData);
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1500);
   }
 
   //
@@ -111,6 +117,23 @@ class Catalogue extends React.Component {
         );
       });
 
+    if (this.state.loading) {
+      return (
+        <img
+          src={require("../../../containers/pages/homePage/staticPage/animations/30206-loading.gif")}
+          style={{
+            width: "30%",
+            height: "100%",
+            border: 0,
+            display: "flex",
+            margin: "auto",
+            marginTop: "10%",
+            marginBottom: "10%",
+          }}
+          alt="Walking Elephant, loading Gif"
+        />
+      );
+    }
     return (
       <div style={{ padding: "5%" }}>
         {/* Breadcrumbs pages navigation */}
@@ -159,6 +182,12 @@ class Catalogue extends React.Component {
             {/* SortBy Box */}
             <SortByBox onSort={this.handleSortProducts} />
           </div>
+        </div>
+
+        {/* Row of catalogue icons */}
+        <Typography variant="h6">Product Categories</Typography>
+        <div className="catalogue-icons">
+          <CatalogueIcons />
         </div>
 
         {/* Alert for add to cart */}

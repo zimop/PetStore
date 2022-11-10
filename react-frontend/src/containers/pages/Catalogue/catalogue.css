@@ -2,7 +2,15 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 7vmax;
+  margin-bottom: 1vmax;
+  flex-direction: row;
+}
+
+.catalogue-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2vmax;
   flex-direction: row;
 }
 

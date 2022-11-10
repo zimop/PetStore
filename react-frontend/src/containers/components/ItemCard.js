@@ -19,6 +19,10 @@ const ItemCard = ({
   handleOutStock,
   handleAddToCart,
 }) => {
+  const handlePurchase = () => {
+    handleAddToCart(itemData, 1);
+    window.location = "/shopping-cart";
+  };
   //
   const handleOnClick = () => {
     handleAddToCart(itemData, 1);
@@ -66,21 +70,14 @@ const ItemCard = ({
             Add to Cart
           </Button>
 
-          <a href="/checkout" style={{ textDecoration: "none" }}>
-            {/* Using Link will lead to test failure */}
-            {/* <Link
-            to="/checkout"
-            style={{ color: "inherit", textDecoration: "none" }}
-          > */}
-            <Button
-              className="fullWidthButton"
-              variant="contained"
-              size="large"
-              // onClick={() => handleAddToCart(itemData)}
-            >
-              Buy Now
-            </Button>
-          </a>
+          <Button
+            className="fullWidthButton"
+            variant="contained"
+            size="large"
+            onClick={handlePurchase}
+          >
+            Buy Now
+          </Button>
         </div>
       </CardActions>
     </Card>

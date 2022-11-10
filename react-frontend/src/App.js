@@ -17,22 +17,16 @@ import ClickCollectPage from "./containers/pages/homePage/staticPage/clickCollec
 import DeliveryPage from "./containers/pages/homePage/staticPage/deliveryPage";
 import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 import useToken from "./containers/components/useToken";
 import resetToken from "./resetToken";
 import { Typography } from "@mui/material";
 
 function App() {
-  const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage("cartItems", []);
   const { token, setToken } = useToken();
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-
     async function validateToken(token) {
       if (token) {
         let response = await fetch("/api/validateToken", {
@@ -91,7 +85,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppLayout cartItems={cartItems} hasToken={token != null}>
+      <AppLayout
+        cartItems={cartItems}
+        hasToken={token != null}
+        isManager={token != null && token.isManager}
+      >
         <div className="App">
           <Routes>
             {/* Static Pages */}
@@ -129,52 +127,31 @@ function App() {
                 <Typography variant="h1">Insufficient Access</Typography>
               }
             />
-          </Routes>
-
-          {/* Loading Animation */}
-          {loading ? (
-            <img
-              src={require("./containers/pages/homePage/staticPage/animations/30206-loading.gif")}
-              style={{
-                width: "30%",
-                height: "100%",
-                border: 0,
-                display: "flex",
-                margin: "auto",
-                marginTop: "10%",
-                marginBottom: "10%",
-              }}
-              alt="Walking Elephant, loading Gif"
+            <Route
+              path="/addProduct"
+              element={<AddEditProductPage token={token} />}
             />
-          ) : (
-            // Rest of the Routes
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/home" element={<HomePage />} />
-              <Route
-                path="/catalogue/:api"
-                element={
-                  <Catalogue
-                    cartItems={cartItems}
-                    handleAddToCart={handleAddToCart}
-                    handleRemoveFromCart={handleRemoveFromCart}
-                  />
-                }
-              />
-              <Route
-                path="/addProduct"
-                element={<AddEditProductPage token={token} />}
-              />
-              <Route
-                path="/editProduct/:productId"
-                element={<AddEditProductPage token={token} />}
-              />
-              <Route
-                path="/managerBrowseProduct"
-                element={<ManagerBrowse token={token} />}
-              />
-            </Routes>
-          )}
+            <Route
+              path="/editProduct/:productId"
+              element={<AddEditProductPage token={token} />}
+            />
+            <Route
+              path="/managerBrowseProduct"
+              element={<ManagerBrowse token={token} />}
+            />
+            <Route
+              path="/catalogue/:api"
+              element={
+                <Catalogue
+                  cartItems={cartItems}
+                  handleAddToCart={handleAddToCart}
+                  handleRemoveFromCart={handleRemoveFromCart}
+                />
+              }
+            />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
+          </Routes>
         </div>
       </AppLayout>
     </BrowserRouter>

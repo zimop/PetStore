@@ -21,6 +21,7 @@ const AppLayout = (props) => {
         <PrimarySearchAppBar
           cartItems={props.cartItems}
           hasToken={props.hasToken}
+          isManager={props.isManager}
         />
 
         {/* body content of the page */}

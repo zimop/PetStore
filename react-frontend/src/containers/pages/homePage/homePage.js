@@ -1,11 +1,9 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 
-import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardActionArea from "@mui/material/CardActionArea";
 
 import "./homePage.css";
 import AdvSwiperBox from "../../components/imageSwipeBox.js";
@@ -16,81 +14,48 @@ import tabsInfo from "./staticPage/tabsInGlance.js";
 
 import Ads5 from "./advImages/Homepage-ads5.png";
 // import Ads6 from "./advImages/Homepage-ads6.png";
-import { CardMedia } from "@mui/material";
+import { CardMedia, Typography } from "@mui/material";
+
+import CatalogueIcons from "../../components/CatalogueIcons/catalogueIcons";
 
 const HomePage = ({ props }) => {
   const theme = useTheme();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
+  if (loading) {
+    return (
+      <img
+        src={require("../../../containers/pages/homePage/staticPage/animations/30206-loading.gif")}
+        style={{
+          width: "30%",
+          height: "100%",
+          border: 0,
+          display: "flex",
+          margin: "auto",
+          marginTop: "10%",
+          marginBottom: "10%",
+        }}
+        alt="Walking Elephant, loading Gif"
+      />
+    );
+  }
 
   return (
     <ThemeProvider theme={theme}>
       {/* Background */}
       <div className="home-background">
         {/* catalogue-icons header */}
-        <div className="catalogue-icons">
-          <Grid container spacing={7} style={{ alignContent: "center" }}>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-all-products"}>
-                <Avatar sx={{ width: 50, height: 50 }}>All</Avatar>
-              </CardActionArea>
-            </Grid>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-cat-products"}>
-                <Avatar
-                  src="./catalogueIcons/cat_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-dog-products"}>
-                <Avatar
-                  src="./catalogueIcons/dog_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-mouse-products"}>
-                <Avatar
-                  src="./catalogueIcons/mouse_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-rabbit-products"}>
-                <Avatar
-                  src="./catalogueIcons/rabbit_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-bird-products"}>
-                <Avatar
-                  src="./catalogueIcons/bird_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
-            <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue/get-fish-products"}>
-                <Avatar
-                  src="./catalogueIcons/fish_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid>
-            {/* <Grid item style={{ alignContent: "center" }}>
-              <CardActionArea href={"/catalogue"}>
-                <Avatar
-                  src="./catalogueIcons/horse_face.png"
-                  sx={{ width: 50, height: 50, borderRadius: 0 }}
-                />
-              </CardActionArea>
-            </Grid> */}
-          </Grid>
-        </div>
+        <Typography variant="h2" style={{ marginBottom: "20px" }}>
+          Browse Products by Category
+        </Typography>
+        <CatalogueIcons />
 
         {/* advSwipeBox header*/}
         <div className="adv-swipe-box">
