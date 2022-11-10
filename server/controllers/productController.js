@@ -118,6 +118,61 @@ const getProductById = async (req, res) => {
   }
 };
 
+// https://stackoverflow.com/a/1421988
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && !isNaN(n - 0);
+}
+
+const addProduct = async (req, res) => {
+  try {
+    if (!isNumber(req.body.productPrice)) {
+      return res.status(400).json({ error: "Price is not a number" });
+    }
+    let productId = await productModel.addProduct(
+      req.body.productName,
+      req.body.productDescription,
+      req.body.productCategory,
+      req.body.productPrice,
+      req.body.stockQuantity
+    );
+    return res.status(200).json({ productId });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const editProduct = async (req, res) => {
+  try {
+    if (!isNumber(req.body.productPrice)) {
+      return res.status(400).json({ error: "Price is not a number" });
+    }
+    let productId = await productModel.editProduct(
+      req.body.productId,
+      req.body.productName,
+      req.body.productDescription,
+      req.body.productCategory,
+      req.body.productPrice,
+      req.body.stockQuantity
+    );
+    return res.status(200).json({ productId });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+const deleteProduct = async (req, res) => {
+  try {
+    console.log(req.body.id);
+    await productModel.deleteProduct(req.body.id);
+    return res.status(200).send();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   getAllProducts,
   getCatProducts,
@@ -127,4 +182,7 @@ module.exports = {
   getBirdProducts,
   getFishProducts,
   getProductById,
+  addProduct,
+  deleteProduct,
+  editProduct,
 };

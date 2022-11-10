@@ -1,0 +1,21 @@
+.add-edit-product-page {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10vh;
+}
+
+.inline-flexbox {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2%;
+}
+
+.inline-flexbox-item {
+  width: 100%;
+}
+
+.add-product-form {
+  width: 100%;
+}
