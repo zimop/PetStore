@@ -25,7 +25,7 @@ const OrderPage = (props) => {
       method: "POST",
       body: data,
       headers: {
-        "x-access-token": `${props.token.accessToken}`,
+        "x-access-token": `${props.token?.accessToken}`,
       },
     });
     let body = await response.json();
