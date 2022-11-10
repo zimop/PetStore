@@ -16,43 +16,16 @@ export default function ProductPageFooter() {
       <Container maxWidth="lg">
         <Grid container spacing={5} margin-bottom={5}>
           <Grid item xs={12} sm={4}>
-            <Box borderBottom={1}>Shop and Learn</Box>
+            <Box borderBottom={1}>Shop</Box>
             <Box>
-              <Link herf="/" color="footerText.main">
-                Promotions
-              </Link>
-            </Box>
-
-            <Box>
-              <Link herf="/" color="footerText.main">
+              <Link herf="/login" color="footerText.main">
                 Customer Login
               </Link>
             </Box>
 
             <Box>
-              <Link herf="/" color="footerText.main">
-                Returns
-              </Link>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} sm={4}>
-            <Box borderBottom={1}>Services</Box>
-            <Box>
-              <Link herf="/" color="footerText.main">
-                FQA
-              </Link>
-            </Box>
-
-            <Box>
-              <Link herf="/" color="footerText.main">
-                Check Order Status
-              </Link>
-            </Box>
-
-            <Box>
-              <Link herf="/" color="footerText.main">
-                Manager Login
+              <Link herf="/signup" color="footerText.main">
+                Customer SignUp
               </Link>
             </Box>
           </Grid>
@@ -61,7 +34,7 @@ export default function ProductPageFooter() {
             <Box borderBottom={1}> Information </Box>
 
             <Box>
-              <Link herf="/" color="footerText.main">
+              <Link herf="/info/about-us" color="footerText.main">
                 About Us
               </Link>
             </Box>
@@ -74,7 +47,22 @@ export default function ProductPageFooter() {
 
             <Box>
               <Link herf="/" color="footerText.main">
-                Privacy Policy
+                Click and Collect
+              </Link>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} sm={4}>
+            <Box borderBottom={1}>Services</Box>
+            <Box>
+              <Link herf="/info/delivery" color="footerText.main">
+                FQA
+              </Link>
+            </Box>
+
+            <Box>
+              <Link herf="/managerBrowseProduct" color="footerText.main">
+                Manager Login
               </Link>
             </Box>
           </Grid>
