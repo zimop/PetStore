@@ -4,6 +4,9 @@ productModel = require("../models/productModel");
 const createOrder = async (req, res) => {
   try {
     let data = req.body;
+    if (req.isAuthenticated) {
+      data.userId = req.userId;
+    }
     if (validateData(data)) {
       let cartItems = JSON.parse(data.cartItems);
       let outOfStockItems = await checkCartStock(cartItems);

@@ -20,9 +20,13 @@ const OrderPage = (props) => {
     let cartItemsJson = JSON.stringify(props.cartItems);
     data.append("cartItems", cartItemsJson);
     data.append("pickup", props.pickup);
+    console.log(props.token);
     let response = await fetch("/api/createOrder", {
       method: "POST",
       body: data,
+      headers: {
+        "x-access-token": `${props.token.accessToken}`,
+      },
     });
     let body = await response.json();
     if (response.status !== 200) {

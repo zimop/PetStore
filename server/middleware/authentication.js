@@ -28,19 +28,26 @@ const userAuthentication = async (req, res, next) => {
       let user = await userModel.getUser(req.userId);
       req.user = user;
     } catch (error) {
-      return res.status(500).send();
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   } else {
-    return res.status(401).send();
+    return res.status(401).json({ error: "Unauthenticated" });
   }
   next();
 };
 
-const userHasManagerPerms = (req, res, next) => {
+const userHasManagerPerms = async (req, res, next) => {
   if (!req.isAuthenticated) {
     req.isManager = false;
   } else {
-    req.isManager = userModel.getIsManager(req.userId);
+    req.isManager = await userModel.getIsManager(req.userId);
+  }
+  next();
+};
+
+const checkManagerPerms = (req, res, next) => {
+  if (!req.isManager) {
+    return res.status(403).json({ error: "Insufficient Permissions" });
   }
   next();
 };
@@ -49,4 +56,5 @@ module.exports = {
   authenticateUser,
   userAuthentication,
   userHasManagerPerms,
+  checkManagerPerms,
 };

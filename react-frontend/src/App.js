@@ -20,6 +20,8 @@ import AboutUsPage from "./containers/pages/homePage/staticPage/aboutUsPage";
 import React, { useState, useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 import useToken from "./containers/components/useToken";
+import resetToken from "./resetToken";
+import { Typography } from "@mui/material";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -30,7 +32,28 @@ function App() {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []);
+
+    async function validateToken(token) {
+      if (token) {
+        let response = await fetch("/api/validateToken", {
+          method: "POST",
+          body: JSON.stringify({ token: token.accessToken }),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.status === 200) {
+          let body = await response.json();
+          if (!body.isValid) {
+            resetToken();
+          }
+        }
+      }
+    }
+
+    validateToken(token);
+  }, [token]);
 
   const handleAddToCart = (clickedItem, addQty) => {
     setCartItems((prev) => {
@@ -95,10 +118,17 @@ function App() {
                   addToCart={handleAddToCart}
                   removeFromCart={handleRemoveFromCart}
                   clearCart={handleClearCart}
+                  token={token}
                 />
               }
             />
             <Route path="/profile" element={<ProfilePage token={token} />} />
+            <Route
+              path="/insufficient-access"
+              element={
+                <Typography variant="h1">Insufficient Access</Typography>
+              }
+            />
           </Routes>
 
           {/* Loading Animation */}
@@ -131,12 +161,18 @@ function App() {
                   />
                 }
               />
-              <Route path="/addProduct" element={<AddEditProductPage />} />
+              <Route
+                path="/addProduct"
+                element={<AddEditProductPage token={token} />}
+              />
               <Route
                 path="/editProduct/:productId"
-                element={<AddEditProductPage />}
+                element={<AddEditProductPage token={token} />}
               />
-              <Route path="/managerBrowseProduct" element={<ManagerBrowse />} />
+              <Route
+                path="/managerBrowseProduct"
+                element={<ManagerBrowse token={token} />}
+              />
             </Routes>
           )}
         </div>

@@ -13,6 +13,7 @@ const ProductRow = (props) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "x-access-token": `${props.token?.accessToken}`,
       },
       body: JSON.stringify({ id }),
     });
