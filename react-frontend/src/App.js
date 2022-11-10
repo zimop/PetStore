@@ -91,7 +91,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppLayout cartItems={cartItems} hasToken={token != null}>
+      <AppLayout
+        cartItems={cartItems}
+        hasToken={token != null}
+        isManager={token != null && token.isManager}
+      >
         <div className="App">
           <Routes>
             {/* Static Pages */}

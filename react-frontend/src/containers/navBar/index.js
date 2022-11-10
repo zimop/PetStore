@@ -31,7 +31,11 @@ import resetToken from "../../resetToken";
 
 //let Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function PrimarySearchAppBar({ hasToken, cartItems }) {
+export default function PrimarySearchAppBar({
+  hasToken,
+  isManager,
+  cartItems,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -101,30 +105,75 @@ export default function PrimarySearchAppBar({ hasToken, cartItems }) {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <ListItem
+          key="Home"
+          onClick={() => (window.location = "/home")}
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemText primary={"Home"} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          key="Catalogue"
+          onClick={() => (window.location = "/catalogue/get-all-products")}
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemText primary={"Catalogue"} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          key="Shopping Cart"
+          onClick={() => (window.location = "/shopping-cart")}
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemText primary={"Shopping Cart"} />
+          </ListItemButton>
+        </ListItem>
+        {hasToken && (
+          <ListItem key="Sign Out" onClick={logOut} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Sign Out"} />
             </ListItemButton>
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        )}
+        {!hasToken && (
+          <ListItem
+            key="Login"
+            onClick={() => (window.location = "/login")}
+            disablePadding
+          >
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Login"} />
             </ListItemButton>
           </ListItem>
-        ))}
+        )}
       </List>
+      {Boolean(isManager) && <Divider />}
+      {Boolean(isManager) && (
+        <List>
+          <ListItem
+            key="Add Product"
+            onClick={() => (window.location = "/addProduct")}
+            disablePadding
+          >
+            <ListItemButton>
+              <ListItemText primary={"Add Product"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            key="Edit/Browse Products"
+            onClick={() => (window.location = "/managerBrowseProduct")}
+            disablePadding
+          >
+            <ListItemButton>
+              <ListItemText primary={"Edit/Browse Products"} />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      )}
     </Box>
   );
 
@@ -245,17 +294,7 @@ export default function PrimarySearchAppBar({ hasToken, cartItems }) {
           >
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={99} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-
-            <IconButton
-              size="large"
-              aria-label="show 2 added products"
+              aria-label="show added products"
               aria-controls={checkoutID}
               aria-haspopup="true"
               onClick={handleCartCheckoutOpen}
