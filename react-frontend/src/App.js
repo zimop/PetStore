@@ -147,12 +147,18 @@ function App() {
                   />
                 }
               />
-              <Route path="/addProduct" element={<AddEditProductPage />} />
+              <Route
+                path="/addProduct"
+                element={<AddEditProductPage token={token} />}
+              />
               <Route
                 path="/editProduct/:productId"
-                element={<AddEditProductPage />}
+                element={<AddEditProductPage token={token} />}
               />
-              <Route path="/managerBrowseProduct" element={<ManagerBrowse />} />
+              <Route
+                path="/managerBrowseProduct"
+                element={<ManagerBrowse token={token} />}
+              />
             </Routes>
           )}
         </div>

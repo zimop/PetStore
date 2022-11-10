@@ -64,16 +64,27 @@ class AddEditProductPage extends React.Component {
         response = await fetch("/api/edit-product", {
           method: "POST",
           body: data,
+          headers: {
+            "x-access-token": `${this.props.token?.accessToken}`,
+          },
         });
       } else {
         response = await fetch("/api/add-product", {
           method: "POST",
           body: data,
+          headers: {
+            "x-access-token": `${this.props.token.accessToken}`,
+          },
         });
       }
       let body = await response.json();
+      console.log(body);
       if (response.status !== 200) {
-        this.state.error = body.error;
+        this.setState({
+          error: body.error,
+          product: this.state.product,
+          dataFetched: this.state.dataFetched,
+        });
       } else {
         // Product is successfully submitted
         console.log("Successfully added/edited product");

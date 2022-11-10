@@ -26,6 +26,7 @@ class ManagerBrowse extends React.Component {
           ProductId={itemData.ProductId}
           productName={itemData.ProductName}
           stock={itemData.Stock}
+          token={this.props.token}
         ></ProductRow>
       );
     });
