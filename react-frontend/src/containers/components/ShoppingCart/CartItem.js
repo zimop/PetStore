@@ -13,6 +13,7 @@ import "./cartItem.css";
 
 const CartItem = ({ item, addToCart, removeFromCart }) => {
   let images = item?.images?.[0]?.ImageURL;
+  images = images ? images : item?.ProductImage;
   return (
     <Grid item xs={3}>
       <Card variant="undefined">
