@@ -19,16 +19,48 @@ const getProductById = async (id) => {
   )[0];
 };
 
-const addProduct = async (productName, description, productType, price) => {
+const addProduct = async (
+  productName,
+  description,
+  productType,
+  price,
+  stock
+) => {
   let result = await mysqlHandle.query(`INSERT INTO 
-    Product (ProductName, Description, ProductType, Price) 
+    Product (ProductName, Description, ProductType, Price, Stock) 
     VALUES (
       ${mysql.escape(productName)}, 
       ${mysql.escape(description)}, 
       ${mysql.escape(productType)}, 
-      ${mysql.escape(price)}
+      ${mysql.escape(price)},
+      ${mysql.escape(stock)}
     );`);
   return result.insertId;
+};
+
+const editProduct = async (
+  productId,
+  productName,
+  description,
+  productType,
+  price,
+  stock
+) => {
+  await mysqlHandle.query(`UPDATE 
+    Product 
+    SET ProductName = ${mysql.escape(productName)},
+        Description = ${mysql.escape(description)},
+        ProductType = ${mysql.escape(productType)},
+        Price = ${mysql.escape(price)},
+        Stock = ${mysql.escape(stock)}
+    WHERE ProductID=${mysql.escape(productId)}`);
+  return productId;
+};
+
+const deleteProduct = async (id) => {
+  await mysqlHandle.query(
+    `DELETE FROM Product WHERE ProductID=${mysql.escape(id)}`
+  );
 };
 
 module.exports = {
@@ -36,4 +68,6 @@ module.exports = {
   getProductByType,
   getProductById,
   addProduct,
+  deleteProduct,
+  editProduct,
 };
