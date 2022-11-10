@@ -248,9 +248,9 @@ export default function PrimarySearchAppBar({ hasToken, cartItems }) {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={99} color="error">
+              {/* <Badge badgeContent={99} color="error">
                 <NotificationsIcon />
-              </Badge>
+              </Badge> */}
             </IconButton>
 
             <IconButton
