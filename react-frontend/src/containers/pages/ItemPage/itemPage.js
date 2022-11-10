@@ -206,7 +206,6 @@ const ItemPage = ({ handleAddToCart }) => {
 const getProductData = async (ProductId) => {
   let response = await fetch(`/api/get-product/${ProductId}`);
   let data = await response.json();
-  console.log(data);
   return data;
 };
 

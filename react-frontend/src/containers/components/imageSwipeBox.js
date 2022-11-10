@@ -47,7 +47,7 @@ function SwipeableTextMobileStepper({ height, width, images }) {
                   overflow: "hidden",
                   objectFit: "contain",
                 }}
-                src={step.Image}
+                src={step.ImageURL}
                 alt={step.label}
               />
             ) : null}
