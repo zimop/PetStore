@@ -40,12 +40,6 @@ export default function ProductPageFooter() {
             </Box>
 
             <Box>
-              <Link href="/info/about-us" color="footerText.main">
-                Contact Us
-              </Link>
-            </Box>
-
-            <Box>
               <Link href="/info/click-collect" color="footerText.main">
                 Click and Collect
               </Link>
@@ -54,6 +48,12 @@ export default function ProductPageFooter() {
             <Box>
               <Link href="/info/delivery" color="footerText.main">
                 Delivery
+              </Link>
+            </Box>
+
+            <Box>
+              <Link href="/info/about-us" color="footerText.main">
+                Contact Us
               </Link>
             </Box>
           </Grid>
