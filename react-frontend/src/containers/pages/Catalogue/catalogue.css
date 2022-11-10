@@ -1,0 +1,22 @@
+.catalogue-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1vmax;
+  flex-direction: row;
+}
+
+.catalogue-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2vmax;
+  flex-direction: row;
+}
+
+.search-sort-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}

@@ -15,7 +15,7 @@ const getFirstImageByProductID = async (productId) => {
       productId
     )} LIMIT 1;`
   );
-  return image[0].ImageURL;
+  return image[0]?.ImageURL;
 };
 
 module.exports = {

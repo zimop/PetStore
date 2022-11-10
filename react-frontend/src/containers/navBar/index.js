@@ -1,21 +1,17 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
 import Drawer from "@mui/material/Drawer";
@@ -23,60 +19,17 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 import useTheme from "../../muiTheme/index";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
+import resetToken from "../../resetToken";
 
-  // testing
-  // alignItems: "center",
-  // justifyContent: "center",
-  // backgroundColor: "purple",
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
-
-//let Anchor = 'top' | 'left' | 'bottom' | 'right';
-
-export default function PrimarySearchAppBar({ cartItems }) {
+export default function PrimarySearchAppBar({
+  hasToken,
+  isManager,
+  cartItems,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -113,6 +66,17 @@ export default function PrimarySearchAppBar({ cartItems }) {
   const handleCartCheckoutClose = () => {
     setCartStatus(null);
   };
+
+  const openProfile = () => {
+    window.location = "/profile";
+  };
+
+  const logOut = () => {
+    resetToken();
+    handleMenuClose();
+    window.location.reload(false);
+  };
+
   //dmnkenkdwnownowmnomwoowm
   const [state, setState] = React.useState();
 
@@ -135,30 +99,75 @@ export default function PrimarySearchAppBar({ cartItems }) {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <ListItem
+          key="Home"
+          onClick={() => (window.location = "/home")}
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemText primary={"Home"} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          key="Catalogue"
+          onClick={() => (window.location = "/catalogue/get-all-products")}
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemText primary={"Catalogue"} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          key="Shopping Cart"
+          onClick={() => (window.location = "/shopping-cart")}
+          disablePadding
+        >
+          <ListItemButton>
+            <ListItemText primary={"Shopping Cart"} />
+          </ListItemButton>
+        </ListItem>
+        {hasToken && (
+          <ListItem key="Sign Out" onClick={logOut} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Sign Out"} />
             </ListItemButton>
           </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        )}
+        {!hasToken && (
+          <ListItem
+            key="Login"
+            onClick={() => (window.location = "/login")}
+            disablePadding
+          >
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={"Login"} />
             </ListItemButton>
           </ListItem>
-        ))}
+        )}
       </List>
+      {Boolean(isManager) && <Divider />}
+      {Boolean(isManager) && (
+        <List>
+          <ListItem
+            key="Add Product"
+            onClick={() => (window.location = "/addProduct")}
+            disablePadding
+          >
+            <ListItemButton>
+              <ListItemText primary={"Add Product"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            key="Edit/Browse Products"
+            onClick={() => (window.location = "/managerBrowseProduct")}
+            disablePadding
+          >
+            <ListItemButton>
+              <ListItemText primary={"Edit/Browse Products"} />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      )}
     </Box>
   );
 
@@ -180,7 +189,10 @@ export default function PrimarySearchAppBar({ cartItems }) {
       open={isCartOpen}
       onClose={handleCartCheckoutClose}
     >
-      <Link to="/checkout" style={{ color: "inherit", textDecoration: "none" }}>
+      <Link
+        to="/shopping-cart"
+        style={{ color: "inherit", textDecoration: "none" }}
+      >
         <MenuItem onClick={handleCartCheckoutClose}>View Cart</MenuItem>
       </Link>
     </Menu>
@@ -203,8 +215,8 @@ export default function PrimarySearchAppBar({ cartItems }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={openProfile}>Profile</MenuItem>
+      <MenuItem onClick={logOut}>Log out</MenuItem>
     </Menu>
   );
 
@@ -253,7 +265,7 @@ export default function PrimarySearchAppBar({ cartItems }) {
 
           <a href={"/home"} style={{ textDecoration: "none" }}>
             <Typography
-              variant="h6"
+              variant="h5"
               noWrap
               component="div"
               sx={{
@@ -268,43 +280,15 @@ export default function PrimarySearchAppBar({ cartItems }) {
             </Typography>
           </a>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
             }}
           >
-            {/* <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={5} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={99} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-
-            <IconButton
-              size="large"
-              aria-label="show 2 added products"
+              aria-label="show added products"
               aria-controls={checkoutID}
               aria-haspopup="true"
               onClick={handleCartCheckoutOpen}
@@ -318,22 +302,32 @@ export default function PrimarySearchAppBar({ cartItems }) {
                 }
                 color="error"
               >
-                <ShoppingCartIcon />
                 {/* <ShoppingCart /> */}
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
-
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {hasToken && (
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            )}
+            {!hasToken && (
+              <Button
+                variant="string"
+                size="medium"
+                onClick={() => (window.location = "/login")}
+              >
+                Login
+              </Button>
+            )}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

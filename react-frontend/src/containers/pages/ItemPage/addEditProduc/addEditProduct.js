@@ -1,80 +1,67 @@
-
 import * as React from "react";
+import { Card } from "@mui/material";
 
 import useTheme from "../../../muiTheme";
 import { ThemeProvider } from "@emotion/react";
 import "./itemPage.css";
-
 
 /* <CardElementsCardContent
   formsSettingsBasicProps={{
     buttonTextProps: {
       children: "Add/edit Product",
     }, */
-  
 
-    const addEditProductPage = (props) => {
-        //   const { children = <></> } = props;
-        const theme = useTheme();
-    
-        
-      
-        return (
-        <ThemeProvider theme={theme}>
-        {/* Background */}
-            <div className="productName">
-              {/* productName header and box*/}
-              <div className="productName-header">
-                <h1>product name </h1> 
-                <div> all-day luna Rectangle dog mattress </div>
+const addEditProductPage = (props) => {
+  //   const { children = <></> } = props;
+  const theme = useTheme();
+
+  return (
+    <ThemeProvider theme={theme}>
+      {/* Background */}
+      <div className="productName">
+        {/* productName header and box*/}
+        <div className="productName-header">
+          <h1>product name </h1>
+          <div> all-day luna Rectangle dog mattress </div>
+        </div>
+
+        {/*  productPrice and the price in box */}
+        <div className="productPrice">
+          <div className="productPrice-header">
+            <h1>product price </h1>
+            <div>$28.99</div>
+          </div>
+
+          {/* productCategory */}
+          <div className="productCategory-header">
+            <h2>productCategory</h2>
+            <div> Dog </div>
+          </div>
+
+          <div className="productDescription">
+            {/* product Descprition*/}
+            <div className="productDescription-header">
+              <h3>product Description </h3>
+              <div>
+                <p>
+                  The All-Day Luna Rectangle Dog Mattress is a comfortable and
+                  stylish bed for your doggy Features and benefits • Plush
+                  velvet lining for extra softness • Fully machine washable •
+                  Removable cover • Exclusive to Petbarn Size Guide Large
+                  91x68x10cm
+                </p>
               </div>
-
-                
-                  {/*  productPrice and the price in box */}
-                  <div className="productPrice">
-                    <div className="productPrice-header">
-                    <h1>product price </h1> 
-                    <div>$28.99</div>
-                    </div>
-
-                {/* productCategory */}
-                    <div className="productCategory-header">
-                    <h2>productCategory</h2>
-                    <div> Dog </div>
-                    </div>
-
-
-                    <div className="productDescription">
-                    {/* product Descprition*/}
-                      <div className="productDescription-header">
-                       <h3>product Description </h3> 
-                       <div>
-                       <p>
-                       The All-Day Luna Rectangle Dog Mattress is a comfortable and stylish bed for your  doggy
-
-                      Features and benefits
-                      • Plush velvet lining for extra softness
-                      • Fully machine washable
-                      • Removable cover
-                      • Exclusive to Petbarn
-
-                       Size Guide
-                      Large 91x68x10cm
-                     </p>
-                </div>
             </div>
           </div>
         </div>
       </div>
     </ThemeProvider>
-    );
+  );
 };
-                  
-export default addEditProductPage;             
- 
 
+export default addEditProductPage;
 
-    //JSX
+//JSX
 
 /*
      <CardElementsCardContent
@@ -176,8 +163,8 @@ export default addEditProductPage;
   }}
 />;
 
-   // box with product name detail*/  //to be shown on top - left? how to code that?
-   /*textFieldOutlined1Props: {
+   // box with product name detail*/ //to be shown on top - left? how to code that?
+/*textFieldOutlined1Props: {
     contentProps: {
       label: "Product name",
       contentProps: {
@@ -188,10 +175,9 @@ export default addEditProductPage;
   }, 
   */
 
-
 // --------------------------------------------------------------------------
 
-  /*
+/*
   import React from 'react';
 import { createTheme } from "@mui/material/styles";
 

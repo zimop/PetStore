@@ -4,9 +4,11 @@
 
 Inside the 200_OK folder (this folder), run `npm install`.
 
-Inside the react-frontend folder, run `npm install --force`. The `--force` argument is currently due to a dependency issue as noted on GitHub.
+Inside the react-frontend folder, run `npm install`.
 
 Inside the server foldre, run `npm install`.
+
+Download the `secrets.json` file from [his document](https://200ok-comp30022.atlassian.net/wiki/spaces/IP2/pages/14745615/Final+secrets.json+file) and place it in the project root directory.
 
 ## Running the Project
 
@@ -47,6 +49,14 @@ The entry point of the back-end is in `./server/index.js`. This entry point then
 Controllers, in the folder `./server/controllers`, are responsible for the application logic. Each controller gets the necessary data to perform each action from models. Then, the controller methods compile the data together to send back a JSON response.
 
 Finally, models in `./server/models` get relevant data by querying the SQL database. To accomplish this, they use the `server/mysqlHandle.js` file which defines some convenience functions that make it easier to send SQL queries using the mysql npm package.
+
+### Running the Docker container
+
+To build Docker, run `docker build .`.
+
+Remember the built container ID outputted by the `docker build` command. E.g. `Successfully built [container ID]`.
+
+Then to run the container, run `docker run -p 8000:8000 [container ID]`.
 
 ## Testing
 
